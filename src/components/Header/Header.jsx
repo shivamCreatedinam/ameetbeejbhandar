@@ -88,9 +88,8 @@ export const Header = () => {
                     </div>
                     
                 </div>
-                {/* <hr  style={ {backgroundr: 'black'}}/> */}
                 <div className='second_nav'>
-                <a href='#' className='brand'>Travel</a>
+                <a href='#' className='brand'>Amit Beej Bhandar</a>
                 <div className={`menu-btn ${isActive ? "menu_active" : ""}`} onClick={handleClick}>
                     {isActive ? <i className="fa-solid fa-xmark fa-lg"></i> : <i className="fa-solid fa-bars-staggered fa-lg"></i>}
                 </div>
@@ -129,8 +128,8 @@ export const Header = () => {
                     ))}
                 </div>
                 <div className='content'>
-                    <h1>Wonderful. <br /><span>Island</span></h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <h1>Amit  <br /><span>Beej Bhandar</span></h1>
+                    <p>The Best Quality Seeds, Fertilizers, Pesticides, Insecticides and more!</p>
                     <a href='#'>Read More</a>
                 </div>
                 <div className='media-icons'>

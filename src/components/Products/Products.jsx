@@ -37,7 +37,7 @@ export const Products = () => {
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 700,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
@@ -47,8 +47,8 @@ export const Products = () => {
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
+                    slidesToShow: 1,
+                    slidesToScroll: 1
                 }
             }
         ]
@@ -61,7 +61,28 @@ export const Products = () => {
                 <Slider {...settings}>
                     {slides.map((slide, index) => (
                         <div key={index} style={{ margin: "0 10px" }}>
-                            <Card style={{ width: "inherit", width:'300px' , marginLeft: '25px', border: '1px solid gray', borderRadius: '20px', padding: '1em'}}>
+                            <Card className="main_card" style={{ }}>
+                                <Card.Img variant="top" src={slide.img} className="card_img"/>
+                                <Card.Body>
+                                    <Card.Title className="product_name">Product Name</Card.Title>
+                                    <Card.Text className="product_info">
+                                        Brief Info about the product
+                                    </Card.Text>
+                                    <div className="product-actions">
+                                        <button className="primary">Buy</button>
+                                        <button className="secondary">Cart</button>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    ))}
+                </Slider>
+            </div>
+            <div className="products2">
+                <Slider {...settings}>
+                    {slides.map((slide, index) => (
+                        <div key={index} style={{ margin: "0 10px" }}>
+                            <Card className="main_card" style={{ }}>
                                 <Card.Img variant="top" src={slide.img} className="card_img"/>
                                 <Card.Body>
                                     <Card.Title className="product_name">Product Name</Card.Title>

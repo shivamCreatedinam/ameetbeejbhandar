@@ -20,7 +20,6 @@ export const Hero = () => {
         { image: pesticides, name: 'PESTICIDES' },
     ];
 
-    // Duplicate items to create an infinite loop effect
     const extendedItems = [...items, ...items];
 
     const [currentIndex, setCurrentIndex] = useState(0);
