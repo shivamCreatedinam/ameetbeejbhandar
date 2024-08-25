@@ -1,0 +1,130 @@
+.about_section {
+    margin: 2em 5em;
+    padding: 0 5em;
+    display: flex;
+    gap: 6em;
+}
+
+.about_right {
+padding-right: 8em;
+}
+
+.about_description {
+    padding: 2em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1.5em;
+}
+
+.about_subheading {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+    color: #39a935;
+    font-weight: 600;
+}
+
+.about_description h3 {
+    font-size: 3em;
+    margin-bottom: 0.6em;
+}
+
+.about_description {
+    border-bottom: 1px solid gray;
+}
+
+.about_features {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1.4em;
+}
+
+.about_features_heading {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 0.6em;
+}
+
+.about_right button {
+    background: #39a935;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8em 1.2em;
+    font-size: 1.2em;
+    color: white ;
+    margin-top: 2em;
+}
+
+.about_right button {
+    display: flex;
+    gap: 8px;
+    position: relative;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.4s ease;
+    border: 2px solid transparent;
+  }
+  
+
+  .about_right button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: white;
+    transition: width 1s ease, height 1s ease, top 1s ease, left 1s ease;
+    border-radius: 50%;
+    z-index: 0;
+  }
+  
+  .about_right button:hover::before {
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+  }
+  
+  .about_right button:hover {
+    color: #39a935;;
+    border: 2px solid #39a935;
+  }
+  
+  .about_right button i, p {
+    position: relative;
+    z-index: 1;
+  }
+  
+
+
+  @media (max-width: 700px) {
+    .about_section{
+        flex-direction: column;
+        padding:0 1em;
+        margin: 2em 1em;
+    }
+
+    .about_left img {
+        width: 320px;
+    }
+
+    
+.about_description h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.6em;
+}
+.about_right {
+    padding-right: 0;
+    }
+  }

@@ -129,7 +129,7 @@ export const Header = () => {
                 </div>
                 <div className='content'>
                     <h1>Amit  <br /><span>Beej Bhandar</span></h1>
-                    <p>The Best Quality Seeds, Fertilizers, Pesticides, Insecticides and more!</p>
+                    <p>Transforming Indian Agriculture with Innovative AgriTech Solutions!</p>
                     <a href='#'>Read More</a>
                 </div>
                 <div className='media-icons'>
