@@ -41,7 +41,7 @@ export const Checkout = () => {
                             </div>
                         ))}
                         <div className='quote_container'>
-                            <h3>Send a Quote</h3>
+                            <h3>Write your Quote</h3>
                             <form>
                                 <input type='number' onChange={(e) => setQuote(e.target.value)} className='quote_input'  placeholder='₹' value={quote}/>
                             </form>

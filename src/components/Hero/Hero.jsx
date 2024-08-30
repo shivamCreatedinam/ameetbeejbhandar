@@ -9,6 +9,7 @@ import insecticides from '../../images/INSECTICIDES.png';
 import Solutions from '../../images/solution.jpg';
 import Trusted from '../../images/trusted.jpg';
 import Production from '../../images/production.jpeg';
+import { Link } from 'react-router-dom';
 
 export const Hero = () => {
     const items = [
@@ -50,13 +51,17 @@ export const Hero = () => {
                     style={{ transform: `translateX(-${(currentIndex % items.length) * 25}%)` }}
                 >
                     {extendedItems.map((item, index) => (
+                        
                         <div
                             key={index}
                             className="carousel-item"
                         >
+                            <Link to='/shop' style={{textDecoration: 'none' }}>
                             <img src={item.image} alt={item.name} className="carousel-image" />
+                            </Link>
                             <h2>{item.name}</h2>
                         </div>
+                      
                     ))}
                 </div>
                 <button className="nav_btn next" onClick={nextSlide}>
@@ -85,7 +90,7 @@ export const Hero = () => {
                     <div className='card_items'>
                         <div className='icon_container'><i className="fa-solid fa-bolt-lightning"></i></div>
                         <h3>Production</h3>
-                        <p>Increasing Production without compromising Quality</p>
+                        <p>Increased Production </p>
                         <img src={Production}></img>
                     </div>
                    

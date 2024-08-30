@@ -131,7 +131,7 @@ export const Header = () => {
                                 <i className="fa-solid fa-cart-shopping" onClick={openCart}></i>
                                 <div className='cart_count' onClick={openCart}>{ cartItems.length}</div>
                                 <i className="fa-regular fa-heart" onClick={openWishlist}></i>
-                                <div className='wish_count' onClick={openWishlist}>100</div>
+                                <div className='wish_count' onClick={openWishlist}>0</div>
                                 <i className="fa-regular fa-user"></i>
                             </div>
                         </div>
@@ -177,7 +177,7 @@ export const Header = () => {
                     ))}
                 </div>
             </section>
-            
+
             {isCartOpen && <div className="overlay" onClick={openCart}></div>}
             <div className={`cart ${isCartOpen ? 'cart_open' : ''}`}>
                     <Cart/>

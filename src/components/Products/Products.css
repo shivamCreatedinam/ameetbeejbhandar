@@ -39,9 +39,11 @@
   .slick-slide:last-child {
     padding-right: 0;
   }
+
   .slick-slide img {
     display: block;
   }
+  
   .slick-list {
     margin: 0 15px;
   }
@@ -49,6 +51,7 @@
 .card_img {
     width: 268px;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 

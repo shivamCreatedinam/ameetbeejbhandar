@@ -4,8 +4,20 @@ import { Card, Button } from "react-bootstrap";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Products.css";
+import productData from '../../Products.json'
+import product_img from '../../images/product.png'
+import { useAppDispatch } from '../../Redux/hooks';
+import { addItemToCart } from '../../Redux/slices/cartslice';
 
 export const Products = () => {
+
+        // adding items to cart
+        const dispatch = useAppDispatch();
+
+        const handleAddToCart = (product) => {
+            dispatch(addItemToCart(product));
+        };
+
     const slides = [
         { img: "https://dummyimage.com/600x400/000/7CFC00" },
         { img: "https://dummyimage.com/600x400/000/ccccc" },
@@ -59,18 +71,18 @@ export const Products = () => {
             <div className="products">
                 <h2> Our Top Products </h2>
                 <Slider {...settings}>
-                    {slides.map((slide, index) => (
+                    {productData.map((product, index) => (
                         <div key={index} style={{ margin: "0 10px" }}>
                             <Card className="main_card" style={{ }}>
-                                <Card.Img variant="top" src={slide.img} className="card_img"/>
+                                <Card.Img variant="top" src={product_img} className="card_img"/>
                                 <Card.Body>
-                                    <Card.Title className="product_name">Product Name</Card.Title>
+                                    <Card.Title className="product_name">{product["Product Name"]}</Card.Title>
                                     <Card.Text className="product_info">
-                                        Brief Info about the product
+                                    {product["Technical Content"]}
                                     </Card.Text>
                                     <div className="product-actions">
                                         <button className="primary">Buy</button>
-                                        <button className="secondary">Cart</button>
+                                        <button className="secondary" onClick={() => handleAddToCart(product)}>Cart</button>
                                     </div>
                                 </Card.Body>
                             </Card>
@@ -78,20 +90,21 @@ export const Products = () => {
                     ))}
                 </Slider>
             </div>
+
             <div className="products2">
                 <Slider {...settings}>
-                    {slides.map((slide, index) => (
+                    {productData.map((product, index) => (
                         <div key={index} style={{ margin: "0 10px" }}>
                             <Card className="main_card" style={{ }}>
-                                <Card.Img variant="top" src={slide.img} className="card_img"/>
+                                <Card.Img variant="top" src={product_img} className="card_img"/>
                                 <Card.Body>
-                                    <Card.Title className="product_name">Product Name</Card.Title>
+                                    <Card.Title className="product_name">{product["Product Name"]}</Card.Title>
                                     <Card.Text className="product_info">
-                                        Brief Info about the product
+                                       {product["Technical Content"]}
                                     </Card.Text>
                                     <div className="product-actions">
-                                        <button className="primary">Buy</button>
-                                        <button className="secondary">Cart</button>
+                                        <button className="primary" >Buy</button>
+                                        <button className="secondary"  onClick={() => handleAddToCart(product)}>Cart</button>
                                     </div>
                                 </Card.Body>
                             </Card>
@@ -99,6 +112,7 @@ export const Products = () => {
                     ))}
                 </Slider>
             </div>
+
         </>
     );
 };
