@@ -170,6 +170,9 @@
         margin-top: 2em;
         gap: 1em;
     }
+    .footer_social { 
+      width: 100%;
+    }
 
     .footer_hero{
         flex-direction: column;

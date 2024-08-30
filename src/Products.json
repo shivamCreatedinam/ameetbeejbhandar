@@ -1,0 +1,183 @@
+[
+    {
+      "id": 1,
+      "Brand": "ATUL LIMITED",
+      "Category": "PLANT GROWTH REGULATOR",
+      "Product Name": "Biopearl",
+      "Technical Content": "Natural Seaweed Extract",
+      "Size": "10 LTR (PACK OF 10*1 LTR)",
+      "Price": ""
+    },
+    {
+      "id": 2,
+      "Brand": "ATUL LIMITED",
+      "Category": "PLANT GROWTH REGULATOR",
+      "Product Name": "Biopearl",
+      "Technical Content": "Natural Seaweed Extract",
+      "Size": "10 LTR (PACK OF 20*500 ML)",
+      "Price": ""
+    },
+    {
+      "id": 3,
+      "Brand": "ATUL LIMITED",
+      "Category": "PLANT GROWTH REGULATOR",
+      "Product Name": "Biopearl",
+      "Technical Content": "Natural Seaweed Extract",
+      "Size": "10 LTR (PACK OF 40*250 ML)",
+      "Price": ""
+    },
+    {
+      "id": 4,
+      "Brand": "ATUL LIMITED",
+      "Category": "PLANT GROWTH REGULATOR",
+      "Product Name": "Biopearl GR Bucket",
+      "Technical Content": "Natural Seaweed Extract",
+      "Size": "10 KG (PACK OF 2*10 KG)",
+      "Price": ""
+    },
+    {
+      "id": 5,
+      "Brand": "ATUL LIMITED",
+      "Category": "PLANT GROWTH REGULATOR",
+      "Product Name": "Biopearl GR Pouch",
+      "Technical Content": "Natural Seaweed Extract",
+      "Size": "15 KG (PACK OF 4*4 KG)",
+      "Price": ""
+    },
+    {
+      "id": 6,
+      "Brand": "ATUL LIMITED",
+      "Category": "HERBICIDES",
+      "Product Name": "Cyno",
+      "Technical Content": "Chlorimuron ethyl 25% WP",
+      "Size": "5 KG (PACK OF 10*500 GMS)",
+      "Price": ""
+    },
+    {
+      "id": 7,
+      "Brand": "ATUL LIMITED",
+      "Category": "INSECTICIDES",
+      "Product Name": "Lypus",
+      "Technical Content": "Fipronil 40% + Imidacloprid 40% WG",
+      "Size": "5 KG (PACK OF 10*500 GMS)",
+      "Price": ""
+    },
+    {
+      "id": 8,
+      "Brand": "ATUL LIMITED",
+      "Category": "INSECTICIDES",
+      "Product Name": "Monil SC",
+      "Technical Content": "Fipronil 5% SC",
+      "Size": "10 KG (PACK OF 10*1 KG)",
+      "Price": ""
+    },
+    {
+      "id": 9,
+      "Brand": "ATUL LIMITED",
+      "Category": "INSECTICIDES",
+      "Product Name": "Monil SC",
+      "Technical Content": "Fipronil 5% SC",
+      "Size": "20 KG (PACK OF 20*500 GMS)",
+      "Price": ""
+    },
+    {
+      "id": 10,
+      "Brand": "ATUL LIMITED",
+      "Category": "INSECTICIDES",
+      "Product Name": "Monil SC",
+      "Technical Content": "Fipronil 5% SC",
+      "Size": "40 KG (PACK OF 40*250 GMS)",
+      "Price": ""
+    },
+    {
+      "id": 11,
+      "Brand": "ATUL LIMITED",
+      "Category": "INSECTICIDES",
+      "Product Name": "Monil GR",
+      "Technical Content": "Fipronil 0.3% GR",
+      "Size": "25 KG (PACK OF 5*5 KG)",
+      "Price": ""
+    },
+    {
+      "id": 12,
+      "Brand": "ATUL LIMITED",
+      "Category": "HERBICIDES",
+      "Product Name": "Plasto",
+      "Technical Content": "Metribuzin 70% WP",
+      "Size": "5 KG (PACK OF 50*100 GMS)",
+      "Price": ""
+    },
+    {
+      "id": 13,
+      "Brand": "ATUL LIMITED",
+      "Category": "HERBICIDES",
+      "Product Name": "Salix",
+      "Technical Content": "2,4-D Sodium salt 95% SP",
+      "Size": "10 KG (PACK OF 20*500 GMS)",
+      "Price": ""
+    },
+    {
+      "id": 14,
+      "Brand": "ATUL LIMITED",
+      "Category": "HERBICIDES",
+      "Product Name": "Sindica",
+      "Technical Content": "2,4-D Sodium 48% + Metribuzin 32% + Chlorimuron ethyl 0.85% w/w WDG",
+      "Size": "10 KG (PACK OF 10*1 KG)",
+      "Price": ""
+    },
+    {
+      "id": 15,
+      "Brand": "ATUL LIMITED",
+      "Category": "HERBICIDES",
+      "Product Name": "Sindica",
+      "Technical Content": "2,4-D Sodium 48% + Metribuzin 32% + Chlorimuron ethyl 0.85% w/w WDG",
+      "Size": "20 KG (PACK OF 20*500 GMS)",
+      "Price": ""
+    },
+    {
+      "id": 16,
+      "Brand": "ATUL LIMITED",
+      "Category": "INSECTICIDES",
+      "Product Name": "Spora",
+      "Technical Content": "Thiamethoxam 25% WG",
+      "Size": "8 KG (PACK OF 16*500 GMS)",
+      "Price": ""
+    },
+    {
+      "id": 17,
+      "Brand": "ATUL LIMITED",
+      "Category": "INSECTICIDES",
+      "Product Name": "Spora",
+      "Technical Content": "Thiamethoxam 25% WG",
+      "Size": "1 KG (PACK OF 8*1 KG)",
+      "Price": ""
+    },
+    {
+      "id": 18,
+      "Brand": "ATUL LIMITED",
+      "Category": "INSECTICIDES",
+      "Product Name": "Spora Super",
+      "Technical Content": "Thiamethoxam 30% FS",
+      "Size": "10 LTR (PACK OF 20*500 ML)",
+      "Price": ""
+    },
+    {
+      "id": 19,
+      "Brand": "ATUL LIMITED",
+      "Category": "HERBICIDES",
+      "Product Name": "Zura",
+      "Technical Content": "2,4-D Dimethyl amine salt 58% WSC",
+      "Size": "10 LTR (PACK OF 10*1 LTR)",
+      "Price": ""
+    },
+    {
+      "id": 20,
+      "Brand": "ATUL LIMITED",
+      "Category": "HERBICIDES",
+      "Product Name": "Zura",
+      "Technical Content": "2,4-D Dimethyl amine salt 58% WSC",
+      "Size": "8 LTR (PACK OF 20*400 ML)",
+      "Price": ""
+    }
+  ]
+  

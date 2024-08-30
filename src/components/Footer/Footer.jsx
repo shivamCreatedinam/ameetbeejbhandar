@@ -23,9 +23,9 @@ export const Footer = () => {
                         <img src={logo}></img>
                         <h3>Amit Beej bhandar</h3>
                         <p className='about'>Elevate your harvest with Amit Beej Bhandar's premium <br />seeds, fertilizers, and crop protection solutions.  Achleve <br />higher yields, healthier crops, and a more profitable season.</p>
-                        <div className='footer_contact'><i class="fa-solid fa-minus"></i><p> Contact</p></div>
-                        <div  className='footer_contact'><i class="fa-solid fa-phone"></i><p>+91 88595 91451</p></div>
-                        <div  className='footer_contact'><i class="fa-solid fa-envelope"></i><p>vibhorvashistha3@gmail.com</p></div>
+                        <div className='footer_contact'><i className="fa-solid fa-minus"></i><p> Contact</p></div>
+                        <div  className='footer_contact'><i className="fa-solid fa-phone"></i><p>+91 88595 91451</p></div>
+                        <div  className='footer_contact'><i className="fa-solid fa-envelope"></i><p>vibhorvashistha3@gmail.com</p></div>
                     </div>
                     <div className='quick_links'>
                         <h3>Links</h3>

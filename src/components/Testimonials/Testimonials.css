@@ -11,7 +11,6 @@
     text-align: center;
     gap: 1em;
     color: #39a935;
-    font-weight: 600;
   }
   
   .testimonials_heading {
@@ -55,7 +54,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     user-select: none; /* Prevent text selection */
-    margin: 0 1.6em;
   }
   
   .testimonial-card h3,
@@ -69,9 +67,11 @@
     height: 80px;
     object-fit: cover;
   }
+
+  
   
 
-  @media (max-width: 700px) {
+   @media (max-width: 700px) {
     .testimonials_container {
         padding: 2em 1em;
     }
@@ -99,7 +99,7 @@
   }
 
   .testimonial-slider {
-    margin: 0 -3em;
+    margin: 0 -2em;
     
 }
   }

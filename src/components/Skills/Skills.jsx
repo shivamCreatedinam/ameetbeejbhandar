@@ -9,29 +9,29 @@ export const Skills = () => {
         <>
             <div className='skills_section' >
                 <div className='skills_left'>
-                    <div className='skills_heading'><i class="fa-solid fa-seedling"></i><p>OUR SKILLS</p></div>
+                    <div className='skills_heading'><i className="fa-solid fa-seedling"></i><p>OUR SKILLS</p></div>
                     <div className='skills_description'>
                         <p className='skills_main_heading'>Getting A Greener Future Safe Environment</p>
                         <p className='skills_main_para'>Competently cultivate worldwide e-tailers through principle-centered value professionally engineer high-payoff deliverables without exceptional processes. Rapidiously network cost effective vortals</p>
                         <div className='skills_containers'>
-                            <div className='skills_containers_child'><i class="fa-solid fa-circle-check"></i><p>Safe Environment</p></div>
-                            <div className='skills_containers_child'><i class="fa-solid fa-circle-check"></i><p>Dirty Recycling</p></div>
+                            <div className='skills_containers_child'><i className="fa-solid fa-circle-check"></i><p>Safe Environment</p></div>
+                            <div className='skills_containers_child'><i className="fa-solid fa-circle-check"></i><p>Dirty Recycling</p></div>
                         </div>
-                        <div class="progress-container">
-                            <div class="progress-title">
+                        <div className="progress-container">
+                            <div className="progress-title">
                                 <span>Recycling</span>
-                                <span class="progress-value">90%</span>
+                                <span className="progress-value">90%</span>
                             </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style={{ width: '90%' }}></div>
+                            <div className="progress-bar">
+                                <div className="progress-fill" style={{ width: '90%' }}></div>
                             </div>
 
-                            <div class="progress-title">
+                            <div className="progress-title">
                                 <span>Ocean Cleaning</span>
-                                <span class="progress-value">80%</span>
+                                <span className="progress-value">80%</span>
                             </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style={{ width: '80%' }}></div>
+                            <div className="progress-bar">
+                                <div className="progress-fill" style={{ width: '80%' }}></div>
                             </div>
                         </div>
                     </div>

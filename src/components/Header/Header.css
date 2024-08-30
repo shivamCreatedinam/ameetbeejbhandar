@@ -5,13 +5,14 @@
 }
 
 header {
-  z-index: 999;
+  z-index: 888;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   transition: 0.5s ease;
   border-bottom: 1px solid gray;
+  user-select: none;
 }
 
 .address {
@@ -120,6 +121,7 @@ section {
   justify-content: center;
   flex-direction: column;
   background: #2696e9;
+  user-select: none;
 }
 
 .home::before {
@@ -251,18 +253,24 @@ section {
 .search_container {
     display: inline;
     margin-left: 25px;
-    background: #39a935;
+    /* background: white; */
     padding: 10px;
+    border: 1px solid white ;
     border-radius: 30px;
 }
 
 .search_container .search_bar {
   background: transparent;
   border: none;
-  border-bottom: 1px solid ;
+  border-bottom: 1px solid  white;
   padding: 0 10px;
   margin: 0 5px;
   font-size: 1.2rem;
+  
+}
+
+.fa-magnifying-glass {
+  color: white;
 }
 .search_container .search_bar:focus {
   outline: none;
@@ -276,7 +284,81 @@ section {
   padding: 10px;
 }
 
-@media (max-width: 1040px) {
+.cusotmer_section {
+  display: inline;
+  margin-left: 1.6em;
+  position: relative;
+}
+
+.cusotmer_section .fa-solid, .fa-regular {
+  margin-left: 12px;
+  font-size: 1.6em;
+
+}
+
+.cusotmer_section .cart_count {
+  position: absolute;
+  top:  -25px;
+  left:  30px;
+  border: 1px solid gray;
+  background: #47f741;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 11px;
+}
+
+.cusotmer_section .wish_count {
+  position: absolute;
+  top:  -25px;
+  left:  65px;
+  border: 1px solid gray;
+  background: #47f741;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 11px;
+}
+
+
+
+.cusotmer_section .fa-solid:hover, .fa-regular:hover {
+    transform: scale(1.3);
+    transition: 0.7s ;
+ 
+}
+
+/* cart section */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  z-index: 999; /* ensure it's below the cart */
+}
+
+
+.cart {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 30%;
+  height: 100vh;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.4s ease;
+  z-index: 1000;
+  background: rgb(191, 179, 179);
+}
+
+.cart_open {
+  right: 0;
+}
+
+
+
+
+@media (max-width: 700px) {
   header {
     z-index: 999;
     position: absolute;
@@ -326,10 +408,23 @@ section {
     margin: 20px;
   }
 
+  header .navigation-items .search_container{
+    border: 1px solid black;
+    margin-bottom: 1.3em;
+  }
+
+  header .navigation-items .search_bar {
+    border-bottom: 1px solid black;
+  }
+
   header .navigation .navigation-items a:before {
     margin-bottom: -10px;
     background: #222;
     height: 5px;
+  }
+
+  header .navigation-items .fa-magnifying-glass  {
+    color: black;
   }
 
   header .navigation .navigation-items {
@@ -356,7 +451,7 @@ section {
     display: block;
     color: #ffff;
     cursor: pointer;
-    z-index: 999;
+    z-index: 888;
   }
 
   .home .content h1 {
@@ -375,8 +470,24 @@ section {
 
   .search_container .search_bar {
     padding: 0;
+ 
+  }
+  .cusotmer_section{
+    margin-top: 2em;
+    display: flex;
+    gap: 3em;
+
   }
 
-}
+  .cusotmer_section .wish_count {
+    top:  -23px;
+    left: 10em;
 
+  }
+  
+
+  .cart {
+  width: 70%;
+  }
+}
 

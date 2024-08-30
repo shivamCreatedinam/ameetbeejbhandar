@@ -1,0 +1,14 @@
+.suggestion_heading {
+    text-align: center;
+}
+
+.suggestion_container {
+    padding: 2em 10em;
+}
+
+
+@media (max-width: 700px) {
+    .suggestion_container {
+    padding: 2em 0.8em;
+    }
+}

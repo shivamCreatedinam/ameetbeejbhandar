@@ -13,7 +13,7 @@ export const About = () => {
     </div>
     <div className='about_right'>
         <div className='about_description'>
-                <div className='about_subheading'><i class="fa-solid fa-seedling"></i><p>ABOUT AMIT BEEJ BHANDAR</p></div>
+                <div className='about_subheading'><i className="fa-solid fa-seedling"></i><p>ABOUT AMIT BEEJ BHANDAR</p></div>
                 <h3>Environmental Sustainable Forever Green Future</h3>
                 <div className='about_features'>
                     <img src={about_icon_1}></img>
@@ -31,7 +31,7 @@ export const About = () => {
                 </div>
         </div>
         <div>
-            <button><p>More  About</p>  <i class="fa-solid fa-leaf"></i></button>
+            <button><p>More  About</p>  <i className="fa-solid fa-leaf"></i></button>
         </div>
     </div>
 </div>

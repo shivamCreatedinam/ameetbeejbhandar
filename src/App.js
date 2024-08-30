@@ -1,22 +1,22 @@
-import './index.css';
-import { Header } from './components/Header/Header';
-import { Hero } from './components/Hero/Hero';
-import { Products } from './components/Products/Products';
-import { Footer } from  './components/Footer/Footer';
-import { About } from './components/About/About';
-import { Skills } from './components/Skills/Skills';
-import { Testimonials } from './components/Testimonials/Testimonials';
+import "./index.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home } from "./Pages/Home";
+import { Shop } from "./components/Shop/Shop";
+import { Product_details } from "./components/Product_details/Product_details";
+import { Products } from "./Pages/Products";
+import { Checkout } from "./components/Checkout/Checkout";
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <Hero/>
-      <About/>
-      <Skills/>
-      <Products/>
-      <Testimonials/>
-      <Footer/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/products/:productId" element={<Product_details />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
