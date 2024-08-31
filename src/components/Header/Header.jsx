@@ -153,7 +153,7 @@ export const Header = () => {
                             className={`image_slide ${activeIndex === index ? 'active' : ''}`}
                             src={slide}
                             alt={`slide-${index}`}
-                            style={{ display: activeIndex === index ? 'block' : 'none' }} // Only display the active slide
+                            style={{ display: activeIndex === index ? 'block' : 'none' }} 
                         />
                     ))}
                 </div>

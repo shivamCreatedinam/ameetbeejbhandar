@@ -333,8 +333,8 @@ section {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
-  z-index: 999; /* ensure it's below the cart */
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 999;
 }
 
 
