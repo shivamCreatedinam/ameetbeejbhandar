@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import { Card, Button } from "react-bootstrap";
 import "slick-carousel/slick/slick.css";
@@ -8,15 +8,25 @@ import productData from '../../Products.json'
 import product_img from '../../images/product.png'
 import { useAppDispatch } from '../../Redux/hooks';
 import { addItemToCart } from '../../Redux/slices/cartslice';
+import { Link } from "react-router-dom";
+import { Cart } from '../Cart/Cart';
 
 export const Products = () => {
 
-        // adding items to cart
-        const dispatch = useAppDispatch();
+    // adding items to cart
+    const dispatch = useAppDispatch();
 
-        const handleAddToCart = (product) => {
-            dispatch(addItemToCart(product));
-        };
+    const [isCartOpen, setIsCartOpen] = useState(false)
+
+    const openCart = () => {
+        setIsCartOpen(!isCartOpen)
+    }
+
+    const handleAddToCart = (product) => {
+        dispatch(addItemToCart(product));
+        setIsCartOpen(!isCartOpen)
+
+    };
 
     const slides = [
         { img: "https://dummyimage.com/600x400/000/7CFC00" },
@@ -73,15 +83,20 @@ export const Products = () => {
                 <Slider {...settings}>
                     {productData.map((product, index) => (
                         <div key={index} style={{ margin: "0 10px" }}>
-                            <Card className="main_card" style={{ }}>
-                                <Card.Img variant="top" src={product_img} className="card_img"/>
+                            <Card className="main_card" style={{}}>
+                                <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit', }}>
+                                    <Card.Img variant="top" src={product_img} className="card_img" />
+                                </Link>
                                 <Card.Body>
                                     <Card.Title className="product_name">{product["Product Name"]}</Card.Title>
+
                                     <Card.Text className="product_info">
-                                    {product["Technical Content"]}
+                                        {product["Technical Content"]}
                                     </Card.Text>
                                     <div className="product-actions">
-                                        <button className="primary">Buy</button>
+                                        <Link to="/checkout">
+                                            <button className="primary" onClick={() => handleAddToCart(product)}>Buy</button>
+                                        </Link>
                                         <button className="secondary" onClick={() => handleAddToCart(product)}>Cart</button>
                                     </div>
                                 </Card.Body>
@@ -95,16 +110,20 @@ export const Products = () => {
                 <Slider {...settings}>
                     {productData.map((product, index) => (
                         <div key={index} style={{ margin: "0 10px" }}>
-                            <Card className="main_card" style={{ }}>
-                                <Card.Img variant="top" src={product_img} className="card_img"/>
+                            <Card className="main_card" style={{}}>
+                                <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit', }}>
+                                    <Card.Img variant="top" src={product_img} className="card_img" />
+                                </Link>
                                 <Card.Body>
                                     <Card.Title className="product_name">{product["Product Name"]}</Card.Title>
                                     <Card.Text className="product_info">
-                                       {product["Technical Content"]}
+                                        {product["Technical Content"]}
                                     </Card.Text>
                                     <div className="product-actions">
-                                        <button className="primary" >Buy</button>
-                                        <button className="secondary"  onClick={() => handleAddToCart(product)}>Cart</button>
+                                        <Link to="/checkout">
+                                            <button className="primary" onClick={() => handleAddToCart(product)}>Buy</button>
+                                        </Link>
+                                        <button className="secondary" onClick={() => handleAddToCart(product)}>Cart</button>
                                     </div>
                                 </Card.Body>
                             </Card>
@@ -113,6 +132,11 @@ export const Products = () => {
                 </Slider>
             </div>
 
+            {/* cart */}
+            {isCartOpen && <div className="overlay" onClick={openCart}></div>}
+            <div className={`cart ${isCartOpen ? 'cart_open' : ''}`}>
+                <Cart />
+            </div>
         </>
     );
 };

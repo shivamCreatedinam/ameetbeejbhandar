@@ -43,7 +43,9 @@ export const Suggest_Products = (category) => {
                                     </Link>
                                     <div className='product_options'>
                                         <button className='cart_btn' onClick={() => handleAddToCart(product)}>Add to Cart</button>
-                                        <button className='buy'>Buy Now</button>
+                                        <Link to="/checkout">
+                                            <button className='buy' onClick={() => handleAddToCart(product)}>Buy Now</button>
+                                        </Link>
                                     </div>
                                 </div>
 
@@ -56,7 +58,7 @@ export const Suggest_Products = (category) => {
                 </div>
             </div>
 
-          
+
         </>
     )
 }

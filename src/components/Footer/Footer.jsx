@@ -30,12 +30,12 @@ export const Footer = () => {
                     <div className='quick_links'>
                         <h3>Links</h3>
                         <div className='quick_links_section'>
-                            <a href='#'>About Us</a>
-                            <a href='#'>Shipping</a>
+                            <a href='/about'>About Us</a>
+                            <a href='/shipping'>Shipping</a>
                             <a href='#'>FAQ</a>
-                            <a href='#'>Terms & Conditions</a>
-                            <a href='#'>Privacy Policy</a>
-                            <a href='#'>Exchanges and Returns</a>
+                            <a href='/terms_&_conditions'>Terms & Conditions</a>
+                            <a href='/privacy_policies'>Privacy Policy</a>
+                            <a href='/return'>Exchanges and Returns</a>
                         </div>
                     </div>
                 </div>

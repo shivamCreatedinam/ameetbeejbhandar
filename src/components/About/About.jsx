@@ -31,7 +31,7 @@ export const About = () => {
                 </div>
         </div>
         <div>
-            <button><p>More  About</p>  <i className="fa-solid fa-leaf"></i></button>
+            <button><p>More  About</p><i className="fa-solid fa-leaf"></i></button>
         </div>
     </div>
 </div>

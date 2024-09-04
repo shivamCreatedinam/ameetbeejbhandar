@@ -9,7 +9,7 @@ import { Footer } from '../Footer/Footer';
 import './Product_details.css'
 import '../Shop/Shop.css';
 import { Cart } from '../Cart/Cart';
-
+import { Link } from 'react-router-dom';
 import product_img from '../../images/product.png'
 export const Product_details = () => {
 
@@ -45,6 +45,8 @@ export const Product_details = () => {
 
     const handleAddToCart = () => {
         dispatch(addItemToCart(product));
+        setIsCartOpen(!isCartOpen)
+
     };
 
     const cartItems = useAppSelector((state) => state.cart.items);
@@ -53,7 +55,7 @@ export const Product_details = () => {
     //   take to the top
     useEffect(() => {
 
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0 });
     }, [productId]);
 
 
@@ -107,8 +109,11 @@ export const Product_details = () => {
                         <option value={findProduct.Size}>{findProduct.Size}</option>
                     </select>
                     <div className='products_choice'>
-                    <button className='products_choice_cart' onClick={handleAddToCart}>Add to Cart</button>
-                    <button className='products_choice_buy'>Buy Now</button>
+                        <button className='products_choice_cart' onClick={handleAddToCart}>Add to Cart</button>
+                        <Link to="/checkout">
+                            <button className='products_choice_buy' onClick={handleAddToCart}>Buy Now</button>
+                        </Link>
+
                     </div>
                 </div>
             </div>
@@ -119,7 +124,7 @@ export const Product_details = () => {
             <Footer />
 
             {isCartOpen && <div className="overlay" onClick={openCart}>
-                <div>jhbk</div>
+              
             </div>}
             <div className={`cart ${isCartOpen ? 'cart_open' : ''}`}>
                 <Cart />

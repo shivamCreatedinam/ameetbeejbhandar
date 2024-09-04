@@ -4,7 +4,7 @@ import bg1 from '../../images/bg1.jpg';
 import bg2 from '../../images/bg2.jpg';
 import { Cart } from '../Cart/Cart';
 import { useAppSelector } from '../../Redux/hooks';
-
+import { Link } from 'react-router-dom';
 export const Header = () => {
 
     
@@ -112,18 +112,18 @@ export const Header = () => {
 
                 </div>
                 <div className='second_nav'>
-                    <a href='#' className='brand'>Amit Beej Bhandar</a>
+                    <Link to='/' className='brand'>Amit Beej Bhandar</Link>
                     <div className={`menu-btn ${isActive ? "menu_active" : ""}`} onClick={handleClick}>
                         {isActive ? <i className="fa-solid fa-xmark fa-lg"></i> : <i className="fa-solid fa-bars-staggered fa-lg"></i>}
                     </div>
 
                     <div className={`navigation ${isActive ? "navigation_active" : ""}`}>
                         <div className='navigation-items'>
-                            <a href='#'>Home</a>
-                            <a href='#'>About</a>
-                            <a href='#'>Explore</a>
-                            <a href='#'>Gallery</a>
-                            <a href='#'>Contact</a>
+                            <Link to='/'>Home</Link>
+                            <Link to='/shop'>Explore</Link>
+                            <Link to='#'>About</Link>
+                            <Link to='#'>Contact</Link>
+                            <Link to='#'>Products</Link>
                             <div className='search_container'>
                                 <input type="search" className='search_bar' /><i className="fa-solid fa-magnifying-glass"></i>
                             </div>

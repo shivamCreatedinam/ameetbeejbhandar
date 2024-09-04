@@ -36,7 +36,7 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  width: 30%;
+  width: 40%;
   gap: 3em;
 }
 
@@ -149,6 +149,11 @@
     text-align: center;
 
 }
+
+.quote_container .remarks, .contact_details {
+  margin-top: 1em;
+}
+
 
 @media (max-width: 700px) {
     .footer{

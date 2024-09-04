@@ -61,6 +61,8 @@ export const Shop = () => {
 
     const handleAddToCart = (product) => {
         dispatch(addItemToCart(product));
+        setIsCartOpen(!isCartOpen)
+
     };
 
     const cartItems = useAppSelector((state) => state.cart.items);
@@ -70,16 +72,16 @@ export const Shop = () => {
             <div className='shop_page'>
                 {/* header */}
                 <div className='shop_nav'>
-                    <a href='#' className='shop_brand'>Amit Beej Bhandar</a>
+                    <Link to='/' className='shop_brand'>Amit Beej Bhandar</Link>
                     <div className={`menu-btn ${isActive ? 'menu_active' : ''}`} onClick={handleClick}>
                         {isActive ? <i className="fa-solid fa-xmark fa-lg"></i> : <i className="fa-solid fa-bars-staggered fa-lg"></i>}
                     </div>
 
-                    <div className={`navigation ${isActive ? 'navigation_active' : ''}`}>
+                    <div className={`navigation  ${isActive ? 'navigation_active' : ''}`}>
                         <div className='shop_navigation-items'>
-                            <a href='#'>Home</a>
-                            <a href='#'>About</a>
-                            <a href='#'>Explore</a>
+                            <a href='/'>Home</a>
+                            <a href='/about'>About</a>
+                            <a href='/shop'>Explore</a>
                             <a href='#'>Gallery</a>
                             <a href='#'>Contact</a>
                             <div className='search_container'>
@@ -214,7 +216,9 @@ export const Shop = () => {
                                         className='cart_btn'
                                         onClick={() => handleAddToCart(product)}
                                     >Add to Cart</button>
-                                    <button className='buy'>Buy Now</button>
+                                    <Link to="/checkout">
+                                        <button className='buy' onClick={() => handleAddToCart(product)}>Buy Now</button>
+                                    </Link>
                                 </div>
                             </div>
 
@@ -226,7 +230,6 @@ export const Shop = () => {
 
 
             {isCartOpen && <div className="overlay" onClick={openCart}>
-                <div>jhbk</div>
             </div>}
             <div className={`cart ${isCartOpen ? 'cart_open' : ''}`}>
                 <Cart />

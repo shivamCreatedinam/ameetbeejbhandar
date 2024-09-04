@@ -78,6 +78,7 @@
   border: none;
   background: white;
   border: 1px solid black;
+  cursor: pointer;
 }
 
 .products_choice_buy {

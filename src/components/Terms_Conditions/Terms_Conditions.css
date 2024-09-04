@@ -1,0 +1,52 @@
+.terms_condition {
+  background-image: url(../../images/about_us.jpg) !important;
+  background-position: top;
+  position: relative;
+}
+
+.terms_navigation_items a {
+  text-decoration: none;
+  list-style: none;
+  color: white;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+}
+
+ .terms_condition .shop_nav {
+  background-color: #0fa80f; 
+  
+}
+
+.terms_condition_section {
+  padding: 2em 10em;
+}
+
+.terms_condition_heading {
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 1em;
+}
+
+.terms_condition_section h3 {
+  font-size: 1.8em;
+  margin-top: 1em;
+}
+
+.terms_condition_section p {
+  color: gray;
+  margin-top: 10px;
+}
+
+@media (max-width: 700px) {
+
+ 
+  .terms_condition_section {
+    padding: 2em 1em;
+  }
+
+  .terms_condition_section h3 {
+    font-size: 1.2em;
+    margin-top: 1em;
+  }
+}
