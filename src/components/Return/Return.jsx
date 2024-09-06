@@ -41,19 +41,27 @@ export const Return = () => {
 
                     <div className={`navigation  ${isActive ? 'navigation_active' : ''}`}>
                         <div className='shop_navigation-items'>
-                            <a href='/'>Home</a>
-                            <a href='/about'>About</a>
-                            <a href='/shop'>Explore</a>
-                            <a href='#'>Gallery</a>
-                            <a href='#'>Contact</a>
+                        <Link to='/'>Home</Link>
+                            <Link to='/shop'>Explore</Link>
+                            <Link to='/about'>About</Link>
+                            <Link to='/contact'>Contact</Link>
+                            <Link to='/shop'>Products</Link>
                             <div className='search_container'>
                                 <input type="search" className='search_bar' /><i className="fa-solid fa-magnifying-glass"></i>
                             </div>
                             <div className='customer_section'>
                                 <i className="fa-solid fa-cart-shopping" onClick={openCart}></i>
-                                <div className='cart_count' onClick={openCart}>{cartItems.length}</div>
-                                <i className="fa-regular fa-heart" ></i>
-                                <div className='wish_count' >{cartItems.length}</div>
+                                {cartItems.length > 0 && (
+                                    <div className={`cart_count`} onClick={openCart}>
+                                        {cartItems.length}
+                                    </div>
+                                )}
+                                <i className="fa-regular fa-heart"></i>
+                                {cartItems.length > 0 && (
+                                    <div className={`wish_count`}>
+                                       0
+                                    </div>
+                                )}
                                 <i className="fa-regular fa-user"></i>
                             </div>
                         </div>

@@ -50,10 +50,28 @@ export const Products = () => {
         initialSlide: 1,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 1300,
                 settings: {
                     slidesToShow: 4,
                     slidesToScroll: 4,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 860,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
                     infinite: true,
                     dots: true
                 }
@@ -67,7 +85,7 @@ export const Products = () => {
                 }
             },
             {
-                breakpoint: 480,
+                breakpoint: 500,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1
@@ -83,7 +101,7 @@ export const Products = () => {
                 <Slider {...settings}>
                     {productData.map((product, index) => (
                         <div key={index} style={{ margin: "0 10px" }}>
-                            <Card className="main_card" style={{}}>
+                            <Card className="main_card" style={{marginRight: '1rem'}}>
                                 <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit', }}>
                                     <Card.Img variant="top" src={product_img} className="card_img" />
                                 </Link>

@@ -7,7 +7,7 @@ import { useAppSelector } from '../../Redux/hooks';
 import { Link } from 'react-router-dom';
 export const Header = () => {
 
-    
+
     // menu button
     const [isActive, setIsActive] = useState(false);
 
@@ -91,7 +91,7 @@ export const Header = () => {
 
     const cartItems = useAppSelector((state) => state.cart.items);
 
-  
+
 
     return (
         <>
@@ -113,29 +113,40 @@ export const Header = () => {
                 </div>
                 <div className='second_nav'>
                     <Link to='/' className='brand'>Amit Beej Bhandar</Link>
-                    <div className={`menu-btn ${isActive ? "menu_active" : ""}`} onClick={handleClick}>
-                        {isActive ? <i className="fa-solid fa-xmark fa-lg"></i> : <i className="fa-solid fa-bars-staggered fa-lg"></i>}
-                    </div>
+
 
                     <div className={`navigation ${isActive ? "navigation_active" : ""}`}>
                         <div className='navigation-items'>
                             <Link to='/'>Home</Link>
                             <Link to='/shop'>Explore</Link>
-                            <Link to='#'>About</Link>
-                            <Link to='#'>Contact</Link>
-                            <Link to='#'>Products</Link>
+                            <Link to='/about'>About</Link>
+                            <Link to='/contact'>Contact</Link>
+                            <Link to='/shop'>Products</Link>
                             <div className='search_container'>
                                 <input type="search" className='search_bar' /><i className="fa-solid fa-magnifying-glass"></i>
                             </div>
                             <div className='cusotmer_section'>
                                 <i className="fa-solid fa-cart-shopping" onClick={openCart}></i>
-                                <div className='cart_count' onClick={openCart}>{ cartItems.length}</div>
+                                {cartItems.length > 0 && (
+                                    <div className={`cart_count`} onClick={openCart}>
+                                        {cartItems.length}
+                                    </div>
+                                )}
                                 <i className="fa-regular fa-heart" onClick={openWishlist}></i>
-                                <div className='wish_count' onClick={openWishlist}>0</div>
+                                {cartItems.length > 0 && (
+                                    <div className={`wish_count`} onClick={openWishlist}>
+                                       0
+                                    </div>
+                                )}
                                 <i className="fa-regular fa-user"></i>
                             </div>
                         </div>
                     </div>
+
+                    <div className={`menu-btn ${isActive ? "menu_active" : ""}`} onClick={handleClick}>
+                        {isActive ? <i className="fa-solid fa-xmark fa-lg"></i> : <i className="fa-solid fa-bars-staggered fa-lg"></i>}
+                    </div>
+
                 </div>
             </header>
 
@@ -153,14 +164,14 @@ export const Header = () => {
                             className={`image_slide ${activeIndex === index ? 'active' : ''}`}
                             src={slide}
                             alt={`slide-${index}`}
-                            style={{ display: activeIndex === index ? 'block' : 'none' }} 
+                            style={{ display: activeIndex === index ? 'block' : 'none' }}
                         />
                     ))}
                 </div>
                 <div className='content'>
                     <h1>Amit  <br /><span>Beej Bhandar</span></h1>
                     <p>Transforming Indian Agriculture with Innovative AgriTech Solutions!</p>
-                    <a href='#'>Read More</a>
+                    <Link to='/about'>Read More</Link>
                 </div>
                 <div className='media-icons'>
                     <a href='#'><i className="fa-brands fa-facebook-f"></i></a>
@@ -180,7 +191,7 @@ export const Header = () => {
 
             {isCartOpen && <div className="overlay" onClick={openCart}></div>}
             <div className={`cart ${isCartOpen ? 'cart_open' : ''}`}>
-                    <Cart/>
+                <Cart />
             </div>
 
 

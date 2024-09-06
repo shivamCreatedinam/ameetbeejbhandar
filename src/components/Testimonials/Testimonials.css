@@ -68,8 +68,31 @@
     object-fit: cover;
   }
 
+  @media (max-width: 1550px) {
+    .testimonials_container {
+      padding: 2em 1em;
+  }
+  .testimonials_heading {
+    padding: 0 7em;
+  }
+
+  }
   
-  
+
+
+  @media (max-width: 1250px) {
+    .testimonials_heading {
+      padding: 0 5em;
+    }
+  }
+
+
+  @media (max-width: 830px) {
+    .testimonials_heading {
+      padding: 0 3em;
+      font-size: 2em;
+    }
+  }
 
    @media (max-width: 700px) {
     .testimonials_container {

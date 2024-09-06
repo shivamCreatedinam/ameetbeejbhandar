@@ -1,10 +1,11 @@
  .about_us {
-    background-image: url(../../images/about_us.jpg) !important;
-    background-position: top;
+    background-image: url(../../images/about-us.jpg) !important;
+    background-position: center;
+    height: 500px;
 }
 
   .about_us .shop_nav {
-    background-color: #0fa80f; 
+    /* background-color: #0fa80f;  */
     
   }
 

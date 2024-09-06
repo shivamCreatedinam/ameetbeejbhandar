@@ -48,11 +48,11 @@ export const Test = () => {
                     <div className={`menu_items ${isActive && 'menu_items_active'} `}>
                         <div className='menu_items_inner'> 
                         <ul>
-                            <Link to='#'>Home</Link>
-                            <Link to='#'>About</Link>
-                            <Link to='#'>Explore</Link>
-                            <Link to='#'>Gallery</Link>
-                            <Link to='#'>Contact</Link>
+                        <Link to='/'>Home</Link>
+                            <Link to='/shop'>Explore</Link>
+                            <Link to='/about'>About</Link>
+                            <Link to='/contact'>Contact</Link>
+                            <Link to='/shop'>Products</Link>
                         </ul>
                         <div className='search_container search_test'>
                             <input type="search" className='search_bar' /><i className="fa-solid fa-magnifying-glass"></i>

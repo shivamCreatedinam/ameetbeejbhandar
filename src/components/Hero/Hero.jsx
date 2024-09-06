@@ -78,11 +78,11 @@ export const Hero = () => {
                     <div className='card_items'>
                         <div className='icon_container'><i className="fa-solid fa-lightbulb"></i></div>
                         <h3>Solutions</h3>
-                        <p>Offering Innovative and Eco-friendly Solutions</p>
+                        <p>Offering Innovative & Eco-friendly Solutions</p>
                         <img src={Solutions}></img>
                     </div>
                     <div className='card_items'>
-                        <div className='icon_container'><i className="fa-solid fa-handshake-simple"></i></div>
+                        <div className='icon_container'><i className="fa-solid fa-lightbulb"></i></div>
                         <h3>Trusted</h3>
                         <p>Trusted by Thousands of Customers </p>
                         <img src={Trusted}></img>
@@ -90,7 +90,7 @@ export const Hero = () => {
                     <div className='card_items'>
                         <div className='icon_container'><i className="fa-solid fa-bolt-lightning"></i></div>
                         <h3>Production</h3>
-                        <p>Increased Production </p>
+                        <p>Increased Production, No Compromisation</p>
                         <img src={Production}></img>
                     </div>
                    

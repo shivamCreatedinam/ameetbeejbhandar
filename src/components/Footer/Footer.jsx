@@ -9,7 +9,7 @@ export const Footer = () => {
                 <div className='footer_banner'>
                     <h1>Stay with us On Social</h1>
                     <div className='footer_social'>
-                        <p>FOLOW US: </p>
+                        <p>FOLLOW US: </p>
                         <div className='footer_social_section'>
                             <div className='footer_social_icons facebook'><i className="fa-brands fa-facebook-f"></i></div>
                             <div className='footer_social_icons'><i className="fa-brands fa-instagram"></i></div>
@@ -32,9 +32,9 @@ export const Footer = () => {
                         <div className='quick_links_section'>
                             <a href='/about'>About Us</a>
                             <a href='/shipping'>Shipping</a>
-                            <a href='#'>FAQ</a>
-                            <a href='/terms_&_conditions'>Terms & Conditions</a>
+                            <a href='.contact'>Contact Us</a>
                             <a href='/privacy_policies'>Privacy Policy</a>
+                            <a href='/terms_&_conditions'>Terms & Conditions</a>
                             <a href='/return'>Exchanges and Returns</a>
                         </div>
                     </div>

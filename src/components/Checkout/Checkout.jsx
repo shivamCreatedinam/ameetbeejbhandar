@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../Redux/hooks';
 import { incrementQuantity, decrementQuantity } from '../../Redux/slices/cartslice';
 import './Checkout.css';
 import product_img from '../../images/product.png';
 import { useNavigate } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 export const Checkout = () => {
     const cartItems = useAppSelector((state) => state.cart.items);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const [name, setName] = useState()
-    const [remarks, setRemarks] = useState()
-    const [contact, setContact] = useState()
+    const [name, setName] = useState('');
+    const [remarks, setRemarks] = useState('');
+    const [mobile, setMobile] = useState('');
+    const [email, setEmail] = useState('');
 
+    const [errors, setErrors] = useState({});
 
     // GST
+
     const [gstNumber, setGstNumber] = useState('');
     const [isValidGST, setIsValidGST] = useState(false);
-
 
     const validateGSTIN = (gstin) => {
         const gstinPattern = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}[Z]{1}[0-9A-Z]{1}$/;
@@ -37,12 +41,73 @@ export const Checkout = () => {
     };
 
 
+    // API
+
+
+    const validateForm = () => {
+        let formErrors = {};
+
+        if (!name) formErrors.name = "Name is required";
+        if (!mobile || !/^\d{10}$/.test(mobile)) formErrors.mobile = "Valid 10-digit mobile number is required";
+        if (!email || !/\S+@\S+\.\S+/.test(email)) formErrors.email = "Valid email is required";
+        if (!gstNumber || !validateGSTIN(gstNumber)) formErrors.gstNumber = "Valid GST number is required";
+
+        setErrors(formErrors);
+        return Object.keys(formErrors).length === 0;
+    };
+
+
+    const API = 'https://aamitbeejbhandar.createdinam.com/admin/api/v1/create-lead';
+
+    const sendOrder = () => {
+        if (validateForm()) {
+            const data = {
+                name: name,
+                remarks: remarks,
+                email: email,
+                mobile: mobile,
+                gst_number: gstNumber,
+                quotes: cartItems,
+            };
+
+            fetch(API, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    toast.success('Order sent successfully!');
+                    console.log('Order sent successfully:', data);
+                    setName('');
+                    setMobile('');
+                    setEmail('');
+                    setGstNumber('');
+                    setRemarks('');
+                    setIsValidGST(false);
+
+                })
+                .catch((error) => {
+                    toast.error('Error sending order. Please try again.');
+                    console.error('Error sending order:', error);
+                });
+    }
+}
+
+    console.log(cartItems)
 
     return (
 
         <>
             <div className='cart_items'>
-                <button className='back_home' onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}><i class="fa-solid fa-arrow-left"></i> Back to Home</button>
+                <button className='back_home' onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}><i className="fa-solid fa-arrow-left"></i> Back to Home</button>
                 <h1 className='cart_heading'>Your Cart</h1>
                 {cartItems.length === 0 ? (
                     <p>Your cart is empty</p>
@@ -72,33 +137,40 @@ export const Checkout = () => {
                                 <h1>Get a Quote</h1>
                                 <p>Fill the Form and our Team will get back to you, <br />as soon as possible.</p>
                                 <div className='contact_options'>
-                                    <div className='contact_options_container'><i class="fa-solid fa-phone"></i><p>+91 88595 91451</p></div>
-                                    <div className='contact_options_container'><i class="fa-solid fa-envelope"></i><p>vibhorvashistha3@gmail.com</p></div>
-                                    <div className='contact_options_container'><i class="fa-solid fa-location-dot"></i><p>Punjabi Pura, TP Nagar, Meerut, UP India</p></div>
+                                    <div className='contact_options_container'><i className="fa-solid fa-phone"></i><p>+91 88595 91451</p></div>
+                                    <div className='contact_options_container'><i className="fa-solid fa-envelope"></i><p>vibhorvashistha3@gmail.com</p></div>
+                                    <div className='contact_options_container'><i className="fa-solid fa-location-dot"></i><p>Punjabi Pura, TP Nagar, Meerut, UP India</p></div>
                                     <div></div>
                                 </div>
                             </div>
                             <div className='quote_container_right'>
                                 <p>Your Name</p>
-                                <input type="text" onChange={(e) => setName(e.target.value)} className='quote_input' placeholder='John Doe' value={name} />
+                                <input type="text" onChange={(e) => setName(e.target.value)} className='quote_input' placeholder='John Doe' value={name} required />
+                                {errors.name && <p className="warning_valid">{errors.name}</p>}
+
+                                <p className='remarks'>Mobile No.</p>
+                                <input type='text' onChange={(e) => setMobile(e.target.value)} className='quote_input' placeholder='Mobile no.' value={mobile} required />
+                                {errors.mobile && <p className="warning_valid">{errors.mobile}</p>}
+
+                                <p className='remarks'>Email ID</p>
+                                <input type='text' onChange={(e) => setEmail(e.target.value)} className='quote_input' placeholder='Email' value={email} required />
+                                {errors.email && <p className="warning_valid">{errors.email}</p>}
+
                                 <p className='remarks'>Remarks</p>
-                                <input type='text' onChange={(e) => setRemarks(e.target.value)} className='quote_input' placeholder='remarks' value={remarks} /><br />
-                                <p className='remarks'>Contact Details</p>
-                                <input type='text' onChange={(e) => setContact(e.target.value)} className='quote_input' placeholder='Mobile no. or Email' value={contact} /><br />
+                                <input type='text' onChange={(e) => setRemarks(e.target.value)} className='quote_input' placeholder='Remarks' value={remarks}  />
+
                                 <p className='contact_details'>Contact details</p>
-                                <input type='text' className='quote_input'
-                                    value={gstNumber}
-                                    onChange={handleInputChange}
-                                    placeholder="Enter GST Number" />
+                                <input type='text' className='quote_input' required value={gstNumber} onChange={handleInputChange} placeholder="Enter GST Number" />
                                 {isValidGST && (
                                     <span className="valid_sign">✓</span>
                                 )}
-
+                                {/* {errors.gstNumber && <p className="warning_valid">{errors.gstNumber}</p>} */}
                                 {!isValidGST && gstNumber.length > 0 && (
                                     <p className="warning_valid">Please enter a valid GST number.</p>
                                 )}
-                                <button className='checkout_button'>Send Quote</button>
+                                <button className='checkout_button' onClick={sendOrder}>Send Order</button>
                             </div>
+                            <ToastContainer/>
                         </div>
                     </div>
                 )}
