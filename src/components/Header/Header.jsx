@@ -96,7 +96,7 @@ export const Header = () => {
     return (
         <>
             <header>
-                <div className='address'>
+                {/* <div className='address'>
                     <div className='mail_phone'>
                         <div className='mail_phone_containers'><i className="fa-solid fa-location-dot"></i><p>Punjabi Pura, TP Nagar, Meerut, UP India</p></div>
                         <div className='mail_phone_containers'><i className="fa-solid fa-envelope"></i><p>vibhorvashistha3@gmail.com</p></div>
@@ -110,7 +110,7 @@ export const Header = () => {
                         </div>
                     </div>
 
-                </div>
+                </div> */}
                 <div className='second_nav'>
                     <Link to='/' className='brand'>Amit Beej Bhandar</Link>
 

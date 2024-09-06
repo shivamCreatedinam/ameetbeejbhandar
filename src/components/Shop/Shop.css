@@ -10,6 +10,7 @@
 .shop_nav {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   padding: 2em 12em;
 }
 
@@ -23,8 +24,9 @@
 .shop_navigation-items {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-end;
   gap: 1em;
+  padding-bottom: 5px;
 }
 
 .shop_navigation-items a {

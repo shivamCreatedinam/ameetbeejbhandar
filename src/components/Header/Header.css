@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+
+
 header {
   z-index: 888;
   position: absolute;
@@ -67,22 +69,30 @@ header {
 }
 
 .second_nav {
-  padding: 25px 200px;
+  padding: 2em 12em;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+
 }
 
 header .brand {
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   text-decoration: none;
 }
 
 header .navigation {
   position: relative;
+}
+
+.navigation-items {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 5px;
 }
 
 header .navigation .navigation-items a {
@@ -91,7 +101,7 @@ header .navigation .navigation-items a {
   font-size: 1em;
   font-weight: 500;
   text-decoration: none;
-  margin-left: 30px;
+  margin-left: 20px;
   transition: 0.3s ease;
 }
 
@@ -251,10 +261,10 @@ section {
 }
 
 .search_container {
-  display: inline;
+  /* display: inline; */
   margin-left: 25px;
   /* background: white; */
-  padding: 10px;
+  /* padding: 10px; */
   border: 1px solid white;
   border-radius: 30px;
 }
@@ -266,6 +276,8 @@ section {
   padding: 0 10px;
   margin: 0 5px;
   font-size: 1.2rem;
+  color: white;
+  
 }
 
 .fa-magnifying-glass {
@@ -284,9 +296,10 @@ section {
 }
 
 .cusotmer_section {
-  display: inline;
+  /* display: inline; */
   margin-left: 1.6em;
   position: relative;
+  color: white;
 }
 
 .cusotmer_section .fa-solid,

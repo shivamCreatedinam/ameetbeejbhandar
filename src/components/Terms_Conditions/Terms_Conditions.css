@@ -1,6 +1,6 @@
 .terms_condition {
-  background-image: url(../../images/about_us.jpg) !important;
-  background-position: top;
+  background-image: url(../../images/about-us.jpg) !important;
+  background-position: center;
   position: relative;
 }
 
@@ -13,10 +13,7 @@
   border-bottom: 2px solid transparent;
 }
 
- .terms_condition .shop_nav {
-  background-color: #0fa80f; 
-  
-}
+
 
 .terms_condition_section {
   padding: 2em 10em;
