@@ -392,6 +392,11 @@ section {
   header .navigation {
     display: none;
   }
+
+  .search_container .search_bar {
+    color: black;
+
+  }
   .menu-btn {
     display: block;
     color: #ffff;
@@ -530,6 +535,10 @@ section {
     margin: 20px;
   }
 
+  header .navigation .navigation-items {
+    margin-top: 0em;
+  }
+
   header .navigation-items .search_container {
     border: 1px solid black;
     margin-bottom: 1.3em;
@@ -590,9 +599,10 @@ section {
     display: flex;
   }
 
-  .search_container .search_bar {
-    padding: 0;
+  .search_container  {
+    padding: 0.6em;
   }
+
   .cusotmer_section {
     margin-top: 2em;
     display: flex;
