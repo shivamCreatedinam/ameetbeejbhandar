@@ -6,10 +6,10 @@ import { Product_details } from "./components/Product_details/Product_details";
 import { Checkout } from "./components/Checkout/Checkout";
 import { AboutUS } from "./components/AboutUS/AboutUS";
 import { Terms_Conditions } from "./components/Terms_Conditions/Terms_Conditions";
-import { Test } from "./components/Test/Test";
 import { Privacy } from "./components/Privacy/Privacy";
 import { Return } from "./components/Return/Return";
 import { Shipping } from "./components/Shipping/Shipping";
+import { Contact } from "./components/Contact/Conact";
 
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
           <Route path="/privacy_policies" element={<Privacy />} />
           <Route path="/return" element={<Return />} />
           <Route path="/shipping" element={<Shipping />} />
+          <Route path="/contact" element={<Contact />} />
 
         </Routes>
       </BrowserRouter>

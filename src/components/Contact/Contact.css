@@ -1,0 +1,140 @@
+.contact_us_heading {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 1em;
+        
+}
+
+.contact_us {
+  padding: 2em 8em;
+}
+.contact_us_top {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 3em 0;
+}
+
+.top_left {
+  padding: 0 3em;
+  border-right: 1px solid gray;
+  width: 50%;
+}
+
+.top_left_form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.form_input {
+  border: none;
+  padding: 1em 0;
+  border-bottom: 1px solid gray;
+  margin: 0 10px;
+  color: black;
+  width: 250px;
+}
+
+.top_left_form .message {
+  width: 100%;
+  padding: 2em 0;
+}
+
+.form_input:focus {
+  outline: none;
+}
+.send_msg {
+  background: #000;
+  color: white;
+  padding: 0.5em 1.5em;
+  font-size: 1em;
+  width: 100%;
+}
+
+.send_msg:hover {
+    color: black;
+    background: white;
+}
+.top-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 0 3em;
+}
+
+.top-right p {
+  margin-top: 10px;
+}
+
+
+.map_section {
+    padding: 4em 6em;
+}
+
+.faq_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em 5em;
+}
+
+.faq_left {
+    padding: 1em 12em 0 7em;
+    width: 50%;
+}
+
+.faq_left h3 {
+    font-size: 3em;
+}
+
+.faq_right {
+    padding: 3em 3em 0 7em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 1em;
+}
+
+.faq-container {
+    margin: 0 auto;
+  }
+  
+  .faq-item {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .faq-question {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .caret-icon {
+    font-size: 18px;
+    margin-left: 10px;
+    transition: transform 0.5s ease;
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition:  0.5s ease-in-out;
+    background-color: #fff;
+    padding: 0 10px;
+  }
+  
+  .faq-answer.open {
+    max-height: 200px; /* Adjust according to your content */
+    padding: 10px;
+  }
+  

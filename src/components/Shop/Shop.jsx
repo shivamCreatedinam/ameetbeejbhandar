@@ -8,6 +8,7 @@ import { Footer } from '../Footer/Footer';
 import productsData from '../../Products.json';
 import { Cart } from '../Cart/Cart';
 import { useAppSelector } from '../../Redux/hooks';
+import { useNavigate } from 'react-router-dom';
 
 export const Shop = () => {
     // State for menu button
@@ -67,6 +68,29 @@ export const Shop = () => {
 
     const cartItems = useAppSelector((state) => state.cart.items);
 
+       // search
+       const [searchQuery, setSearchQuery] = useState('');
+       const [filteredProducts2, setFilteredProducts2] = useState([]);
+       const navigate = useNavigate();
+   
+       const handleSearch = (e) => {
+           const query = e.target.value.toLowerCase();
+           setSearchQuery(query);
+           // Filter products based on the search query
+           const filtered = productsData.filter((product) =>
+               product.Category.toLowerCase().includes(query.toLowerCase())
+           );
+   
+           setFilteredProducts2(filtered);
+           
+        
+       
+       };
+   
+       const handleProductClick = (productId) => {
+           navigate(`/products/${productId}`);
+       };
+   
     return (
         <>
             <div className='shop_page'>
@@ -85,7 +109,34 @@ export const Shop = () => {
                             <Link to='/contact'>Contact</Link>
                             <Link to='/shop'>Products</Link>
                             <div className='search_container'>
-                                <input type="search" className='search_bar' /><i className="fa-solid fa-magnifying-glass"></i>
+                                <input
+                                    type='search'
+                                    className='search_bar'
+                                    value={searchQuery}
+                                    onChange={handleSearch}
+                                    placeholder='Search for products...'
+                                />
+                                <i className="fa-solid fa-magnifying-glass"></i>
+
+                                {/* Display suggestions if there is a search query */}
+                                {searchQuery && (
+                                    <ul className='suggestions'>
+                                        {filteredProducts2.length ? (
+                                            filteredProducts2.map((product) => (
+                                                <li
+                                                    key={product.id}
+                                                    onClick={() => handleProductClick(product.id)}
+                                                    className='suggestion_item'
+                                                >
+                                                     &emsp; {product['Product Name']}  &emsp; by &emsp;
+                                                    {product.Brand}
+                                                </li>
+                                            ))
+                                        ) : (
+                                            <li className='no_results'>No products found</li>
+                                        )}
+                                    </ul>
+                                )}
                             </div>
                             <div className='customer_section'>
                                 <i className="fa-solid fa-cart-shopping" onClick={openCart}></i>

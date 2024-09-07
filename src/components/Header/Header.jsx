@@ -5,8 +5,11 @@ import bg2 from '../../images/bg2.jpg';
 import { Cart } from '../Cart/Cart';
 import { useAppSelector } from '../../Redux/hooks';
 import { Link } from 'react-router-dom';
-export const Header = () => {
+import productsData from '../../Products.json';
+import { useNavigate } from 'react-router-dom';
 
+
+export const Header = () => {
 
     // menu button
     const [isActive, setIsActive] = useState(false);
@@ -43,7 +46,7 @@ export const Header = () => {
 
     const handleTouchStart = (e) => {
         startX = e.touches[0].clientX;
-        stopAutoSlide(); // Stop auto slide while swiping
+        stopAutoSlide();
         isSwiping = true;
     };
 
@@ -62,7 +65,7 @@ export const Header = () => {
 
     const handleTouchEnd = () => {
         isSwiping = false;
-        startAutoSlide(); // Resume auto slide after swipe
+        startAutoSlide()
     };
 
     // Next and Previous functions for swipe control
@@ -92,6 +95,27 @@ export const Header = () => {
     const cartItems = useAppSelector((state) => state.cart.items);
 
 
+    // search
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const navigate = useNavigate();
+
+    const handleSearch = (e) => {
+        const query = e.target.value.toLowerCase();
+        setSearchQuery(query);
+        // Filter products based on the search query
+        const filtered = productsData.filter((product) =>
+            product.Category.toLowerCase().includes(query.toLowerCase())
+        );
+
+        setFilteredProducts(filtered);
+        
+
+    };
+
+    const handleProductClick = (productId) => {
+        navigate(`/products/${productId}`);
+    };
 
     return (
         <>
@@ -122,8 +146,40 @@ export const Header = () => {
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
                             <Link to='/shop'>Products</Link>
+                            {/* 
                             <div className='search_container'>
                                 <input type="search" className='search_bar' /><i className="fa-solid fa-magnifying-glass"></i>
+                            </div> */}
+
+                            <div className='search_container'>
+                                <input
+                                    type='search'
+                                    className='search_bar'
+                                    value={searchQuery}
+                                    onChange={handleSearch}
+                                    placeholder='Search for products...'
+                                />
+                                <i className="fa-solid fa-magnifying-glass"></i>
+
+                                {/* Display suggestions if there is a search query */}
+                                {searchQuery && (
+                                    <ul className='suggestions'>
+                                        {filteredProducts.length ? (
+                                            filteredProducts.map((product) => (
+                                                <li
+                                                    key={product.id}
+                                                    onClick={() => handleProductClick(product.id)}
+                                                    className='suggestion_item'
+                                                >
+                                                     &emsp; {product['Product Name']}  &emsp; by &emsp;
+                                                    {product.Brand}
+                                                </li>
+                                            ))
+                                        ) : (
+                                            <li className='no_results'>No products found</li>
+                                        )}
+                                    </ul>
+                                )}
                             </div>
                             <div className='cusotmer_section'>
                                 <i className="fa-solid fa-cart-shopping" onClick={openCart}></i>
@@ -135,7 +191,7 @@ export const Header = () => {
                                 <i className="fa-regular fa-heart" onClick={openWishlist}></i>
                                 {cartItems.length > 0 && (
                                     <div className={`wish_count`} onClick={openWishlist}>
-                                       0
+                                        0
                                     </div>
                                 )}
                                 <i className="fa-regular fa-user"></i>

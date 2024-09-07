@@ -11,6 +11,8 @@ import '../Shop/Shop.css';
 import { Cart } from '../Cart/Cart';
 import { Link } from 'react-router-dom';
 import product_img from '../../images/product.png'
+import { useNavigate } from 'react-router-dom';
+
 export const Product_details = () => {
 
     const { productId } = useParams()
@@ -58,6 +60,27 @@ export const Product_details = () => {
         window.scrollTo({ top: 0 });
     }, [productId]);
 
+    // search
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const navigate = useNavigate();
+
+    const handleSearch = (e) => {
+        const query = e.target.value.toLowerCase();
+        setSearchQuery(query);
+        // Filter products based on the search query
+        const filtered = productsData.filter((product) =>
+            product.Category.toLowerCase().includes(query.toLowerCase())
+        );
+
+        setFilteredProducts(filtered);
+        
+
+    };
+
+    const handleProductClick = (productId) => {
+        navigate(`/products/${productId}`);
+    };
 
     return (
         <>
@@ -77,7 +100,34 @@ export const Product_details = () => {
                             <Link to='/contact'>Contact</Link>
                             <Link to='/shop'>Products</Link>
                             <div className='search_container'>
-                                <input type="search" className='search_bar' /><i className="fa-solid fa-magnifying-glass"></i>
+                                <input
+                                    type='search'
+                                    className='search_bar'
+                                    value={searchQuery}
+                                    onChange={handleSearch}
+                                    placeholder='Search for products...'
+                                />
+                                <i className="fa-solid fa-magnifying-glass"></i>
+
+                                {/* Display suggestions if there is a search query */}
+                                {searchQuery && (
+                                    <ul className='suggestions'>
+                                        {filteredProducts.length ? (
+                                            filteredProducts.map((product) => (
+                                                <li
+                                                    key={product.id}
+                                                    onClick={() => handleProductClick(product.id)}
+                                                    className='suggestion_item'
+                                                >
+                                                     &emsp; {product['Product Name']}  &emsp; by &emsp;
+                                                    {product.Brand}
+                                                </li>
+                                            ))
+                                        ) : (
+                                            <li className='no_results'>No products found</li>
+                                        )}
+                                    </ul>
+                                )}
                             </div>
                             <div className='customer_section products_customer_section'>
                                 <i className="fa-solid fa-cart-shopping" onClick={openCart}></i>

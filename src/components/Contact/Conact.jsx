@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 import { useAppSelector } from '../../Redux/hooks';
-import './AboutUS.css'
+import '../AboutUS/AboutUS.css'
 import { Cart } from '../Cart/Cart';
-import member from '../../images/member.png';
-import tick from '../../images/tick.png';
-import award from '../../images/award.png';
-import rating from '../../images/rating.png';
 import contact from '../../images/contact_us_img.jpg'
 import { Footer } from '../Footer/Footer';
 import { Testimonials } from '../Testimonials/Testimonials';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import './Contact.css'
+import MapComponent from '../Map';
 import productsData from '../../Products.json';
+import { useNavigate } from 'react-router-dom';
 
-export const AboutUS = () => {
+export const Contact = () => {
+
+    const position = [37.7749, -122.4194]; // Replace with your latitude and longitude
 
     // State for menu button
     const [isActive, setIsActive] = useState(false);
@@ -38,6 +38,29 @@ export const AboutUS = () => {
 
     const cartItems = useAppSelector((state) => state.cart.items);
 
+    // faqs
+    const [openFAQ, setOpenFAQ] = useState(null);
+
+    const faqs = [
+        {
+            question: "What is React?",
+            answer: "React is a JavaScript library for building user interfaces."
+        },
+        {
+            question: "How do I use React?",
+            answer: "You can use React by creating components and managing state."
+        },
+        {
+            question: "What is JSX?",
+            answer: "JSX is a syntax extension for JavaScript, used with React."
+        }
+    ];
+
+    const toggleFAQ = (index) => {
+        setOpenFAQ(openFAQ === index ? null : index);
+    };
+
+    
     // search
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -52,8 +75,6 @@ export const AboutUS = () => {
         );
 
         setFilteredProducts(filtered);
-        
-      
     
     };
 
@@ -64,7 +85,7 @@ export const AboutUS = () => {
 
     return (
         <>
-              <div className='shop_page about_us'>
+            <div className='shop_page about_us'>
                 {/* header */}
                 <div className='shop_nav '>
                     <Link to='/' className='shop_brand'>Amit Beej Bhandar</Link>
@@ -74,7 +95,7 @@ export const AboutUS = () => {
 
                     <div className={`navigation  ${isActive ? 'navigation_active' : ''}`}>
                         <div className='shop_navigation-items '>
-                        <Link to='/'>Home</Link>
+                            <Link to='/'>Home</Link>
                             <Link to='/shop'>Explore</Link>
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
@@ -119,7 +140,7 @@ export const AboutUS = () => {
                                 <i className="fa-regular fa-heart"></i>
                                 {cartItems.length > 0 && (
                                     <div className={`wish_count`}>
-                                       0
+                                        0
                                     </div>
                                 )}
                                 <i className="fa-regular fa-user"></i>
@@ -128,37 +149,79 @@ export const AboutUS = () => {
                     </div>
                 </div>
             </div>
+            <p className='contact_us_heading'>Contact Us</p>
+
 
 
             {/* Heor Section */}
-            <div className='about_us_section'>
-                <h3 className='about_us_heading'>About Us</h3>
-                <p>Welcome to Amit Beej Bhandar, your trusted partner in sourcing high-quality agricultural seeds and related products. At Amit Beej Bhandar, we are dedicated to providing farmers, gardeners, and agricultural enthusiasts with a comprehensive range of seeds and agricultural products to enhance crop yield and nurture thriving harvests.</p>
 
+            <div className='contact_us'>
+                <div className='contact_us_top'>
+                    <div className='top_left'>
+                        <h3>Send a Message</h3>
+                        <div className='top_left_form'>
+                            <input type="text" placeholder='Your Name' className='form_input' />
+                            <input type="text" placeholder='Email Address' className='form_input' />
+                            <select name="" id="" className='form_input'>
+                                <option value="" disabled selected>Interested in</option>
+                                <option value="Bulk Orders">Bulk Orders</option>
+                                <option value="Have some Questions">Have some Questions</option>
+                                <option value="Other">Others</option>
+                            </select>
+                            <input type="text" placeholder='Mobile No.' className='form_input' />
+                            <input type="text" placeholder='Message.' className='form_input message' />
+                            <button className='send_msg'>Send </button>
 
-
-            </div>
-
-            <div className='cutomer_counts'>
-                <div className='customer_counts_container'><img src={member} /><h2>100+</h2><p>Team Member</p></div>
-                <div className='customer_counts_container'><img src={member} /><h2>960+</h2><p>Complete Works</p></div>
-                <div className='customer_counts_container'><img src={member} /><h2>38</h2><p>Award Winning</p></div>
-                <div className='customer_counts_container'><img src={member} /><h2>4.7</h2><p>Avg Rating</p></div>
-            </div>
-
-            <div className='about_contact'>
-                <div className='about_contact_left'><img src={contact} alt=""  className='contact_img'/></div>
-                <div className='about_contact_right'>
-                <div className='skills_heading'><i className="fa-solid fa-seedling"></i><p>OUR MISSION</p></div>
-                <p className='about_heading'>Fresh Environmental <br />  Plant & Safe Trees</p>
-                <p className='about_mission_para'>At Amit Beej Bhandar, our mission is to empower farmers and agricultural professionals with premium-quality seeds and agricultural products that drive success and prosperity in farming endeavors. We aim to be the go-to destination for all your seed and agricultural needs, offering a diverse selection of products tailored to meet your specific requirements.</p>
-              <div className='about_right'>  <button><p>Contact Us</p>  <i className="fa-solid fa-leaf"></i></button>
-              </div>
+                        </div>
+                    </div>
+                    <div className='top-right'>
+                        <div>
+                            <h3>Call Us</h3>
+                            <p>+91 88595 91451</p>
+                        </div>
+                        <div>
+                            <h3>Visit Us</h3>
+                            <p>Punjabi Pura, TP NAGAR, Meerut, UP India,  PIN - 250002</p>
+                        </div>
+                        <div>
+                            <h3>Mail Us</h3>
+                            <p>vibhorvashistha3@gmail.com</p>
+                        </div>
+                    </div>
                 </div>
-                
+                <div className='map_section'>
+
+                    <MapComponent />
+                </div>
+                <div className='faq_section'>
+                    <div className='faq_left'>
+                        <p>FAQ</p>
+                        <h3>Frequently asked Questions.</h3>
+                    </div>
+                    <div className='faq_right'>
+                        <h3>Lorem ipsum dolor sit.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt vero dolore magni possimus quasi mollitia.</p>
+                        <div className=''>
+                            <div className="faq-container">
+                                {faqs.map((faq, index) => (
+                                    <div className="faq-item" key={index}>
+                                        <div className="faq-question" onClick={() => toggleFAQ(index)}>
+                                            {faq.question}
+                                            <span className={`caret-icon ${openFAQ === index ? 'up' : 'down'}`}>
+                                                {openFAQ === index ? '▲' : '▼'}
+                                            </span>
+                                        </div>
+                                        <div className={`faq-answer ${openFAQ === index ? 'open' : ''}`}>
+                                            {faq.answer}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-           <Testimonials/>
-            <Footer/>
+            <Footer />
 
             {/* cart */}
             {isCartOpen && <div className="overlay" onClick={openCart}>

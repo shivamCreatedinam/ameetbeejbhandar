@@ -4,6 +4,9 @@ import { Footer } from '../Footer/Footer';
 import { useAppSelector } from '../../Redux/hooks';
 import { Cart } from '../Cart/Cart';
 import { Link } from 'react-router-dom';
+import productsData from '../../Products.json';
+import { useNavigate } from 'react-router-dom';
+
 export const Privacy = () => {
     // State for menu button
     const [isActive, setIsActive] = useState(false);
@@ -28,6 +31,28 @@ export const Privacy = () => {
 
     const cartItems = useAppSelector((state) => state.cart.items);
 
+       // search
+       const [searchQuery, setSearchQuery] = useState('');
+       const [filteredProducts, setFilteredProducts] = useState([]);
+       const navigate = useNavigate();
+   
+       const handleSearch = (e) => {
+           const query = e.target.value.toLowerCase();
+           setSearchQuery(query);
+           // Filter products based on the search query
+           const filtered = productsData.filter((product) =>
+               product.Category.toLowerCase().includes(query.toLowerCase())
+           );
+   
+           setFilteredProducts(filtered);
+           
+   
+       };
+   
+       const handleProductClick = (productId) => {
+           navigate(`/products/${productId}`);
+       };
+   
     return (
         <>
 
@@ -46,9 +71,8 @@ export const Privacy = () => {
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
                             <Link to='/shop'>Products</Link>
-                            <div className='search_container'>
-                                <input type="search" className='search_bar' /><i className="fa-solid fa-magnifying-glass"></i>
-                            </div>
+                            import React, { useState } from 'react'
+
                             <div className='customer_section'>
                                 <i className="fa-solid fa-cart-shopping" onClick={openCart}></i>
                                 {cartItems.length > 0 && (

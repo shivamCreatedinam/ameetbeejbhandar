@@ -32,7 +32,7 @@ export const Footer = () => {
                         <div className='quick_links_section'>
                             <a href='/about'>About Us</a>
                             <a href='/shipping'>Shipping</a>
-                            <a href='.contact'>Contact Us</a>
+                            <a href='contact'>Contact Us</a>
                             <a href='/privacy_policies'>Privacy Policy</a>
                             <a href='/terms_&_conditions'>Terms & Conditions</a>
                             <a href='/return'>Exchanges and Returns</a>
