@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../Redux/hooks';
-import { incrementQuantity, decrementQuantity } from '../../Redux/slices/cartslice';
+import { incrementQuantity, decrementQuantity, updateQuantity } from '../../Redux/slices/cartslice';
 import './Cart.css';
 import product_img from '../../images/product.png';
 
@@ -30,22 +30,32 @@ export const Cart = () => {
                                 </div>
                                 <div className='counting'>
                                     <i className="fa-solid fa-plus" onClick={() => dispatch(incrementQuantity(item.id))}></i>
-                                    <p>{item.quantity}</p>
+                                    <input
+                                    className='input_quantity'
+                                        type="number"
+                                        value={item.quantity}
+                                        onChange={(e) => {
+                                            const newQuantity = Number(e.target.value)
+                                            if (newQuantity >= 0) { 
+                                                dispatch(updateQuantity({ id: item.id, quantity: newQuantity }));
+                                            }
+                                        }}
+                                    />                                    
                                     <i className="fa-solid fa-minus" onClick={() => dispatch(decrementQuantity(item.id))}></i>
                                 </div>
                             </div>
                         ))}
                         <Link to='/checkout'>
-                        <button className='checkout_button'>Proceed to Checkout</button>
+                            <button className='checkout_button'>Proceed to Checkout</button>
                         </Link>
                     </div>
-                    
+
                 )}
 
-                
+
             </div>
 
-            
+
         </>
     );
 };

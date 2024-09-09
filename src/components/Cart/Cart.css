@@ -1,26 +1,25 @@
 .cart_items {
-
   padding: 2em;
   overflow-y: auto; /* Ensure scrolling works */
   max-height: 100vh;
 }
 
 .cart_items .back_home {
-    padding: 1em;
-    border: none;
-    border-radius: 20px;
-    font-size: 0.9em;
-    background: rgb(51, 192, 51);
-    color: white;
-    font-weight: 600;
-    border: 1px solid transparent;
-    cursor: pointer;
+  padding: 1em;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.9em;
+  background: rgb(51, 192, 51);
+  color: white;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
 }
 
 .cart_items .back_home:hover {
-     background: white;
-    color:  rgb(51, 192, 51);
-    border: 1px solid rgb(51, 192, 51);
+  background: white;
+  color: rgb(51, 192, 51);
+  border: 1px solid rgb(51, 192, 51);
 }
 
 .cart_items .cart_items_inner {
@@ -30,11 +29,11 @@
 }
 
 .cart_items_inner .cart_items_inner_section {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;    
-    margin-bottom: 1em;
-    gap: 2.5em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1em;
+  gap: 2.5em;
 }
 .cart_items_inner .cart_item_img {
   border: 1px solid;
@@ -49,33 +48,41 @@
 }
 
 .counting {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid;
-} 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+}
 
 .counting i {
-    padding: 5px 10px;
-
+  padding: 5px 10px;
 }
 
 .counting p {
-    border: 1px solid;
-    padding: 5px 10px;
-
+  border: 1px solid;
+  padding: 5px 10px;
 }
 
+.input_quantity {
+  width: 50px;
+  border: 1px solid black;
+  background: transparent;
+  padding: 3px;
+  font-size: 1em;
+}
 
+.input_quantity:focus {
+  outline: none;
+}
 
 @media (max-width: 700px) {
-    .cart_items_inner .cart_items_inner_section {
+  .cart_items_inner .cart_items_inner_section {
     flex-direction: column;
     border-bottom: 1px solid;
-    padding-bottom:2em ;
-    }
-    .cart_heading{
-        font-size: 1.5em;
-        margin-bottom: 1em;
-    }
+    padding-bottom: 2em;
+  }
+  .cart_heading {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+  }
 }

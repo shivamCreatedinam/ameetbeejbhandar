@@ -26,22 +26,27 @@ export const Shop = () => {
 
 
     // State for selected category (set to "all" by default)
-    const [selectedCategory, setSelectedCategory] = useState('all');
-
+    const [selectedCategory, setSelectedCategory] = useState('allCategories');
+    const [selectedBrand, setSelectedBrand] = useState('allBrands');
+    
     // Handle category change
-    const handleCheckboxChange = (event) => {
+    const handleCategoryChange = (event) => {
         const { name } = event.target;
         setSelectedCategory(name); // Update selected category
-        console.log('Selected:', name);
     };
-
-    // Filter products based on the selected category
-    const filteredProducts = selectedCategory === 'all'
-        ? productsData
-        : productsData.filter(product => product.Category.toLowerCase() === selectedCategory);
-
-
-
+    
+    // Handle brand change
+    const handleBrandChange = (event) => {
+        const { name } = event.target;
+        setSelectedBrand(name); // Update selected brand
+    };
+    
+    // Filter products based on the selected category and brand
+    const filteredProducts = productsData.filter(product => {
+        const categoryMatch = selectedCategory === 'allCategories' || product.Category.toLowerCase() === selectedCategory;
+        const brandMatch = selectedBrand === 'allBrands' || product.Brand.toUpperCase() === selectedBrand;
+        return categoryMatch && brandMatch;
+    });
 
     // cart and wish list sections
 
@@ -162,19 +167,19 @@ export const Shop = () => {
             <div className='products_container'>
                 <div className={`products_left ${isFilterSlider ? 'mobile_filter_slider' : ''}`}>
 
-                    <h2>Filters</h2>
+                    <h2 >Filters</h2>
                     <i className="fa-solid fa-xmark fa-lg" onClick={openFilters}></i>
-
+                    <p className='filter_type'>By Categories</p>
                     <div className='select_categories'>
                         <label>
                             <input
                                 type="radio"
-                                name="all"
-                                checked={selectedCategory === 'all'}
-                                onChange={handleCheckboxChange}
+                                name="allCategories"
+                                checked={selectedCategory === 'allCategories'}
+                                onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
-                            All Products
+                            All Categories
                         </label>
 
                         <label>
@@ -182,7 +187,7 @@ export const Shop = () => {
                                 type="radio"
                                 name="herbicides"
                                 checked={selectedCategory === 'herbicides'}
-                                onChange={handleCheckboxChange}
+                                onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
                             Herbicides
@@ -193,7 +198,7 @@ export const Shop = () => {
                                 type="radio"
                                 name="insecticides"
                                 checked={selectedCategory === 'insecticides'}
-                                onChange={handleCheckboxChange}
+                                onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
                             Insecticides
@@ -204,7 +209,7 @@ export const Shop = () => {
                                 type="radio"
                                 name="fungicides"
                                 checked={selectedCategory === 'fungicides'}
-                                onChange={handleCheckboxChange}
+                                onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
                             Fungicides
@@ -215,11 +220,38 @@ export const Shop = () => {
                                 type="radio"
                                 name="plant growth regulator"
                                 checked={selectedCategory === 'plant growth regulator'}
-                                onChange={handleCheckboxChange}
+                                onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
                             Plant Growth Regulator
                         </label>
+                    </div>
+
+                    <p className='filter_type'>By Brands</p>
+                    <div className='select_categories'>
+                        <label>
+                            <input
+                                type="radio"
+                                name="allBrands"
+                                checked={selectedBrand === 'allBrands'}
+                                onChange={handleBrandChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                            All Brands
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="ATUL LIMITED"
+                                checked={selectedBrand === 'ATUL LIMITED'}
+                                onChange={handleBrandChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                           ATUL LIMITED
+                        </label>
+
+                     
                     </div>
                 </div>
 
@@ -231,6 +263,7 @@ export const Shop = () => {
 
                         <div className='display_style'>
                             <div className='filters' onClick={openFilters}><i className="fa-solid fa-filter"></i><p>Filters</p></div>
+                         
                             <select className='select_options'>
                                 <option disabled selected value="Default Sorting">Default Sorting</option>
                                 <option value="most_popular">Most Popular</option>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../../Redux/hooks';
-import { incrementQuantity, decrementQuantity } from '../../Redux/slices/cartslice';
+import { incrementQuantity, decrementQuantity, updateQuantity } from '../../Redux/slices/cartslice';
 import './Checkout.css';
 import product_img from '../../images/product.png';
 import { useNavigate } from 'react-router-dom';
@@ -86,20 +86,26 @@ export const Checkout = () => {
                 .then((data) => {
                     toast.success('Order sent successfully!');
                     console.log('Order sent successfully:', data);
-                    setName('');
-                    setMobile('');
-                    setEmail('');
-                    setGstNumber('');
-                    setRemarks('');
-                    setIsValidGST(false);
+
+                    setTimeout(() => {
+                        navigate('/');
+                        window.location.reload(); 
+                    }, 1000);
+
+                    // setName('');
+                    // setMobile('');
+                    // setEmail('');
+                    // setGstNumber('');
+                    // setRemarks('');
+                    // setIsValidGST(false);
 
                 })
                 .catch((error) => {
                     toast.error('Error sending order. Please try again.');
                     console.error('Error sending order:', error);
                 });
+        }
     }
-}
 
     console.log(cartItems)
 
@@ -126,7 +132,17 @@ export const Checkout = () => {
                                 </div>
                                 <div className='counting'>
                                     <i className="fa-solid fa-plus" onClick={() => dispatch(incrementQuantity(item.id))}></i>
-                                    <p>{item.quantity}</p>
+                                    <input
+                                    className='input_quantity'
+                                        type="number"
+                                        value={item.quantity}
+                                        onChange={(e) => {
+                                            const newQuantity = Number(e.target.value)
+                                            if (newQuantity >= 0) { 
+                                                dispatch(updateQuantity({ id: item.id, quantity: newQuantity }));
+                                            }
+                                        }}
+                                    />            
                                     <i className="fa-solid fa-minus" onClick={() => dispatch(decrementQuantity(item.id))}></i>
                                 </div>
                             </div>
@@ -157,7 +173,7 @@ export const Checkout = () => {
                                 {errors.email && <p className="warning_valid">{errors.email}</p>}
 
                                 <p className='remarks'>Remarks</p>
-                                <input type='text' onChange={(e) => setRemarks(e.target.value)} className='quote_input' placeholder='Remarks' value={remarks}  />
+                                <input type='text' onChange={(e) => setRemarks(e.target.value)} className='quote_input' placeholder='Remarks' value={remarks} />
 
                                 <p className='contact_details'>Contact details</p>
                                 <input type='text' className='quote_input' required value={gstNumber} onChange={handleInputChange} placeholder="Enter GST Number" />
@@ -170,7 +186,7 @@ export const Checkout = () => {
                                 )}
                                 <button className='checkout_button' onClick={sendOrder}>Send Order</button>
                             </div>
-                            <ToastContainer/>
+                            <ToastContainer />
                         </div>
                     </div>
                 )}
