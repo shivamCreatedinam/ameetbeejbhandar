@@ -20,26 +20,33 @@ export const Checkout = () => {
 
     const [errors, setErrors] = useState({});
 
-    // GST
-
-    const [gstNumber, setGstNumber] = useState('');
-    const [isValidGST, setIsValidGST] = useState(false);
-
+    // GST and  PAN
+    const [gstOrPanNumber, setGstOrPanNumber] = useState('');
+    const [isValidGSTOrPAN, setIsValidGSTOrPAN] = useState(false);
+  
+    // GST validation pattern
     const validateGSTIN = (gstin) => {
-        const gstinPattern = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}[Z]{1}[0-9A-Z]{1}$/;
-        return gstinPattern.test(gstin);
+      const gstinPattern = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}[Z]{1}[0-9A-Z]{1}$/;
+      return gstinPattern.test(gstin);
     };
+  
+    // PAN validation pattern
+    const validatePAN = (pan) => {
+      const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+      return panPattern.test(pan);
+    };
+  
+    // Handle input change
     const handleInputChange = (e) => {
-        const value = e.target.value.toUpperCase();
-        setGstNumber(value);
-
-        if (validateGSTIN(value)) {
-            setIsValidGST(true);
-        } else {
-            setIsValidGST(false);
-        }
+      const value = e.target.value.toUpperCase();
+      setGstOrPanNumber(value);
+  
+      if (validateGSTIN(value) || validatePAN(value)) {
+        setIsValidGSTOrPAN(true);
+      } else {
+        setIsValidGSTOrPAN(false);
+      }
     };
-
 
     // API
 
@@ -50,8 +57,9 @@ export const Checkout = () => {
         if (!name) formErrors.name = "Name is required";
         if (!mobile || !/^\d{10}$/.test(mobile)) formErrors.mobile = "Valid 10-digit mobile number is required";
         if (!email || !/\S+@\S+\.\S+/.test(email)) formErrors.email = "Valid email is required";
-        if (!gstNumber || !validateGSTIN(gstNumber)) formErrors.gstNumber = "Valid GST number is required";
-
+        (!gstOrPanNumber || !(validateGSTIN(gstOrPanNumber) || validatePAN(gstOrPanNumber))) {
+            formErrors.gstOrPanNumber = "Valid GST or PAN number is required";
+          }
         setErrors(formErrors);
         return Object.keys(formErrors).length === 0;
     };
@@ -181,8 +189,8 @@ export const Checkout = () => {
                                     <span className="valid_sign">✓</span>
                                 )}
                                 {/* {errors.gstNumber && <p className="warning_valid">{errors.gstNumber}</p>} */}
-                                {!isValidGST && gstNumber.length > 0 && (
-                                    <p className="warning_valid">Please enter a valid GST number.</p>
+                                {!isValidGSTOrPAN  && gstNumber.length > 0 && (
+                                    <p className="warning_valid">Please enter a valid GST or PAN number.</p>
                                 )}
                                 <button className='checkout_button' onClick={sendOrder}>Send Order</button>
                             </div>
