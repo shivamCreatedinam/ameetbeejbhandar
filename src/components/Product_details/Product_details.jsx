@@ -98,7 +98,7 @@ export const Product_details = () => {
                             <Link to='/shop'>Explore</Link>
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
-                            <Link to='/shop'>Products</Link>
+                            {/* <Link to='/shop'>Products</Link> */}
                             <div className='search_container'>
                                 <input
                                     type='search'

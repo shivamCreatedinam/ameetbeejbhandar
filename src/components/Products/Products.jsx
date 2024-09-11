@@ -55,7 +55,7 @@ export const Products = () => {
                     slidesToShow: 4,
                     slidesToScroll: 4,
                     infinite: true,
-                    dots: true
+                    // dots: true
                 }
             },
             {
@@ -64,7 +64,7 @@ export const Products = () => {
                     slidesToShow: 3,
                     slidesToScroll: 3,
                     infinite: true,
-                    dots: true
+                    // dots: true
                 }
             },
             {
@@ -73,7 +73,7 @@ export const Products = () => {
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     infinite: true,
-                    dots: true
+                    // dots: true
                 }
             },
             {

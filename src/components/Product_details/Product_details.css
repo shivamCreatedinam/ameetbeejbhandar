@@ -96,6 +96,13 @@
   transition: 0.7s ;
 }
 
+@media (max-width: 1282px) {
+  .shop_nav .customer_section {
+    color: black;
+  }
+  
+}
+
 @media (max-width: 700px) {
   .products_page  {
     height: 150px;

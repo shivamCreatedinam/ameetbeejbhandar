@@ -28,24 +28,25 @@ export const Shop = () => {
     // State for selected category (set to "all" by default)
     const [selectedCategory, setSelectedCategory] = useState('allCategories');
     const [selectedBrand, setSelectedBrand] = useState('allBrands');
-    
+
     // Handle category change
     const handleCategoryChange = (event) => {
         const { name } = event.target;
         setSelectedCategory(name); // Update selected category
     };
-    
+
     // Handle brand change
     const handleBrandChange = (event) => {
         const { name } = event.target;
         setSelectedBrand(name); // Update selected brand
     };
-    
+
     // Filter products based on the selected category and brand
     const filteredProducts = productsData.filter(product => {
-        const categoryMatch = selectedCategory === 'allCategories' || product.Category.toLowerCase() === selectedCategory;
-        const brandMatch = selectedBrand === 'allBrands' || product.Brand.toUpperCase() === selectedBrand;
+        const categoryMatch = selectedCategory === 'allCategories' || product.Category === selectedCategory;
+        const brandMatch = selectedBrand === 'allBrands' || product.Brand === selectedBrand;
         return categoryMatch && brandMatch;
+        console.log(categoryMatch)
     });
 
     // cart and wish list sections
@@ -73,29 +74,30 @@ export const Shop = () => {
 
     const cartItems = useAppSelector((state) => state.cart.items);
 
-       // search
-       const [searchQuery, setSearchQuery] = useState('');
-       const [filteredProducts2, setFilteredProducts2] = useState([]);
-       const navigate = useNavigate();
-   
-       const handleSearch = (e) => {
-           const query = e.target.value.toLowerCase();
-           setSearchQuery(query);
-           // Filter products based on the search query
-           const filtered = productsData.filter((product) =>
-               product.Category.toLowerCase().includes(query.toLowerCase())
-           );
-   
-           setFilteredProducts2(filtered);
-           
-        
-       
-       };
-   
-       const handleProductClick = (productId) => {
-           navigate(`/products/${productId}`);
-       };
-   
+
+    // search
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredSearchProducts, setFilteredSearchProducts] = useState([]);
+    const navigate = useNavigate();
+
+    const handleSearch = (e) => {
+        const query = e.target.value.toLowerCase();
+        setSearchQuery(query);
+
+        const filtered = productsData.filter((product, index) =>
+            (product.Brand && product.Brand.toLowerCase().includes(query)) ||
+            (product.Category && product.Category.toLowerCase().includes(query)) ||
+            (product["Product Name"] && product["Product Name"].toLowerCase().includes(query)) ||
+            (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
+        );
+        setFilteredSearchProducts(filtered);
+    };
+
+    const handleProductClick = (productId) => {
+        navigate(`/products/${productId}`);
+    };
+
+
     return (
         <>
             <div className='shop_page'>
@@ -108,11 +110,12 @@ export const Shop = () => {
 
                     <div className={`navigation  ${isActive ? 'navigation_active' : ''}`}>
                         <div className='shop_navigation-items'>
-                        <Link to='/'>Home</Link>
+                            <Link to='/'>Home</Link>
                             <Link to='/shop'>Explore</Link>
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
-                            <Link to='/shop'>Products</Link>
+                            {/* <Link to='/shop'>Products</Link> */}
+
                             <div className='search_container'>
                                 <input
                                     type='search'
@@ -126,14 +129,14 @@ export const Shop = () => {
                                 {/* Display suggestions if there is a search query */}
                                 {searchQuery && (
                                     <ul className='suggestions'>
-                                        {filteredProducts2.length ? (
-                                            filteredProducts2.map((product) => (
+                                        {filteredSearchProducts.length ? (
+                                            filteredSearchProducts.map((product) => (
                                                 <li
-                                                    key={product.id}
+                                                    key={product.index}
                                                     onClick={() => handleProductClick(product.id)}
                                                     className='suggestion_item'
                                                 >
-                                                     &emsp; {product['Product Name']}  &emsp; by &emsp;
+                                                    &emsp; {product['Product Name']}  &emsp; by &emsp;
                                                     {product.Brand}
                                                 </li>
                                             ))
@@ -153,7 +156,7 @@ export const Shop = () => {
                                 <i className="fa-regular fa-heart"></i>
                                 {cartItems.length > 0 && (
                                     <div className={`wish_count`}>
-                                       0
+                                        0
                                     </div>
                                 )}
                                 <i className="fa-regular fa-user"></i>
@@ -243,15 +246,146 @@ export const Shop = () => {
                         <label>
                             <input
                                 type="radio"
-                                name="ATUL LIMITED"
-                                checked={selectedBrand === 'ATUL LIMITED'}
+                                name="Atul"
+                                checked={selectedBrand === 'Atul'}
                                 onChange={handleBrandChange}
                                 style={{ marginRight: '10px' }}
                             />
-                           ATUL LIMITED
+                            Atul
                         </label>
 
-                     
+                        <label>
+                            <input
+                                type="radio"
+                                name="Bharat Agrovet"
+                                checked={selectedBrand === 'Bharat Agrovet'}
+                                onChange={handleBrandChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                            Bharat Agrovet
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="Bharat Chemicals"
+                                checked={selectedBrand === 'Bharat Chemicals'}
+                                onChange={handleBrandChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                            Bharat Chemicals
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="Bhoomi Phosphate"
+                                checked={selectedBrand === 'Bhoomi Phosphate'}
+                                onChange={handleBrandChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                            Bhoomi Phosphate
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="CFCL"
+                                checked={selectedBrand === 'CFCL'}
+                                onChange={handleBrandChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                            CFCL
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="Chand Chap"
+                                checked={selectedBrand === 'Chand Chap'}
+                                onChange={handleBrandChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                          Chand Chap
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="Cheminova"
+                                checked={selectedBrand === 'Cheminova'}
+                                onChange={handleBrandChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                           Cheminova
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="Coramandal"
+                                checked={selectedBrand === 'Coramandal'}
+                                onChange={handleBrandChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                            Coramandal
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="GSP"
+                                checked={selectedBrand === 'GSP'}
+                                onChange={handleBrandChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                            GSP
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="HURL"
+                                checked={selectedBrand === 'HURL'}
+                                onChange={handleBrandChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                            HURL
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="Jaishil"
+                                checked={selectedBrand === 'Jaishil'}
+                                onChange={handleBrandChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                            Jaishil
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="Mono Magic"
+                                checked={selectedBrand === 'Mono Magic'}
+                                onChange={handleBrandChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                            Mono Magic
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="Hok Agrichem Pvt. Ltd."
+                                checked={selectedBrand === 'Hok Agrichem Pvt. Ltd.'}
+                                onChange={handleBrandChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                            Hok Agrichem Pvt. Ltd.
+                        </label>
+
                     </div>
                 </div>
 
@@ -263,7 +397,7 @@ export const Shop = () => {
 
                         <div className='display_style'>
                             <div className='filters' onClick={openFilters}><i className="fa-solid fa-filter"></i><p>Filters</p></div>
-                         
+
                             <select className='select_options'>
                                 <option disabled selected value="Default Sorting">Default Sorting</option>
                                 <option value="most_popular">Most Popular</option>
@@ -279,18 +413,7 @@ export const Shop = () => {
                         </div>
                     </div>
 
-                    {/* filters */}
-                    {/* <div className='products_right_middle'>
-                        <p>Your Filters : </p>
-                        <div className='filter_type'>
-                        
-                                        IF NEEDED
-
-                        </div>
-                </div> */}
-
-
-                    {/* all products */}
+  
                     {/* all products */}
                     <div className='products_right_container'>
                         {filteredProducts.map((product) => (

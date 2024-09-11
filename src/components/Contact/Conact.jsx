@@ -61,27 +61,29 @@ export const Contact = () => {
     };
 
     
-    // search
-    const [searchQuery, setSearchQuery] = useState('');
-    const [filteredProducts, setFilteredProducts] = useState([]);
-    const navigate = useNavigate();
-
-    const handleSearch = (e) => {
-        const query = e.target.value.toLowerCase();
-        setSearchQuery(query);
-        // Filter products based on the search query
-        const filtered = productsData.filter((product) =>
-            product.Category.toLowerCase().includes(query.toLowerCase())
-        );
-
-        setFilteredProducts(filtered);
-    
-    };
-
-    const handleProductClick = (productId) => {
-        navigate(`/products/${productId}`);
-    };
-
+     // search
+     const [searchQuery, setSearchQuery] = useState('');
+     const [filteredSearchProducts, setFilteredSearchProducts] = useState([]);
+     const navigate = useNavigate();
+ 
+     const handleSearch = (e) => {
+         const query = e.target.value.toLowerCase();
+         setSearchQuery(query);
+ 
+         const filtered = productsData.filter((product) =>
+             (product.Brand && product.Brand.toLowerCase().includes(query)) ||
+             (product.Category && product.Category.toLowerCase().includes(query)) ||
+             (product["Product Name"] && product["Product Name"].toLowerCase().includes(query)) ||
+             (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
+         );
+ 
+         setFilteredSearchProducts(filtered);
+     };
+ 
+     const handleProductClick = (productId) => {
+         navigate(`/products/${productId}`);
+     };
+ 
 
     return (
         <>
@@ -99,7 +101,7 @@ export const Contact = () => {
                             <Link to='/shop'>Explore</Link>
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
-                            <Link to='/shop'>Products</Link>
+                            {/* <Link to='/shop'>Products</Link> */}
                             <div className='search_container'>
                                 <input
                                     type='search'
@@ -113,8 +115,8 @@ export const Contact = () => {
                                 {/* Display suggestions if there is a search query */}
                                 {searchQuery && (
                                     <ul className='suggestions'>
-                                        {filteredProducts.length ? (
-                                            filteredProducts.map((product) => (
+                                        {filteredSearchProducts.length ? (
+                                            filteredSearchProducts.map((product) => (
                                                 <li
                                                     key={product.id}
                                                     onClick={() => handleProductClick(product.id)}
@@ -193,14 +195,15 @@ export const Contact = () => {
 
                     <MapComponent />
                 </div>
+                
                 <div className='faq_section'>
                     <div className='faq_left'>
                         <p>FAQ</p>
                         <h3>Frequently asked Questions.</h3>
                     </div>
                     <div className='faq_right'>
-                        <h3>Lorem ipsum dolor sit.</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt vero dolore magni possimus quasi mollitia.</p>
+                        <h3>Questions we get asked.</h3>
+                        <p>Here are some most asked questions from customers we get often.</p>
                         <div className=''>
                             <div className="faq-container">
                                 {faqs.map((faq, index) => (
@@ -220,6 +223,7 @@ export const Contact = () => {
                         </div>
                     </div>
                 </div>
+
             </div>
             <Footer />
 

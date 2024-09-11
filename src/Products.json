@@ -1,175 +1,1718 @@
 [
-    {
-      "id": 1,
-      "Brand": "ATUL LIMITED",
-      "Category": "PLANT GROWTH REGULATOR",
-      "Product Name": "Biopearl",
-      "Technical Content": "Natural Seaweed Extract",
-      "Size": "10 LTR (PACK OF 10*1 LTR)",
-      "Price": ""
-    },
-    {
-      "id": 2,
-      "Brand": "ATUL LIMITED",
-      "Category": "PLANT GROWTH REGULATOR",
-      "Product Name": "Biopearl",
-      "Technical Content": "Natural Seaweed Extract",
-      "Size": "10 LTR (PACK OF 20*500 ML)",
-      "Price": ""
-    },
-    {
-      "id": 3,
-      "Brand": "ATUL LIMITED",
-      "Category": "PLANT GROWTH REGULATOR",
-      "Product Name": "Biopearl",
-      "Technical Content": "Natural Seaweed Extract",
-      "Size": "10 LTR (PACK OF 40*250 ML)",
-      "Price": ""
-    },
-    {
-      "id": 4,
-      "Brand": "ATUL LIMITED",
-      "Category": "PLANT GROWTH REGULATOR",
-      "Product Name": "Biopearl GR Bucket",
-      "Technical Content": "Natural Seaweed Extract",
-      "Size": "10 KG (PACK OF 2*10 KG)",
-      "Price": ""
-    },
-    {
-      "id": 5,
-      "Brand": "ATUL LIMITED",
-      "Category": "PLANT GROWTH REGULATOR",
-      "Product Name": "Biopearl GR Pouch",
-      "Technical Content": "Natural Seaweed Extract",
-      "Size": "15 KG (PACK OF 4*4 KG)",
-      "Price": ""
-    },
-    {
-      "id": 6,
-      "Brand": "ATUL LIMITED",
-      "Category": "HERBICIDES",
-      "Product Name": "Cyno",
-      "Technical Content": "Chlorimuron ethyl 25% WP",
-      "Size": "5 KG (PACK OF 10*500 GMS)",
-      "Price": ""
-    },
-    {
-      "id": 7,
-      "Brand": "ATUL LIMITED",
-      "Category": "INSECTICIDES",
-      "Product Name": "Lypus",
-      "Technical Content": "Fipronil 40% + Imidacloprid 40% WG",
-      "Size": "5 KG (PACK OF 10*500 GMS)",
-      "Price": ""
-    },
-    {
-      "id": 8,
-      "Brand": "ATUL LIMITED",
-      "Category": "INSECTICIDES",
-      "Product Name": "Monil SC",
-      "Technical Content": "Fipronil 5% SC",
-      "Size": "10 KG (PACK OF 10*1 KG)",
-      "Price": ""
-    },
-    {
-      "id": 9,
-      "Brand": "ATUL LIMITED",
-      "Category": "INSECTICIDES",
-      "Product Name": "Monil SC",
-      "Technical Content": "Fipronil 5% SC",
-      "Size": "20 KG (PACK OF 20*500 GMS)",
-      "Price": ""
-    },
-    {
-      "id": 10,
-      "Brand": "ATUL LIMITED",
-      "Category": "INSECTICIDES",
-      "Product Name": "Monil SC",
-      "Technical Content": "Fipronil 5% SC",
-      "Size": "40 KG (PACK OF 40*250 GMS)",
-      "Price": ""
-    },
-    {
-      "id": 11,
-      "Brand": "ATUL LIMITED",
-      "Category": "INSECTICIDES",
-      "Product Name": "Monil GR",
-      "Technical Content": "Fipronil 0.3% GR",
-      "Size": "25 KG (PACK OF 5*5 KG)",
-      "Price": ""
-    },
-    {
-      "id": 12,
-      "Brand": "ATUL LIMITED",
-      "Category": "HERBICIDES",
-      "Product Name": "Plasto",
-      "Technical Content": "Metribuzin 70% WP",
-      "Size": "5 KG (PACK OF 50*100 GMS)",
-      "Price": ""
-    },
-    {
-      "id": 13,
-      "Brand": "ATUL LIMITED",
-      "Category": "HERBICIDES",
-      "Product Name": "Salix",
-      "Technical Content": "2,4-D Sodium salt 95% SP",
-      "Size": "10 KG (PACK OF 20*500 GMS)",
-      "Price": ""
-    },
-    {
-      "id": 14,
-      "Brand": "ATUL LIMITED",
-      "Category": "HERBICIDES",
-      "Product Name": "Sindica",
-      "Technical Content": "2,4-D Sodium 48% + Metribuzin 32% + Chlorimuron ethyl 0.85% w/w WDG",
-      "Size": "10 KG (PACK OF 10*1 KG)",
-      "Price": ""
-    },
- 
-    {
-      "id": 16,
-      "Brand": "ATUL LIMITED",
-      "Category": "INSECTICIDES",
-      "Product Name": "Spora",
-      "Technical Content": "Thiamethoxam 25% WG",
-      "Size": "8 KG (PACK OF 16*500 GMS)",
-      "Price": ""
-    },
-    {
-      "id": 17,
-      "Brand": "ATUL LIMITED",
-      "Category": "INSECTICIDES",
-      "Product Name": "Spora",
-      "Technical Content": "Thiamethoxam 25% WG",
-      "Size": "1 KG (PACK OF 8*1 KG)",
-      "Price": ""
-    },
-    {
-      "id": 18,
-      "Brand": "ATUL LIMITED",
-      "Category": "INSECTICIDES",
-      "Product Name": "Spora Super",
-      "Technical Content": "Thiamethoxam 30% FS",
-      "Size": "10 LTR (PACK OF 20*500 ML)",
-      "Price": ""
-    },
-    {
-      "id": 19,
-      "Brand": "ATUL LIMITED",
-      "Category": "HERBICIDES",
-      "Product Name": "Zura",
-      "Technical Content": "2,4-D Dimethyl amine salt 58% WSC",
-      "Size": "10 LTR (PACK OF 10*1 LTR)",
-      "Price": ""
-    },
-    {
-      "id": 20,
-      "Brand": "ATUL LIMITED",
-      "Category": "HERBICIDES",
-      "Product Name": "Zura",
-      "Technical Content": "2,4-D Dimethyl amine salt 58% WSC",
-      "Size": "8 LTR (PACK OF 20*400 ML)",
-      "Price": ""
-    }
-  ]
-  
+     {
+      "Product Name": "Advance "
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "2-4 D Amine Salt 58% SL",
+      "Total Stock": -60,
+      "Brand": "Hok Agrichem Pvt. Ltd.",
+      "Product Name": "Admine ( 2-4 D Amine Salt 58 % SL ) 10*1 Ltr"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Metsulfuron Methyl 20% WP",
+      "Total Stock": -430,
+      "Brand": "Hok Agrichem Pvt. Ltd.",
+      "Product Name": "Alert Solo- 100*8 Gm- Metsulfuron- HOK"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Fipronil 5% SC",
+      "Total Stock": -10,
+      "Brand": "Hok Agrichem Pvt. Ltd.",
+      "Product Name": "Fipron SC 10*1 Ltr- Hok"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Fipronil 0.3% GR",
+      "Total Stock": -450,
+      "Brand": "Hok Agrichem Pvt. Ltd.",
+      "Product Name": "Fipron Gr -Fipronil -HOK- 5*5 Kg"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Paraquat Dichloride 24 % SL",
+      "Total Stock": -40,
+      "Brand": "Hok Agrichem Pvt. Ltd.",
+      "Product Name": "Rider 10*1 Ltr ( Paraquat Dichloride 24 % Sl )"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Paraquat Dichloride 24 % SL",
+      "Total Stock": -40,
+      "Brand": "Hok Agrichem Pvt. Ltd.",
+      "Product Name": "Rider 20*500 ML ( Paraquat Dichloride 24 % Sl )"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Paraquat Dichloride 24 % SL",
+      "Total Stock": -10,
+      "Brand": "Hok Agrichem Pvt. Ltd.",
+      "Product Name": "Rider 40*250 ML ( Paraquat Dichloride 24 % Sl )"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Validamycin 3%",
+      "Total Stock": 50,
+      "Brand": "Hok Agrichem Pvt. Ltd.",
+      "Product Name": "Valicrown-Validamycin 3 % L-  20*500 Ml- Advance  2"
+     },
+     {
+      "Product Name": "Aravali"
+     },
+     {
+      "Category": "Fertilizers & Micro Nutrients",
+      "Subcategory": "Advance Micorazza",
+      "Total Stock": 540,
+      "Brand": "Aravali",
+      "Product Name": "Auctus Uno -10*2 Kg- Mycorrhizal -Aravali- Drum"
+     },
+     {
+      "Category": "Fertilizers & Micro Nutrients",
+      "Subcategory": "Advance Micorazza",
+      "Total Stock": 420,
+      "Brand": "Aravali",
+      "Product Name": "Auctus Uno -15*2 Kg- Mycorrhizal- Aravali - Drum"
+     },
+     {
+      "Category": "Insecticides",
+      "Subcategory": "Cartap 50 % SP",
+      "Total Stock": 7,
+      "Brand": "Aravali",
+      "Product Name": "Cortex - 50 Cartap Hydrocloride- Aravali- 48*250 Gm"
+     },
+     {
+      "Category": "Insecticides",
+      "Subcategory": "Thiamethoxam 25% WG",
+      "Total Stock": -12,
+      "Brand": "Aravali",
+      "Product Name": "Diamand   24*500 Gm"
+     },
+     {
+      "Category": "Insecticides",
+      "Subcategory": "Thiamethoxam 25% WG",
+      "Total Stock": 12,
+      "Brand": "Aravali",
+      "Product Name": "Diamond-Thiamethoxam - 25 % WG 48*250 Gm -  Aravali"
+     },
+     {
+      "Category": "Insecticides",
+      "Subcategory": "Fipronil 0.3% GR",
+      "Total Stock": 2900,
+      "Brand": "Aravali",
+      "Product Name": "Flex Gr - Fiproil 0.3 % Gr -  Aravali - 5 *5 Kg"
+     },
+     {
+      "Category": "Fungicides",
+      "Subcategory": "Captan 70% + Hexaconazole 5 % WP",
+      "Total Stock": -24,
+      "Brand": "Aravali",
+      "Product Name": "Harley-Captan 70 % + Hexaconazole 5 % Wp-24*500 Gm"
+     },
+     {
+      "Category": "Herbicides \/ Weedicides",
+      "Subcategory": "Bispyribac Sodium 10% SC",
+      "Total Stock": -1.3,
+      "Brand": "Aravali",
+      "Product Name": "Oxiol Gold ( Bispyribac Sodium 10 % SC ) 50*100 ML-"
+     },
+     {
+      "Category": "Plant growth regulators)",
+      "Subcategory": "Paclobutrazol 23% SC",
+      "Total Stock": 12,
+      "Brand": "Aravali",
+      "Product Name": "Pack Star-Paclobutrazol -12*1 Ltr"
+     },
+     {
+      "Category": "Herbicides \/ Weedicides",
+      "Subcategory": "Pyrazosulfuron Ethyl 10% WP",
+      "Total Stock": -2,
+      "Brand": "Aravali",
+      "Product Name": "Right- Pyrazosulfuron Ethyl 10 %-Aravali  250*20 Gm"
+     },
+     {
+      "Category": "Herbicides \/ Weedicides",
+      "Subcategory": "Ammonium Salt Of Glyphosate 71% SG",
+      "Total Stock": 328,
+      "Brand": "Aravali",
+      "Product Name": "Sweep 71- Glyphosate 71 % -Aravali -100*100 Gm"
+     },
+     {
+      "Product Name": "Aravali-2"
+     },
+     {
+      "Category": "Fungicides",
+      "Subcategory": "Metalaxyl 8% + Mancozeb 64% WP",
+      "Total Stock": 5,
+      "Brand": "Aravali-2",
+      "Product Name": "Metalix 20*500 Gm- Aravali  2"
+     },
+     {
+      "Category": "Insecticides",
+      "Subcategory": "Profenofos 40% + Cyper 4% EC",
+      "Total Stock": 12,
+      "Brand": "Aravali-2",
+      "Product Name": "Procin-Profenofos+Cyper-Aravali 2 - 24*500 Ml"
+     },
+     {
+      "Category": "Fertilizers & Micro Nutrients",
+      "Subcategory": "Sulphur 90% WDG",
+      "Total Stock": 300,
+      "Brand": "Aravali-2",
+      "Product Name": "Seltos -Sulphur 90 % 10*3 Kg (Powder ) Bag- Aravali"
+     },
+     {
+      "Product Name": "Atul"
+     },
+     {
+      "Total Stock": 10,
+      "Brand": "Atul",
+      "Product Name": "Biopearl 10*1 Ltr"
+     },
+     {
+      "Total Stock": 30,
+      "Brand": "Atul",
+      "Product Name": "Biopearl 20*500 Ml"
+     },
+     {
+      "Total Stock": 10,
+      "Brand": "Atul",
+      "Product Name": "Biopearl 40*250 Ml"
+     },
+     {
+      "Total Stock": 500,
+      "Brand": "Atul",
+      "Product Name": "Biopearl Gr- Botanical Extract- Atul- 2*10 Kg-Bukt"
+     },
+     {
+      "Total Stock": 512,
+      "Brand": "Atul",
+      "Product Name": "Bioperal Gr -Biopearl Extract -Atul- 4*4 Kg"
+     },
+     {
+      "Total Stock": 829,
+      "Brand": "Atul",
+      "Product Name": "Cyno- ( Chlorimuron  Ethyl)"
+     },
+     {
+      "Total Stock": 40,
+      "Brand": "Atul",
+      "Product Name": "Plasto 50*100 Gm- ( Metribuzin 70 % Wp)"
+     },
+     {
+      "Total Stock": 20,
+      "Brand": "Atul",
+      "Product Name": "Salix 20*500 Gm ( 2,4 D Sodium Salt 95 % Sp )"
+     },
+     {
+      "Total Stock": 500,
+      "Brand": "Atul",
+      "Product Name": "Sindica-2,4d-Sodium+Metribuzin+Chlorimuro 20*500 Gm"
+     },
+     {
+      "Total Stock": 1100,
+      "Brand": "Atul",
+      "Product Name": "Sindica-2,4d-Sodium+Metribuzin+Chlorimuron 10*1 Kg"
+     },
+     {
+      "Total Stock": 30.8,
+      "Brand": "Atul",
+      "Product Name": "Zura 20*400 Ml- Stock (24D Amine Salt 58 % WSC )- C"
+     },
+     {
+      "Product Name": "Bharat Agrovet"
+     },
+     {
+      "Total Stock": 176,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Bheem Mycorrhiza 4*4 Kg - Jar"
+     },
+     {
+      "Total Stock": 288,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Bheem Mycorrhiza 8*2 Kg- Jar"
+     },
+     {
+      "Total Stock": 2840,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Bhumi Chamtkar 20*1 Kg"
+     },
+     {
+      "Total Stock": 1900,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Bhumi Chamtkar 5*4 Kg"
+     },
+     {
+      "Total Stock": 250,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Boromin 25*1 Kg"
+     },
+     {
+      "Total Stock": 50,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Boron  10*1 Kg"
+     },
+     {
+      "Total Stock": 428,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Bws- Boss 25*1 Kg 19:19:19"
+     },
+     {
+      "Total Stock": 1800,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat  Casmag 5*10 KG"
+     },
+     {
+      "Total Stock": 10300,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Ferrous Sulphate 10*5 Kg"
+     },
+     {
+      "Total Stock": 1800,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Ferrous Sulphate 5*10 Kg"
+     },
+     {
+      "Total Stock": 211,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Jadoo Gibberellic Acid 20*500 Ml"
+     },
+     {
+      "Total Stock": 53,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Jadoo Gibbrellic Acid 10*1 Ltr"
+     },
+     {
+      "Total Stock": 2475,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Magnesium Sulphate 25*1 Kg"
+     },
+     {
+      "Total Stock": 1728,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Maha Potash 12*4 Kg"
+     },
+     {
+      "Total Stock": 900,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Micro Mixture Sugar Rich 10*5 Kg"
+     },
+     {
+      "Total Stock": 1650,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Micro Mixture Sugar Rich 5*10 Kg"
+     },
+     {
+      "Total Stock": 2250,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Micro Nutrient Mixture Repeat 10% (10*5 Kg)"
+     },
+     {
+      "Total Stock": 550,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Micro Repeat 10 % 10*5 Kg-  Change Hona Hain"
+     },
+     {
+      "Total Stock": 8,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Mono(Power)60*250 Gm"
+     },
+     {
+      "Total Stock": 2160,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Mono Zinc Sulphate 33 % 10*4 Kg"
+     },
+     {
+      "Total Stock": 2400,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Mono Zinc Sulphate 33% 10*5 Kg"
+     },
+     {
+      "Total Stock": 75,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Npk 0 :0: 50  25*1 KG"
+     },
+     {
+      "Total Stock": 350,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Npk  00:52:34 25*1 Kg"
+     },
+     {
+      "Total Stock": 3475,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Orgo Plus 25 Kg"
+     },
+     {
+      "Total Stock": 2450,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Repeat Micro Nutrient 6 % 10*5 Kg"
+     },
+     {
+      "Total Stock": 160,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Resipro 20*500 Ml"
+     },
+     {
+      "Total Stock": 90,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Resipro 40*250 Ml"
+     },
+     {
+      "Total Stock": 173,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Spark 20*500 Gm"
+     },
+     {
+      "Total Stock": 540,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Sulpho Fert  90 % 10*3 Kg (GR)  Bag"
+     },
+     {
+      "Total Stock": 1710,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Sulpho Fert  90 % 10*3 Kg ( GR) Drum"
+     },
+     {
+      "Total Stock": 780,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Sulpho Fert 90 %  10*3 Kg ( Powder )  Bags"
+     },
+     {
+      "Total Stock": 300,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Sulpho Fert  90% 10*3 Kg ( Powder ) Drum"
+     },
+     {
+      "Total Stock": 600,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Sulpho Fert 90 % 30*1 Kg- Drum- (Powder )"
+     },
+     {
+      "Total Stock": 720,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Sulpho Fert  90 % 30*1 Kg ( Powder ) Bags"
+     },
+     {
+      "Total Stock": 540,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Sulpho Fert  90 % 30*1 Kg ( Powder ) Drum"
+     },
+     {
+      "Total Stock": 2450,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Sulpho Gain 10*5 KG"
+     },
+     {
+      "Total Stock": 1200,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Sulpho Gain 20*1 Kg"
+     },
+     {
+      "Total Stock": 200,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Sulpho Gain  20*1 Kg- Aana Hain"
+     },
+     {
+      "Total Stock": 560,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Sulpho Gain Sulphur 90 %  10*5 Kg"
+     },
+     {
+      "Total Stock": 50,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Super Shakti Dolfin  25 Kg - Aana Hain Abhi"
+     },
+     {
+      "Total Stock": 2600,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Super Shakti Dolphin - G 25 Kg"
+     },
+     {
+      "Total Stock": 1050,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Vita 10*5 Kg"
+     },
+     {
+      "Total Stock": 1930,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Vita 10 Kg"
+     },
+     {
+      "Total Stock": 1248,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat  Zinc Boss 4*4 Kg"
+     },
+     {
+      "Total Stock": 1335,
+      "Brand": "Bharat Agrovet",
+      "Product Name": "Bharat Zinc Sulphate 21% (10*5 Kg)"
+     },
+     {
+      "Product Name": "Bharat Chemicals"
+     },
+     {
+      "Total Stock": 196.5,
+      "Brand": "Bharat Chemicals",
+      "Product Name": "Bharat Brave 20*500 Gm"
+     },
+     {
+      "Total Stock": 140,
+      "Brand": "Bharat Chemicals",
+      "Product Name": "Bharat Captain 4*1 Kg (Thiamethoxam)"
+     },
+     {
+      "Total Stock": 3750,
+      "Brand": "Bharat Chemicals",
+      "Product Name": "Bharat Tarang -Triacontanal Gr 0.05 % -5*5 Kg"
+     },
+     {
+      "Total Stock": 17.5,
+      "Brand": "Bharat Chemicals",
+      "Product Name": "Pankh-Propiconazole - 20*500 Ml"
+     },
+     {
+      "Product Name": "Bhoomi Phosphate"
+     },
+     {
+      "Total Stock": 711,
+      "Brand": "Bhoomi Phosphate",
+      "Product Name": "Ssp Zincated - Bhoomi- 50 Kg- Hiralal"
+     },
+     {
+      "Total Stock": 380,
+      "Brand": "Bhoomi Phosphate",
+      "Product Name": "Ssp Zincated- Bhoomi-50 Kg- Self Godown"
+     },
+     {
+      "Product Name": "CFCL"
+     },
+     {
+      "Total Stock": 300,
+      "Brand": "CFCL",
+      "Product Name": "Stempo 4*5 Kg -Fipronil"
+     },
+     {
+      "Total Stock": 150,
+      "Brand": "CFCL",
+      "Product Name": "Veertap 5*5 Kg  ( Cartap Hydrochloride 4 % Gr )"
+     },
+     {
+      "Product Name": "Chand Chap"
+     },
+     {
+      "Total Stock": 2435,
+      "Brand": "Chand Chap",
+      "Product Name": "Chand Magnesium Sulphate 10*5 Kg ( Kfcl)"
+     },
+     {
+      "Total Stock": 2900,
+      "Brand": "Chand Chap",
+      "Product Name": "Chand Zyme 10*5 Kg ( Chand Chap)"
+     },
+     {
+      "Total Stock": 242,
+      "Brand": "Chand Chap",
+      "Product Name": "Urea ( Chand Chap) 45  KG Self Godown"
+     },
+     {
+      "Product Name": "Cheminova"
+     },
+     {
+      "Total Stock": 6000,
+      "Brand": "Cheminova",
+      "Product Name": "Castway- Azoxy+Difen- 10*1 Ltr"
+     },
+     {
+      "Total Stock": 1000,
+      "Brand": "Cheminova",
+      "Product Name": "Castway -Azoxy+ Difen - 20*500 Ml"
+     },
+     {
+      "Total Stock": 400,
+      "Brand": "Cheminova",
+      "Product Name": "Castway-Azoxy+ Difen - 40*200 Ml"
+     },
+     {
+      "Total Stock": 5000,
+      "Brand": "Cheminova",
+      "Product Name": "Cilva Plus - Bifenthrin+Clothiodin- 10*1 Ltr"
+     },
+     {
+      "Total Stock": 1760,
+      "Brand": "Cheminova",
+      "Product Name": "Cilva Plus -Bifenthrin+Clothiodin- 20*500 Ml"
+     },
+     {
+      "Total Stock": 500,
+      "Brand": "Cheminova",
+      "Product Name": "Cilva Plus- Bifenthrin+Clothiodin- 40*250 Ml"
+     },
+     {
+      "Total Stock": 6000,
+      "Brand": "Cheminova",
+      "Product Name": "Lashkar -Diamethoate- 10*1 Ltr"
+     },
+     {
+      "Total Stock": 1000,
+      "Brand": "Cheminova",
+      "Product Name": "Lashkar-Diamethoate -20*500 Ml"
+     },
+     {
+      "Total Stock": 400,
+      "Brand": "Cheminova",
+      "Product Name": "Lashkar-Diamethoate- 40*250 Ml"
+     },
+     {
+      "Total Stock": 4000,
+      "Brand": "Cheminova",
+      "Product Name": "Ozoro-Captan+Tebu- 10*1 Ltr"
+     },
+     {
+      "Total Stock": 1000,
+      "Brand": "Cheminova",
+      "Product Name": "Ozoro-Captan+Tebu- 20*500 Ml"
+     },
+     {
+      "Total Stock": 2400,
+      "Brand": "Cheminova",
+      "Product Name": "Sheriff- Carbosulfon 12*1 Ltr"
+     },
+     {
+      "Total Stock": 450,
+      "Brand": "Cheminova",
+      "Product Name": "Sheriff- Carbosulfon - 20*500 Ml"
+     },
+     {
+      "Total Stock": 450,
+      "Brand": "Cheminova",
+      "Product Name": "Sheriff-Carbosulfon- 40*250 Ml"
+     },
+     {
+      "Product Name": "Coramandal"
+     },
+     {
+      "Total Stock": 21250,
+      "Brand": "Coramandal",
+      "Product Name": "Gromor Bento 10*5 Kg- Company"
+     },
+     {
+      "Total Stock": 100,
+      "Brand": "Coramandal",
+      "Product Name": "Gromor Nano Dap 10*1 Ltr"
+     },
+     {
+      "Total Stock": 65,
+      "Brand": "Coramandal",
+      "Product Name": "Kash Mop Coromandel Partapur"
+     },
+     {
+      "Total Stock": 170,
+      "Brand": "Coramandal",
+      "Product Name": "Ssp Gro Plus Coromandel 50 Kg- Hiralal- Baghpat"
+     },
+     {
+      "Total Stock": 1675,
+      "Brand": "Coramandal",
+      "Product Name": "Ssp Gro Plus Coromandel -Hiralal 50 Kg-Meerut"
+     },
+     {
+      "Product Name": "Cristal"
+     },
+     {
+      "Total Stock": 220,
+      "Brand": "Cristal",
+      "Product Name": "Crystorhiza 5*4 Kg (Mycorrhiza )"
+     },
+     {
+      "Total Stock": 152.5,
+      "Brand": "Cristal",
+      "Product Name": "Ethephon 100*100 Ml"
+     },
+     {
+      "Total Stock": 169,
+      "Brand": "Cristal",
+      "Product Name": "Furadan 25*1 Kg ( Carbofuron 3 %)"
+     },
+     {
+      "Total Stock": 240,
+      "Brand": "Cristal",
+      "Product Name": "Voltax 6*5 Kg"
+     },
+     {
+      "Product Name": "Earth Care"
+     },
+     {
+      "Total Stock": 5,
+      "Brand": "Earth Care",
+      "Product Name": "Hyper 100*100 Ml"
+     },
+     {
+      "Total Stock": 206,
+      "Brand": "Earth Care",
+      "Product Name": "Life Line 10*1 Ltr"
+     },
+     {
+      "Product Name": "Gift"
+     },
+     {
+      "Total Stock": 2,
+      "Brand": "Gift",
+      "Product Name": "Gold Coin 2 Gm"
+     },
+     {
+      "Total Stock": 1,
+      "Brand": "Gift",
+      "Product Name": "Gold Coin 5 Gm"
+     },
+     {
+      "Total Stock": 6,
+      "Brand": "Gift",
+      "Product Name": "Silver Coin 100 Gm  (Ultrazib)"
+     },
+     {
+      "Total Stock": 6,
+      "Brand": "Gift",
+      "Product Name": "Silver Coin 50 Gm ( Ultrazib)"
+     },
+     {
+      "Total Stock": 1,
+      "Brand": "Gift",
+      "Product Name": "Silver Coin - Ganesh Ji Image"
+     },
+     {
+      "Total Stock": 2,
+      "Brand": "Gift",
+      "Product Name": "Watch Sonata"
+     },
+     {
+      "Product Name": "G S P"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Chlorantraniliprole 0.4% ww GR",
+      "Total Stock": 1740,
+      "Brand": "GSP",
+      "Product Name": "Ballot 6*4 Kg"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Protein Hydrolysates and Amin",
+      "Total Stock": 48,
+      "Brand": "GSP",
+      "Product Name": "Crazy Pro 10*1 Ltr- Protein Hydrolysates and Amino"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Protein Hydrolysates and Amin",
+      "Total Stock": 28,
+      "Brand": "GSP",
+      "Product Name": "Crazy Pro  40*250 Ltr- Protein Hydrolysates and Amin"
+     },
+     {
+      "Category": "Pesticides",
+      "Total Stock": 725,
+      "Brand": "GSP",
+      "Product Name": "Gold Coin -5*5 Kg"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "2-4-D Amine Salt 58% SL",
+      "Total Stock": -20,
+      "Brand": "GSP",
+      "Product Name": "GSP cross-24D Amine Salt 58% S.L 10*1 Ltr-Gsp"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Chlorantraniliprole 18.5% ww",
+      "Total Stock": 6,
+      "Brand": "GSP",
+      "Product Name": "Helipro  40*150 Ml"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Chlorantraniliprole 18.5% ww",
+      "Total Stock": 15,
+      "Brand": "GSP",
+      "Product Name": "Helipro 50*30 Ml"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Chlorantraniliprole 18.5% ww",
+      "Total Stock": 30,
+      "Brand": "GSP",
+      "Product Name": "Helipro 50* 60 Ml"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Clothiananidin 50% WG",
+      "Total Stock": 100,
+      "Brand": "GSP",
+      "Product Name": "Indotop -Chlothianidin- 50*6 Gm - Gsp"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Pyraclostrobin 3.5% + Thiram 15% + Clothianidian",
+      "Total Stock": 3,
+      "Brand": "GSP",
+      "Product Name": "PCT-410 (Pyraclostrobin + Thiram + Clothianidian) 50*100"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Pyraclostrobin 3.5% + Thiram 15% + Clothianidian",
+      "Total Stock": 24,
+      "Brand": "GSP",
+      "Product Name": "PCT-410 (Pyraclostrobin + Thiram + Clothianidian) 40*250"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Thiamethoxam 25% WDG",
+      "Total Stock": 60,
+      "Brand": "GSP",
+      "Product Name": "Slayer 10*1 Kg ( Thiamethoxam 25 Wdg )"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Thaimethoxam 30% FS",
+      "Total Stock": 50,
+      "Brand": "GSP",
+      "Product Name": "Slayer Pro 10*1 Ltr (L ) ( Thaimethoxam 30 Fs )"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Thaimethoxam 30% FS",
+      "Total Stock": 55,
+      "Brand": "GSP",
+      "Product Name": "Slayer Pro 20*250 Ml ( Thiamethoxam 30 Fs )New"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Thaimethoxam 30% FS",
+      "Total Stock": 1315,
+      "Brand": "GSP",
+      "Product Name": "Slayer Pro 20*500 Ml ( Thiamethoxam 30 Fs ) New"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Metribuzin",
+      "Total Stock": 69.5,
+      "Brand": "GSP",
+      "Product Name": "Verdict -100 Gm-(Metribuzin )"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Atrazine 50% WP",
+      "Total Stock": 160,
+      "Brand": "GSP",
+      "Product Name": "Xtrazine 20*500 Gm (Atrazin 50% Wp )"
+     },
+     {
+      "Brand": "GSP",
+      "Product Name": "Gsp 2"
+     },
+     {
+      "Category": "Pesticides",
+      "Total Stock": 5,
+      "Brand": "GSP",
+      "Product Name": "Esteem-Azoxystrobin + Tebuconazole 50*100 Ml- Gsp 2"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "Pendimethalin 35% + Metribuzin 3.5% SE",
+      "Total Stock": 36,
+      "Brand": "GSP",
+      "Product Name": "Plateform - (Pendimethalin + Metribuzin) -10*2 Ltr"
+     },
+     {
+      "Category": "Pesticides",
+      "Total Stock": 9,
+      "Brand": "GSP",
+      "Product Name": "Sickle-Pretilachlor-10*1 Ltr"
+     },
+     {
+      "Product Name": "HURL"
+     },
+     {
+      "Total Stock": 2500,
+      "Brand": "HURL",
+      "Product Name": "Apna Power 20*1 Kg-Mycorrhiza"
+     },
+     {
+      "Total Stock": 1840,
+      "Brand": "HURL",
+      "Product Name": "Apna Power 5*4 KG-Mycorrhiza"
+     },
+     {
+      "Total Stock": 7475,
+      "Brand": "HURL",
+      "Product Name": "Calcium Nitrate 25 Kg- Apna"
+     },
+     {
+      "Total Stock": 1000,
+      "Brand": "HURL",
+      "Product Name": "Calcium Nitrate 5*10 Kg- Apna"
+     },
+     {
+      "Total Stock": 400,
+      "Brand": "HURL",
+      "Product Name": "Calciun Nitrate 10*5 Kg- Apna"
+     },
+     {
+      "Total Stock": 200,
+      "Brand": "HURL",
+      "Product Name": "Natural Potash - 50 Kg Apna"
+     },
+     {
+      "Total Stock": 690,
+      "Brand": "HURL",
+      "Product Name": "Ssp Zinc + Boron 50 Kg Hurl- Mrp 670\/-"
+     },
+     {
+      "Total Stock": 1200,
+      "Brand": "HURL",
+      "Product Name": "Ssp- Zinc+ Boron 50 Kg- Hurl Mrp  900\/-"
+     },
+     {
+      "Product Name": "Indogulf"
+     },
+     {
+      "Total Stock": -1000,
+      "Brand": "Indogulf",
+      "Product Name": "Urea Indorama 45 Kg  Rack"
+     },
+     {
+      "Brand": "Indogulf",
+      "Product Name": "IPL"
+     },
+     {
+      "Total Stock": -350,
+      "Brand": "Indogulf",
+      "Product Name": "DAP (IPL)"
+     },
+     {
+      "Total Stock": 1302,
+      "Brand": "Indogulf",
+      "Product Name": "Ipl -NPK  - 13:12:10- 50 KG Self Godown"
+     },
+     {
+      "Total Stock": -50,
+      "Brand": "Indogulf",
+      "Product Name": "Ipl Npk  16:16:16 - 50 Kg- Hiralal"
+     },
+     {
+      "Total Stock": 304,
+      "Brand": "Indogulf",
+      "Product Name": "IPL Npk 20:20:0:13- 50 Kg- Self Godown"
+     },
+     {
+      "Total Stock": -150,
+      "Product Name": "MOP IPL"
+     },
+     {
+      "Total Stock": -100,
+      "Brand": "MOP IPL",
+      "Product Name": "Mop Ipl Rack-50 Kg"
+     },
+     {
+      "Total Stock": -24,
+      "Brand": "MOP IPL",
+      "Product Name": "Nano Urea - 24*500 Ml- Company"
+     },
+     {
+      "Total Stock": 147,
+      "Brand": "MOP IPL",
+      "Product Name": "Polyhalite 25 Kg"
+     },
+     {
+      "Total Stock": 697,
+      "Brand": "MOP IPL",
+      "Product Name": "SSP Ipl Zincated 50 Kg"
+     },
+     {
+      "Product Name": "Jaishil"
+     },
+     {
+      "Category": "Fungicides",
+      "Subcategory": "Liquid Sulphur 55.16% SC",
+      "Total Stock": -50,
+      "Brand": "Jaishil",
+      "Product Name": "Gain 10*1 Ltr- Liquid Sulphur"
+     },
+     {
+      "Category": "Fungicides",
+      "Subcategory": "Liquid Sulphur 55.16% SC",
+      "Total Stock": -120,
+      "Brand": "Jaishil",
+      "Product Name": "Gain 20*500 Ml- Liquid Sulphur"
+     },
+     {
+      "Category": "Fungicides",
+      "Subcategory": "Sulphur 80% WDG",
+      "Total Stock": 1650,
+      "Brand": "Jaishil",
+      "Product Name": "Hariyali Sulphur 80% Wdg 10*3 Kg ( Bags)=30 Kg"
+     },
+     {
+      "Category": "Fungicides",
+      "Subcategory": "Sulphur 80% WDG",
+      "Total Stock": 120,
+      "Brand": "Jaishil",
+      "Product Name": "Hariyali Sulphur 80% Wdg 10*3 Kg ( Drum)= 30 Kg"
+     },
+     {
+      "Category": "Fungicides",
+      "Subcategory": "Sulphur 80% WDG",
+      "Total Stock": -260,
+      "Brand": "Jaishil",
+      "Product Name": "Hariyali Sulphur 80% Wdg 20*1 Kg Carton = 20 Kg"
+     },
+     {
+      "Category": "Fungicides",
+      "Subcategory": "Sulphur 80% WDG",
+      "Total Stock": 1460,
+      "Brand": "Jaishil",
+      "Product Name": "Hariyali Sulphur 80 % Wdg 20*1 Kg Pouch"
+     },
+     {
+      "Category": "Fungicides",
+      "Subcategory": "Sulphur 90% WG",
+      "Total Stock": 90,
+      "Brand": "Jaishil",
+      "Product Name": "Hariyali Super Sulphur 90 % Wg  10*3 Kg Bag=30 Kg"
+     },
+     {
+      "Category": "Fungicides",
+      "Subcategory": "Sulphur 90% WG",
+      "Total Stock": 2148,
+      "Brand": "Jaishil",
+      "Product Name": "Profit 80% WDG 10*3 KG  Bags = 30 Kg"
+     },
+     {
+      "Category": "Fungicides",
+      "Subcategory": "Sulphur 90% WG",
+      "Total Stock": 240,
+      "Brand": "Jaishil",
+      "Product Name": "Profit 80 % WDG 10*3 Kg- Drum=- 30 Kg"
+     },
+     {
+      "Category": "Fungicides",
+      "Subcategory": "Tebuconazole 10% + Sulphur 65%",
+      "Total Stock": -60,
+      "Brand": "Jaishil",
+      "Product Name": "Ziddi (Tebuconazole+Sulphur) 10*1 Kg"
+     },
+     {
+      "Category": "Fungicides",
+      "Subcategory": "Tebuconazole 10% + Sulphur 65%",
+      "Total Stock": -300,
+      "Brand": "Jaishil",
+      "Product Name": "Ziddi (Tebuconazole+Sulphur) 20*500 Gm"
+     },
+     {
+      "Category": "Fungicides",
+      "Subcategory": "Tebuconazole 10% + Sulphur 65%",
+      "Total Stock": 65,
+      "Brand": "Jaishil",
+      "Product Name": "Ziddi (Tebuconazole+ Sulphur ) 40*250 Gm"
+     },
+     {
+      "Product Name": "JRPL"
+     },
+     {
+      "Total Stock": 15,
+      "Brand": "JRPL",
+      "Product Name": "Guru 20*500 Ml -Profenofos + Cypermethrin"
+     },
+     {
+      "Total Stock": 72,
+      "Brand": "JRPL",
+      "Product Name": "Guru 24*500 Ml - Profenofos+ Cypermethrin"
+     },
+     {
+      "Total Stock": 22,
+      "Brand": "JRPL",
+      "Product Name": "Lamba 48*250 Ml - Lambdacyhalothrin 5 % EC"
+     },
+     {
+      "Total Stock": 5,
+      "Brand": "JRPL",
+      "Product Name": "Lusker 20*250 Gm- Thiamethoxam 25 % WG"
+     },
+     {
+      "Total Stock": 67,
+      "Brand": "JRPL",
+      "Product Name": "Taj 60*100 Gm - Metribuzim 70 %WP"
+     },
+     {
+      "Product Name": "Jubilant"
+     },
+     {
+      "Total Stock": 4780,
+      "Brand": "Jubilant",
+      "Product Name": "Ramban Shakti Zyme 10 Kg"
+     },
+     {
+      "Total Stock": 3089,
+      "Brand": "Jubilant",
+      "Product Name": "SSP  Ramban Farmoola-50 Kg"
+     },
+     {
+      "Total Stock": 152,
+      "Brand": "Jubilant",
+      "Product Name": "SSP Ramban  Sada -50 Kg"
+     },
+     {
+      "Product Name": "Kanchan"
+     },
+     {
+      "Total Stock": 162,
+      "Brand": "Kanchan",
+      "Product Name": "Ssp Kanchan  Zinacted- 50 Kg- Mrp 545\/-"
+     },
+     {
+      "Total Stock": 590,
+      "Brand": "Kanchan",
+      "Product Name": "Ssp Kanchan -Zinacted -50 Kg-  Mrp  655\/-"
+     },
+     {
+      "Total Stock": 150,
+      "Brand": "Kanchan",
+      "Product Name": "Ssp Kanchan-Zinacted- 50 Kg-  Mrp 665\/-"
+     },
+     {
+      "Total Stock": 1835,
+      "Brand": "Kanchan",
+      "Product Name": "Ssp Kanchan- Zinacted -50 Kg - Mrp 725\/-"
+     },
+     {
+      "Total Stock": 44,
+      "Product Name": "Kribhco"
+     },
+     {
+      "Total Stock": 44,
+      "Brand": "Kribhco",
+      "Product Name": "Mop Kribhco 50 Kg"
+     },
+     {
+      "Product Name": "Mono Magic"
+     },
+     {
+      "Total Stock": 70,
+      "Brand": "Mono Magic",
+      "Product Name": "Contra Super 20*500 Ml- Hexaconazole 5 % Sc- MMI"
+     },
+     {
+      "Total Stock": 20,
+      "Brand": "Mono Magic",
+      "Product Name": "Current 10*1 Ltr-Lambda Cyhalothrin 5 % Sl- MMI"
+     },
+     {
+      "Total Stock": 40,
+      "Brand": "Mono Magic",
+      "Product Name": "Current 20*500 Ml-Lambda Cyhalothrin 5 % Sl- MMI"
+     },
+     {
+      "Total Stock": 1300,
+      "Brand": "Mono Magic",
+      "Product Name": "Fenval -Monocrate -10*5 Kg"
+     },
+     {
+      "Total Stock": 725,
+      "Brand": "Mono Magic",
+      "Product Name": "Fenval -Monocrate- 25*1 Kg"
+     },
+     {
+      "Total Stock": 2475,
+      "Brand": "Mono Magic",
+      "Product Name": "Fenval- Monocrate - 25 Kg"
+     },
+     {
+      "Total Stock": 700,
+      "Brand": "Mono Magic",
+      "Product Name": "Fenval - Monocrate - 5*10 Kg"
+     },
+     {
+      "Total Stock": 900,
+      "Brand": "Mono Magic",
+      "Product Name": "Shooter 5*5 Kg (Cartap Hydrochloride 4 % )"
+     },
+     {
+      "Product Name": "Narmada Bio"
+     },
+     {
+      "Total Stock": 323,
+      "Brand": "Narmada Bio",
+      "Product Name": "Narmada Bio Prom 50 Kg"
+     },
+     {
+      "Total Stock": 2,
+      "Brand": "Narmada Bio",
+      "Product Name": "Narmada Prom  50 Kg - Damaged"
+     },
+     {
+      "Total Stock": 54,
+      "Brand": "Narmada Bio",
+      "Product Name": "Npk - Narmada"
+     },
+     {
+      "Total Stock": 34,
+      "Brand": "Narmada Bio",
+      "Product Name": "Prom ( Vita Phose )- 50 Kg"
+     },
+     {
+      "Product Name": "National Fertilizers"
+     },
+     {
+      "Total Stock": 320,
+      "Brand": "National Fertilizers",
+      "Product Name": "Kisan Carboman 20*500 Gm"
+     },
+     {
+      "Total Stock": 70,
+      "Brand": "National Fertilizers",
+      "Product Name": "Kisan -Glypho 10*1 Ltr"
+     },
+     {
+      "Total Stock": 95,
+      "Brand": "National Fertilizers",
+      "Product Name": "Kisan Glypho 20*500 Ml"
+     },
+     {
+      "Total Stock": 13,
+      "Brand": "National Fertilizers",
+      "Product Name": "MOP Nfl"
+     },
+     {
+      "Product Name": "Other"
+     },
+     {
+      "Total Stock": 22,
+      "Brand": "Other",
+      "Product Name": "Bajra 50 *500 Gm"
+     },
+     {
+      "Total Stock": 1100,
+      "Brand": "Other",
+      "Product Name": "Boro Plex Calcium Chloride 20*1 Kg"
+     },
+     {
+      "Total Stock": 1000,
+      "Brand": "Other",
+      "Product Name": "Iffco Zyme 50 Kg"
+     },
+     {
+      "Total Stock": 4490,
+      "Brand": "Other",
+      "Product Name": "Mahadan Bento  10*5 Kg"
+     },
+     {
+      "Total Stock": 560,
+      "Brand": "Other",
+      "Product Name": "Regent Ultra 4*5 Kg"
+     },
+     {
+      "Product Name": "Parijat"
+     },
+     {
+      "Total Stock": 50,
+      "Brand": "Parijat",
+      "Product Name": "Ahead 80*40 Gms ( Fipronil 80 % )"
+     },
+     {
+      "Total Stock": 24,
+      "Brand": "Parijat",
+      "Product Name": "Dhol - Glyphosate 71 % -60*100 Gm- Parijat"
+     },
+     {
+      "Total Stock": 948,
+      "Brand": "Parijat",
+      "Product Name": "Glyclear-Glyphosate 41 % SL- Parijat-12*1 Ltr"
+     },
+     {
+      "Total Stock": 396,
+      "Brand": "Parijat",
+      "Product Name": "Glyclear- Glyphosate 41 % SL- Parijat- 24*500 Ml"
+     },
+     {
+      "Total Stock": 41,
+      "Brand": "Parijat",
+      "Product Name": "Kaziro 24*500 Ml ( Thiamethoxam 30 % FS )"
+     },
+     {
+      "Total Stock": 7.5,
+      "Brand": "Parijat",
+      "Product Name": "Mkel Fuzico  40*250 Ml (Crop Nutraceuticals )"
+     },
+     {
+      "Total Stock": 24900,
+      "Brand": "Parijat",
+      "Product Name": "Mortel 5*5 Kg ( Fipronil  0.3 % Gr )"
+     },
+     {
+      "Total Stock": 350,
+      "Brand": "Parijat",
+      "Product Name": "Paristar -Mycorrhiza - 5*5 Kg"
+     },
+     {
+      "Total Stock": 12,
+      "Brand": "Parijat",
+      "Product Name": "Shatrujeet -Chloro+Cyper-12*1 Ltr-Parijat"
+     },
+     {
+      "Total Stock": 24,
+      "Brand": "Parijat",
+      "Product Name": "Shatrujeet -Chloro +Cyper-24*500 Ml- Parijat"
+     },
+     {
+      "Product Name": "Parle"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Crude Amino Extract 5% + See Weed 2% + Natural Humic Source 3% + Natural Phosphorus Source 15%",
+      "Total Stock": -100,
+      "Brand": "Parle",
+      "Product Name": "Aminoz Spl Granule Bucket 10 Kg"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Fulvic Source 3.0% + Crude Protein 12% + Phosphorous 3.5% + Kelp Extract 2.0%",
+      "Total Stock": 24,
+      "Brand": "Parle",
+      "Product Name": "Aminoz Spl Liquid 12*1 Ltr"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Fulvic Source 3.0% + Crude Protein 12% + Phosphorous 3.5% + Kelp Extract 2.0%",
+      "Total Stock": 10,
+      "Brand": "Parle",
+      "Product Name": "Aminoz Spl Liquid  20*500 Ml"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Crude Amino Extract 5% + See Weed 2% + Natural Humic Source 3% + Natural Phosphorus Source 15%",
+      "Total Stock": 500,
+      "Brand": "Parle",
+      "Product Name": "Aminozyme Extra Power 4*5 Kg"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Ganna Special Granules",
+      "Total Stock": 4500,
+      "Brand": "Parle",
+      "Product Name": "Ganna Special 5*10 Kg- Bag- Parle"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Humus Source 26% + Fulvic Source 3.8% + Potassium Humate 1.2%",
+      "Total Stock": -100,
+      "Brand": "Parle",
+      "Product Name": "Humic Special Granule 26% 10 Kg Bucket"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Humus Source 12% + Fulvic Source 3.8% + Potassium Humate 1.2%",
+      "Total Stock": 72,
+      "Brand": "Parle",
+      "Product Name": "Humic Special Liquid 12% 12*1 Ltr"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Humus Source 12% + Fulvic Source 3.8% + Potassium Humate 1.2%",
+      "Total Stock": 20,
+      "Brand": "Parle",
+      "Product Name": "Humic Special Liquid 12% 20*500 Ml"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Humus Source 26% + Fulvic Source 3.8% + Potassium Humate 1.2%",
+      "Total Stock": 36,
+      "Brand": "Parle",
+      "Product Name": "Humic Special Liquid 26%-12*1 Ltr"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Humus Source 26% + Fulvic Source 3.8% + Potassium Humate 1.2%",
+      "Total Stock": 30,
+      "Brand": "Parle",
+      "Product Name": "Humic Special Liquid 26%- 20*500 Ml"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Potash ",
+      "Total Stock": 158,
+      "Brand": "Parle",
+      "Product Name": "Mop Organic Potash 50 Kg - Parle"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Granule C.F.U. : 5 x 10 \/gm + 8 Liquid C.F.U. : 1 x 10 \/ml.",
+      "Total Stock": 24,
+      "Brand": "Parle",
+      "Product Name": "NPK Liquid 12*1 Ltr"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Granule C.F.U. : 5 x 10 \/gm + 8 Liquid C.F.U. : 1 x 10 \/ml.",
+      "Total Stock": 10,
+      "Brand": "Parle",
+      "Product Name": "NPK Liquid 20*500 Ml"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Total Phosphate 10.42% + Total Nitrogen : 0.47% + Total Organic Carbon 7.87% + PH 6 - 7",
+      "Total Stock": 96,
+      "Brand": "Parle",
+      "Product Name": "Parle Phos ( Prom  ) 50 Kg"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Potash Granule",
+      "Total Stock": 1520,
+      "Brand": "Parle",
+      "Product Name": "Potash Granule -Parle- 5*4 KG"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Potash Liquid ",
+      "Total Stock": 24,
+      "Brand": "Parle",
+      "Product Name": "Potash Liquid 12*1 Ltr"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Potash Liquid ",
+      "Total Stock": 20,
+      "Brand": "Parle",
+      "Product Name": "Potash Liquid 20*500 Ml"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Granules",
+      "Total Stock": 530,
+      "Brand": "Parle",
+      "Product Name": "Soil Conditoner Parle 30 Kg"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Sulphur Granule",
+      "Total Stock": 2400,
+      "Brand": "Parle",
+      "Product Name": "Sulphur Granule -Parle -5*4 Kg-"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Sulphur Liquid ",
+      "Total Stock": 24,
+      "Brand": "Parle",
+      "Product Name": "Sulphur Liquid 12*1 Ltr"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Sulphur Liquid ",
+      "Total Stock": 10,
+      "Brand": "Parle",
+      "Product Name": "Sulphur Liquid 20*500 Ml"
+     },
+     {
+      "Category": "Pesticides",
+      "Subcategory": "richoderma Viride",
+      "Total Stock": -10,
+      "Brand": "Parle",
+      "Product Name": "Tricho Plus -Trichoderma Viride - Parle 10*1 Kg"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Harit Plus Powder Pouchs ",
+      "Total Stock": 10,
+      "Brand": "Parle",
+      "Product Name": "Harit Plus Powder Pouchs  20*500 Gm"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Harit Plus Powder Bottle",
+      "Total Stock": 10,
+      "Brand": "Parle",
+      "Product Name": "Harit Plus Powder Bottle 20*500 Gm"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "Fulvic Source 3.0% Crude Protein 12.0% + Phosphorus Source 3.5% + Kelp Extract 2.0%",
+      "Total Stock": 10,
+      "Brand": "Parle",
+      "Product Name": "Potato Special 20*500 Ml"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "PSB Granule",
+      "Total Stock": 140,
+      "Brand": "Parle",
+      "Product Name": "PSB Granule 10*2 Kg"
+     },
+     {
+      "Category": "Fertilizers ",
+      "Subcategory": "PSB Liquid",
+      "Total Stock": 140,
+      "Brand": "Parle",
+      "Product Name": "PSB Liquid 10*2 Kg"
+     },
+     {
+      "Product Name": "Shri Ram"
+     },
+     {
+      "Total Stock": 6900,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram B'sulf -90% Sulphur, 10% Bentonite 10*5 Kg"
+     },
+     {
+      "Total Stock": 950,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram Carbo 3 G 25*1 Kg-( Carbofuran)"
+     },
+     {
+      "Total Stock": 408,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram Ciptrole Gr - Chlorantraniliprole -6*4 Kg"
+     },
+     {
+      "Total Stock": 30,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram Ciptrole Sc - Chlorantraniliprole -150 Ml"
+     },
+     {
+      "Total Stock": 450,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram Energy - Calcium Nitrate -10 Kg"
+     },
+     {
+      "Total Stock": 61080,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram Fipgra -Fipronil 0.6 % - 5*4 Kg"
+     },
+     {
+      "Total Stock": 30,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram Mancozeb -Mancozeb -10*1 Kg"
+     },
+     {
+      "Total Stock": 75,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram Mancozeb - Mancozeb-20*500 Gm"
+     },
+     {
+      "Total Stock": 56,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram Shera 16*250 Gm (Thiamethoxam)"
+     },
+     {
+      "Total Stock": 52,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram Shera 4*1 Kg (Thiamethoxam)"
+     },
+     {
+      "Total Stock": 204,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram Shera 500*8 Gm  (Thiamethoxam)"
+     },
+     {
+      "Total Stock": 1305,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram Sulpho 10*3 Kg- Pouch"
+     },
+     {
+      "Total Stock": 2736,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram Sulpho 16*3 Kg ( Drum)"
+     },
+     {
+      "Total Stock": 5050,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram Tripti Micro 6 % 10*5 Kg"
+     },
+     {
+      "Total Stock": 15270,
+      "Brand": "Shri Ram",
+      "Product Name": "Shri Ram Ultrazib - Gibbrellic Acid- 2.5 Gm Unit"
+     },
+     {
+      "Total Stock": 765,
+      "Brand": "Shri Ram",
+      "Product Name": "Urea Shri Ram Hiralal Godown"
+     },
+     {
+      "Product Name": "Sygenta"
+     },
+     {
+      "Total Stock": 3,
+      "Brand": "Sygenta",
+      "Product Name": "Ampligo 50*200 Ml"
+     },
+     {
+      "Total Stock": 30,
+      "Brand": "Sygenta",
+      "Product Name": "Polythrin 20*500 Ml"
+     },
+     {
+      "Total Stock": 30,
+      "Brand": "Sygenta",
+      "Product Name": "Quantis 25*400 Ml"
+     },
+     {
+      "Total Stock": 400,
+      "Brand": "Sygenta",
+      "Product Name": "Thionutri 40*500 Gm."
+     },
+     {
+      "Total Stock": 580,
+      "Brand": "Sygenta",
+      "Product Name": "Virtako 4*5 KG"
+     },
+     {
+      "Total Stock": 160,
+      "Brand": "Sygenta",
+      "Product Name": "Virtako 4*5 Kg- S"
+     },
+     {
+      "Total Stock": 1.2,
+      "Brand": "Sygenta",
+      "Product Name": "Voliam Flexi 20*200 Ml"
+     },
+     {
+      "Total Stock": 3,
+      "Brand": "Sygenta",
+      "Product Name": "Voliam Flexi 20*250 Ml"
+     },
+     {
+      "Total Stock": 6.5,
+      "Brand": "Sygenta",
+      "Product Name": "Voliam Flexi  40*100 Ml"
+     },
+     {
+      "Product Name": "Wheat \/ Seeds  All Company"
+     },
+     {
+      "Total Stock": 15,
+      "Brand": "Wheat \/ Seeds  All Company",
+      "Product Name": "Indorama Hybride Mustard Shakti 30*1 Kg"
+     },
+     {
+      "Total Stock": 1,
+      "Brand": "Wheat \/ Seeds  All Company",
+      "Product Name": "Shri Ram Mustard Seeds 1644 60*500 Gm- New"
+     },
+     {
+      "Product Name": "Yara"
+     },
+     {
+      "Total Stock": -200,
+      "Brand": "Yara",
+      "Product Name": "Krista K Sop 0:0:50 - 2*10 Kg"
+     },
+     {
+      "Total Stock": 23800,
+      "Brand": "Yara",
+      "Product Name": "Krista Sop 0:0:50 ( Pot Sulphate ) 2*10 Kg"
+     },
+     {
+      "Total Stock": 106,
+      "Brand": "Yara",
+      "Product Name": "Urea Yara Self Godown"
+     },
+     {
+      "Total Stock": -1789,
+      "Brand": "Yara",
+      "Product Name": "Yara  Liva Nitrabor ( Boronated CN )  25 KG- C"
+     },
+     {
+      "Total Stock": 11200,
+      "Brand": "Yara",
+      "Product Name": "Yara Magnesium Sulphate Yara 25 Kg"
+     },
+     {
+      "Total Stock": 25,
+      "Brand": "Yara",
+      "Product Name": "Yaramila Complex (NPK 12:11:18 )25 Kg- T"
+     },
+     {
+      "Total Stock": 80,
+      "Brand": "Yara",
+      "Product Name": "Yara Procote 10*1 Ltr-Mfg-03\/23- Mrp- 3300\/-"
+     },
+     {
+      "Total Stock": 9.5,
+      "Brand": "Yara",
+      "Product Name": "Yara Procote 20*500 Ml-Mfg-2\/23-Mrp-1870\/-"
+     },
+     {
+      "Total Stock": 430,
+      "Brand": "Yara",
+      "Product Name": "Yara Procote 40*250 Ml-Mfg-03\/23- Mrp-1000\/-"
+     },
+     {
+      "Total Stock": 43,
+      "Brand": "Yara",
+      "Product Name": "Yara Stopit Calcium 40*250 Ml-Mfg-09\/2020- 270\/-"
+     },
+     {
+      "Total Stock": 10,
+      "Brand": "Yara",
+      "Product Name": "Yara Vita Biotrac 10*1 Ltr- Mfg-06-2021-Mrp-1850\/-"
+     },
+     {
+      "Total Stock": 55,
+      "Brand": "Yara",
+      "Product Name": "Yara Vita Biotrac 20*500 Ml-Mfg-06-2022- Mrp-1736\/-"
+     },
+     {
+      "Total Stock": 110.75,
+      "Brand": "Yara",
+      "Product Name": "Yara Vita Biotrac 40*250 Ml-Mfg-07-2022-Mrp-900\/-"
+     },
+     {
+      "Total Stock": 8,
+      "Brand": "Yara",
+      "Product Name": "Yara Vita Borotac 40*250 Ml- Mfg-------"
+     },
+     {
+      "Total Stock": 61.5,
+      "Brand": "Yara",
+      "Product Name": "Yara Vita Bortrac 40*250 Ml- Mfg July-2022 MRP-385\/"
+     },
+     {
+      "Total Stock": 14.3,
+      "Brand": "Yara",
+      "Product Name": "Yara Vita Bortrac 50*100 Ml"
+     },
+     {
+      "Total Stock": 16.5,
+      "Brand": "Yara",
+      "Product Name": "Yara Vita Seniphose 20*500 Ml"
+     },
+     {
+      "Total Stock": 5,
+      "Brand": "Yara",
+      "Product Name": "Yara Vita Stopit Calcium 10*1 Ltr"
+     },
+     {
+      "Total Stock": 15,
+      "Brand": "Yara",
+      "Product Name": "Yara Vita Stopit Calcium 20*500 Ml"
+     },
+     {
+      "Total Stock": 78,
+      "Brand": "Yara",
+      "Product Name": "Yara  Vita Zintrac 40*250 Ml"
+     },
+     {
+      "Total Stock": 10,
+      "Brand": "Yara",
+      "Product Name": "Yara Vita Zintrac 50*100 Ml"
+     },
+     {
+      "Product Name": "Zuari \/ PPL"
+     },
+     {
+      "Total Stock": 400,
+      "Brand": "Zuari \/ PPL",
+      "Product Name": "Zypmite 25 Kg"
+     }
+    ]

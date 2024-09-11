@@ -289,6 +289,10 @@ section {
   outline: none;
 }
 
+.search_bar::placeholder {
+  color: white;
+}
+
 .suggestions {
   position: absolute;
   top: 100%;
@@ -400,15 +404,7 @@ section {
   right: 0;
 }
 
-@media (max-width: 1583px) {
-  .address {
-    padding: 15px 100px;
-  }
 
-  .second_nav {
-    padding: 25px 100px;
-  }
-}
 
 @media (max-width: 1583px) {
   .address {
@@ -433,6 +429,10 @@ section {
     color: black;
 
   }
+  .search_bar::placeholder {
+    color: black;
+  }
+
   .menu-btn {
     display: block;
     color: #ffff;
@@ -444,6 +444,10 @@ section {
     z-index: 999;
     position: absolute;
   
+  }
+  
+  .cusotmer_section i{
+    color: black;
   }
 
   header .navigation_active {
@@ -505,8 +509,6 @@ section {
   header .navigation .navigation-items {
     margin-top: 5em;
   }
-
-
 
 }
 

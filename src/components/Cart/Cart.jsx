@@ -31,16 +31,16 @@ export const Cart = () => {
                                 <div className='counting'>
                                     <i className="fa-solid fa-plus" onClick={() => dispatch(incrementQuantity(item.id))}></i>
                                     <input
-                                    className='input_quantity'
+                                        className='input_quantity'
                                         type="number"
                                         value={item.quantity}
                                         onChange={(e) => {
                                             const newQuantity = Number(e.target.value)
-                                            if (newQuantity >= 0) { 
+                                            if (newQuantity >= 0) {
                                                 dispatch(updateQuantity({ id: item.id, quantity: newQuantity }));
                                             }
                                         }}
-                                    />                                    
+                                    />
                                     <i className="fa-solid fa-minus" onClick={() => dispatch(decrementQuantity(item.id))}></i>
                                 </div>
                             </div>
@@ -49,13 +49,8 @@ export const Cart = () => {
                             <button className='checkout_button'>Proceed to Checkout</button>
                         </Link>
                     </div>
-
                 )}
-
-
             </div>
-
-
         </>
     );
 };

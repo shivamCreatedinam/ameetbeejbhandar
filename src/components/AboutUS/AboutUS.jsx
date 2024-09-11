@@ -38,29 +38,29 @@ export const AboutUS = () => {
 
     const cartItems = useAppSelector((state) => state.cart.items);
 
-    // search
-    const [searchQuery, setSearchQuery] = useState('');
-    const [filteredProducts, setFilteredProducts] = useState([]);
-    const navigate = useNavigate();
-
-    const handleSearch = (e) => {
-        const query = e.target.value.toLowerCase();
-        setSearchQuery(query);
-        // Filter products based on the search query
-        const filtered = productsData.filter((product) =>
-            product.Category.toLowerCase().includes(query.toLowerCase())
-        );
-
-        setFilteredProducts(filtered);
-        
-      
-    
-    };
-
-    const handleProductClick = (productId) => {
-        navigate(`/products/${productId}`);
-    };
-
+     // search
+     const [searchQuery, setSearchQuery] = useState('');
+     const [filteredSearchProducts, setFilteredSearchProducts] = useState([]);
+     const navigate = useNavigate();
+ 
+     const handleSearch = (e) => {
+         const query = e.target.value.toLowerCase();
+         setSearchQuery(query);
+ 
+         const filtered = productsData.filter((product) =>
+             (product.Brand && product.Brand.toLowerCase().includes(query)) ||
+             (product.Category && product.Category.toLowerCase().includes(query)) ||
+             (product["Product Name"] && product["Product Name"].toLowerCase().includes(query)) ||
+             (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
+         );
+ 
+         setFilteredSearchProducts(filtered);
+     };
+ 
+     const handleProductClick = (productId) => {
+         navigate(`/products/${productId}`);
+     };
+ 
 
     return (
         <>
@@ -78,7 +78,7 @@ export const AboutUS = () => {
                             <Link to='/shop'>Explore</Link>
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
-                            <Link to='/shop'>Products</Link>
+                            {/* <Link to='/shop'>Products</Link> */}
                             <div className='search_container'>
                                 <input
                                     type='search'
@@ -92,8 +92,8 @@ export const AboutUS = () => {
                                 {/* Display suggestions if there is a search query */}
                                 {searchQuery && (
                                     <ul className='suggestions'>
-                                        {filteredProducts.length ? (
-                                            filteredProducts.map((product) => (
+                                        {filteredSearchProducts.length ? (
+                                            filteredSearchProducts.map((product) => (
                                                 <li
                                                     key={product.id}
                                                     onClick={() => handleProductClick(product.id)}
