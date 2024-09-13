@@ -188,8 +188,19 @@ export const Shop = () => {
                         <label>
                             <input
                                 type="radio"
-                                name="herbicides"
-                                checked={selectedCategory === 'herbicides'}
+                                name="Pesticides"
+                                checked={selectedCategory === 'Pesticides'}
+                                onChange={handleCategoryChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                           Pesticides
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="Herbicides"
+                                checked={selectedCategory === 'Herbicides'}
                                 onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
@@ -199,8 +210,8 @@ export const Shop = () => {
                         <label>
                             <input
                                 type="radio"
-                                name="insecticides"
-                                checked={selectedCategory === 'insecticides'}
+                                name="Insecticides"
+                                checked={selectedCategory === 'Insecticides'}
                                 onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
@@ -210,8 +221,8 @@ export const Shop = () => {
                         <label>
                             <input
                                 type="radio"
-                                name="fungicides"
-                                checked={selectedCategory === 'fungicides'}
+                                name="Fungicides"
+                                checked={selectedCategory === 'Fungicides'}
                                 onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
@@ -221,8 +232,8 @@ export const Shop = () => {
                         <label>
                             <input
                                 type="radio"
-                                name="plant growth regulator"
-                                checked={selectedCategory === 'plant growth regulator'}
+                                name="Plant Growth Regulator"
+                                checked={selectedCategory === 'Plant Growth Regulator'}
                                 onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
@@ -416,7 +427,8 @@ export const Shop = () => {
   
                     {/* all products */}
                     <div className='products_right_container'>
-                        {filteredProducts.map((product) => (
+
+                        { filteredProducts.length > 0 ? filteredProducts.map((product) => (
 
                             <div className='single_product' key={product.id}>
                                 <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit', }}>
@@ -437,7 +449,10 @@ export const Shop = () => {
                                 </div>
                             </div>
 
-                        ))}
+                        )) : (
+                            <h3>No Products Found in this filter...</h3>
+                        )
+                    }
                     </div>
                 </div>
             </div>

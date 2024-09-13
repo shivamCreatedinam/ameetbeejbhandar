@@ -68,14 +68,15 @@ export const Product_details = () => {
     const handleSearch = (e) => {
         const query = e.target.value.toLowerCase();
         setSearchQuery(query);
-        // Filter products based on the search query
+
         const filtered = productsData.filter((product) =>
-            product.Category.toLowerCase().includes(query.toLowerCase())
+            (product.Brand && product.Brand.toLowerCase().includes(query)) ||
+            (product.Category && product.Category.toLowerCase().includes(query)) ||
+            (product["Product Name"] && product["Product Name"].toLowerCase().includes(query)) ||
+            (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
         );
 
         setFilteredProducts(filtered);
-        
-
     };
 
     const handleProductClick = (productId) => {
@@ -110,6 +111,7 @@ export const Product_details = () => {
                                 <i className="fa-solid fa-magnifying-glass"></i>
 
                                 {/* Display suggestions if there is a search query */}
+                                {/* Display suggestions if there is a search query */}
                                 {searchQuery && (
                                     <ul className='suggestions'>
                                         {filteredProducts.length ? (
@@ -119,7 +121,7 @@ export const Product_details = () => {
                                                     onClick={() => handleProductClick(product.id)}
                                                     className='suggestion_item'
                                                 >
-                                                     &emsp; {product['Product Name']}  &emsp; by &emsp;
+                                                    &emsp; {product['Product Name']}  &emsp; by &emsp;
                                                     {product.Brand}
                                                 </li>
                                             ))
