@@ -62,7 +62,7 @@ export const Product_details = () => {
     const dispatch = useAppDispatch();
 
     const handleAddToCart = () => {
-        // dispatch(addItemToCart(product));
+        dispatch(addItemToCart(product));
         setIsCartOpen(!isCartOpen)
 
     };
