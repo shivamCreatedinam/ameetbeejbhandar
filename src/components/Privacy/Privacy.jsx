@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../Terms_Conditions/Terms_Conditions.css'
 import { Footer } from '../Footer/Footer';
 import { useAppSelector } from '../../Redux/hooks';
@@ -6,7 +6,7 @@ import { Cart } from '../Cart/Cart';
 import { Link } from 'react-router-dom';
 import productsData from '../../Products.json';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 export const Privacy = () => {
     // State for menu button
     const [isActive, setIsActive] = useState(false);
@@ -31,32 +31,53 @@ export const Privacy = () => {
 
     const cartItems = useAppSelector((state) => state.cart.items);
 
-       // search
-       const [searchQuery, setSearchQuery] = useState('');
-       const [filteredProducts, setFilteredProducts] = useState([]);
-       const navigate = useNavigate();
-   
-       const handleSearch = (e) => {
-           const query = e.target.value.toLowerCase();
-           setSearchQuery(query);
-           // Filter products based on the search query
-           const filtered = productsData.filter((product) =>
-               product.Category.toLowerCase().includes(query.toLowerCase())
-           );
-   
-           setFilteredProducts(filtered);
-           
-   
-       };
-   
-       const handleProductClick = (productId) => {
-           navigate(`/products/${productId}`);
-       };
+
+      // initial products
+      const [products, setProducts] = useState([]);
+
+      useEffect(() => {
+          const fetchProducts = async () => {
+              try {
+                  const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                  setProducts(response.data.data.data);
+              } catch (error) {
+                  console.error('Error fetching products:', error);
+              }
+          };
+  
+          fetchProducts();
+      }, []);
+
+
+     // search
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredSearchProducts, setFilteredSearchProducts] = useState([]);
+    const navigate = useNavigate();
+
+    const handleSearch = (e) => {
+        const query = e.target.value.toLowerCase();
+        setSearchQuery(query);
+
+        // console.log(products)
+        const filtered = products.filter((product, index) =>
+            // key={index}
+            (product?.brand?.brand_name &&product?.brand?.brand_name.toLowerCase().includes(query)) ||
+            (product?.category?.category_name && product?.category?.category_name.toLowerCase().includes(query)) ||
+            (product?.product_name && product?.product_name.toLowerCase().includes(query)) 
+            // || (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
+        );
+        setFilteredSearchProducts(filtered);
+    };
+
+    const handleProductClick = (productId) => {
+        navigate(`/products/${productId}`);
+    };
+
    
     return (
         <>
 
-            <div className='shop_page terms_condition'>
+<div className='shop_page about_us'>
                 {/* header */}
                 <div className='shop_nav '>
                     <Link to='/' className='shop_brand'>Amit Beej Bhandar</Link>
@@ -65,14 +86,42 @@ export const Privacy = () => {
                     </div>
 
                     <div className={`navigation  ${isActive ? 'navigation_active' : ''}`}>
-                        <div className='shop_navigation-items'>
+                        <div className='shop_navigation-items '>
                         <Link to='/'>Home</Link>
                             <Link to='/shop'>Explore</Link>
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
-                            <Link to='/shop'>Products</Link>
-                            import React, { useState } from 'react'
+                            {/* <Link to='/shop'>Products</Link> */}
+                            <div className='search_container'>
+                                <input
+                                    type='search'
+                                    className='search_bar'
+                                    value={searchQuery}
+                                    onChange={handleSearch}
+                                    placeholder='Search for products...'
+                                />
+                                <i className="fa-solid fa-magnifying-glass"></i>
 
+                                {/* Display suggestions if there is a search query */}
+                                 {searchQuery && (
+                                    <ul className='suggestions'>
+                                        {filteredSearchProducts.length ? (
+                                            filteredSearchProducts.map((product) => (
+                                                <li
+                                                    key={product.index}
+                                                    onClick={() => handleProductClick(product.id)}
+                                                    className='suggestion_item'
+                                                >
+                                                    &emsp; {product?.product_name}  &emsp; by &emsp;
+                                                    {product.Brand}
+                                                </li>
+                                            ))
+                                        ) : (
+                                            <li className='no_results'>No products found</li>
+                                        )}
+                                    </ul>
+                                )}
+                            </div>
                             <div className='customer_section'>
                                 <i className="fa-solid fa-cart-shopping" onClick={openCart}></i>
                                 {cartItems.length > 0 && (

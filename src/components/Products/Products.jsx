@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { Card, Button } from "react-bootstrap";
 import "slick-carousel/slick/slick.css";
@@ -10,7 +10,7 @@ import { useAppDispatch } from '../../Redux/hooks';
 import { addItemToCart } from '../../Redux/slices/cartslice';
 import { Link } from "react-router-dom";
 import { Cart } from '../Cart/Cart';
-
+import axios from 'axios'
 export const Products = () => {
 
     // adding items to cart
@@ -94,20 +94,46 @@ export const Products = () => {
         ]
     };
 
+
+    // fetching products
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                setProducts(response.data.data.data);
+                console.log(response.data.data.data)
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                setLoading(false);
+            }
+        };
+
+        fetchData(); 
+    }, []);
+
     return (
         <>
-            <div className="products">
-                <h2> Our Top Products </h2>
+   <div className="products">
+            <h2>Our Top Products</h2>
+
+            {loading ? (
+                <p>Loading products...</p>
+            ) : products.length > 0 ? (
                 <Slider {...settings}>
-                    {productData.map((product, index) => (
+                    {products.map((product, index) => (
                         <div key={index} style={{ margin: "0 10px" }}>
-                            <Card className="main_card" style={{marginRight: '1rem'}}>
-                                <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit', }}>
+                            <Card className="main_card" style={{ marginRight: '1rem' }}>
+                                <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                                     <Card.Img variant="top" src={product_img} className="card_img" />
                                 </Link>
                                 <Card.Body>
-                                    <Card.Title className="product_name">{product["Product Name"]}</Card.Title>
-
+                                    <Card.Title className="product_name">{product.product_name}</Card.Title>
+                                    <p>{product.category.category_name}</p>
                                     <Card.Text className="product_info">
                                         {product["Technical Content"]}
                                     </Card.Text>
@@ -122,18 +148,26 @@ export const Products = () => {
                         </div>
                     ))}
                 </Slider>
-            </div>
+            ) : (
+                <p>No products found</p>
+            )}
+        </div>
 
-            <div className="products2">
+         <div className="products2">
+
+            {loading ? (
+                <p>Loading products...</p>
+            ) : products.length > 0 ? (
                 <Slider {...settings}>
-                    {productData.map((product, index) => (
+                    {products.map((product, index) => (
                         <div key={index} style={{ margin: "0 10px" }}>
-                            <Card className="main_card" style={{}}>
-                                <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit', }}>
+                            <Card className="main_card" style={{ marginRight: '1rem' }}>
+                                <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                                     <Card.Img variant="top" src={product_img} className="card_img" />
                                 </Link>
                                 <Card.Body>
-                                    <Card.Title className="product_name">{product["Product Name"]}</Card.Title>
+                                    <Card.Title className="product_name">{product.product_name}</Card.Title>
+                                    <p>{product.category.category_name}</p>
                                     <Card.Text className="product_info">
                                         {product["Technical Content"]}
                                     </Card.Text>
@@ -148,13 +182,16 @@ export const Products = () => {
                         </div>
                     ))}
                 </Slider>
-            </div>
+            ) : (
+                <p>No products found</p>
+            )}
+        </div>
 
-            {/* cart */}
-            {isCartOpen && <div className="overlay" onClick={openCart}></div>}
-            <div className={`cart ${isCartOpen ? 'cart_open' : ''}`}>
-                <Cart />
-            </div>
+{/* cart */ }
+{ isCartOpen && <div className="overlay" onClick={openCart}></div> }
+<div className={`cart ${isCartOpen ? 'cart_open' : ''}`}>
+    <Cart />
+</div>
         </>
     );
 };

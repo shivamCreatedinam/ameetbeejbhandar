@@ -7,7 +7,7 @@ import { useAppSelector } from '../../Redux/hooks';
 import { Link } from 'react-router-dom';
 import productsData from '../../Products.json';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 
 export const Header = () => {
 
@@ -94,29 +94,48 @@ export const Header = () => {
 
     const cartItems = useAppSelector((state) => state.cart.items);
 
+  // initial products
+  const [products, setProducts] = useState([]);
 
-    // search
-    const [searchQuery, setSearchQuery] = useState('');
-    const [filteredProducts, setFilteredProducts] = useState([]);
-    const navigate = useNavigate();
+  useEffect(() => {
+      const fetchProducts = async () => {
+          try {
+              const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+              setProducts(response.data.data.data);
+          } catch (error) {
+              console.error('Error fetching products:', error);
+          }
+      };
 
-    const handleSearch = (e) => {
-        const query = e.target.value.toLowerCase();
-        setSearchQuery(query);
+      fetchProducts();
+  }, []);
 
-        const filtered = productsData.filter((product) =>
-            (product.Brand && product.Brand.toLowerCase().includes(query)) ||
-            (product.Category && product.Category.toLowerCase().includes(query)) ||
-            (product["Product Name"] && product["Product Name"].toLowerCase().includes(query)) ||
-            (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
-        );
 
-        setFilteredProducts(filtered);
-    };
+// search
+const [searchQuery, setSearchQuery] = useState('');
+const [filteredSearchProducts, setFilteredSearchProducts] = useState([]);
+const navigate = useNavigate();
 
-    const handleProductClick = (productId) => {
-        navigate(`/products/${productId}`);
-    };
+const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    // console.log(products)
+    const filtered = products.filter((product, index) =>
+        // key={index}
+        (product?.brand?.brand_name &&product?.brand?.brand_name.toLowerCase().includes(query)) ||
+        (product?.category?.category_name && product?.category?.category_name.toLowerCase().includes(query)) ||
+        (product?.product_name && product?.product_name.toLowerCase().includes(query)) 
+        // || (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
+    );
+    setFilteredSearchProducts(filtered);
+};
+
+const handleProductClick = (productId) => {
+    navigate(`/products/${productId}`);
+};
+
+
 
     return (
         <>
@@ -162,14 +181,14 @@ export const Header = () => {
                                 {/* Display suggestions if there is a search query */}
                                 {searchQuery && (
                                     <ul className='suggestions'>
-                                        {filteredProducts.length ? (
-                                            filteredProducts.map((product) => (
+                                        {filteredSearchProducts.length ? (
+                                            filteredSearchProducts.map((product) => (
                                                 <li
-                                                    key={product.id}
+                                                    key={product.index}
                                                     onClick={() => handleProductClick(product.id)}
                                                     className='suggestion_item'
                                                 >
-                                                    &emsp; {product['Product Name']}  &emsp; by &emsp;
+                                                    &emsp; {product?.product_name}  &emsp; by &emsp;
                                                     {product.Brand}
                                                 </li>
                                             ))

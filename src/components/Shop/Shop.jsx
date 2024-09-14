@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Shop.css';
 import { useAppDispatch } from '../../Redux/hooks';
 import { addItemToCart } from '../../Redux/slices/cartslice';
 import product_img from '../../images/product.png';
 import { Footer } from '../Footer/Footer';
-import productsData from '../../Products.json';
+// import productsData from '../../Products.json';
 import { Cart } from '../Cart/Cart';
 import { useAppSelector } from '../../Redux/hooks';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export const Shop = () => {
     // State for menu button
@@ -41,13 +42,39 @@ export const Shop = () => {
         setSelectedBrand(name); // Update selected brand
     };
 
+    // initial products
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                setProducts(response.data.data.data);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
     // Filter products based on the selected category and brand
-    const filteredProducts = productsData.filter(product => {
-        const categoryMatch = selectedCategory === 'allCategories' || product.Category === selectedCategory;
-        const brandMatch = selectedBrand === 'allBrands' || product.Brand === selectedBrand;
-        return categoryMatch && brandMatch;
-        console.log(categoryMatch)
-    });
+    const [filteredProducts, setFilteredProducts] = useState([]);
+
+    useEffect(() => {
+        const filterProducts = () => {
+            const filtered = products.filter(product => {
+                const categoryMatch = selectedCategory === 'allCategories' || product.category?.category_name === selectedCategory;
+                const brandMatch = selectedBrand === 'allBrands' || product.brand?.brand_name === selectedBrand;
+                return categoryMatch && brandMatch;
+            });
+
+            setFilteredProducts(filtered);
+        };
+
+        filterProducts();
+    }, [selectedCategory, selectedBrand, products]);
+
 
     // cart and wish list sections
 
@@ -84,11 +111,13 @@ export const Shop = () => {
         const query = e.target.value.toLowerCase();
         setSearchQuery(query);
 
-        const filtered = productsData.filter((product, index) =>
-            (product.Brand && product.Brand.toLowerCase().includes(query)) ||
-            (product.Category && product.Category.toLowerCase().includes(query)) ||
-            (product["Product Name"] && product["Product Name"].toLowerCase().includes(query)) ||
-            (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
+        // console.log(products)
+        const filtered = products.filter((product, index) =>
+            // key={index}
+            (product?.brand?.brand_name &&product?.brand?.brand_name.toLowerCase().includes(query)) ||
+            (product?.category?.category_name && product?.category?.category_name.toLowerCase().includes(query)) ||
+            (product?.product_name && product?.product_name.toLowerCase().includes(query)) 
+            // || (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
         );
         setFilteredSearchProducts(filtered);
     };
@@ -136,7 +165,7 @@ export const Shop = () => {
                                                     onClick={() => handleProductClick(product.id)}
                                                     className='suggestion_item'
                                                 >
-                                                    &emsp; {product['Product Name']}  &emsp; by &emsp;
+                                                    &emsp; {product?.product_name}  &emsp; by &emsp;
                                                     {product.Brand}
                                                 </li>
                                             ))
@@ -193,7 +222,7 @@ export const Shop = () => {
                                 onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
-                           Pesticides
+                            Pesticides
                         </label>
 
                         <label>
@@ -317,7 +346,7 @@ export const Shop = () => {
                                 onChange={handleBrandChange}
                                 style={{ marginRight: '10px' }}
                             />
-                          Chand Chap
+                            Chand Chap
                         </label>
 
                         <label>
@@ -328,7 +357,7 @@ export const Shop = () => {
                                 onChange={handleBrandChange}
                                 style={{ marginRight: '10px' }}
                             />
-                           Cheminova
+                            Cheminova
                         </label>
 
                         <label>
@@ -403,14 +432,14 @@ export const Shop = () => {
                 {/* right side */}
                 <div className='products_right'>
                     <div className='products_right_top'>
-                        <p>Showing {filteredProducts.length} of {productsData.length} products</p>
+                        <p>Showing {filteredProducts.length} of {products.length} products</p>
 
 
                         <div className='display_style'>
                             <div className='filters' onClick={openFilters}><i className="fa-solid fa-filter"></i><p>Filters</p></div>
 
                             <select className='select_options'>
-                                <option disabled selected value="Default Sorting">Default Sorting</option>
+                                <option disabled value="Default Sorting">Default Sorting</option>
                                 <option value="most_popular">Most Popular</option>
                                 <option value="top_selling">Top Selling</option>
                                 <option value="latest">Latest</option>
@@ -424,19 +453,19 @@ export const Shop = () => {
                         </div>
                     </div>
 
-  
+
                     {/* all products */}
                     <div className='products_right_container'>
 
-                        { filteredProducts.length > 0 ? filteredProducts.map((product) => (
+                        {filteredProducts.length > 0 ? filteredProducts.map((product) => (
 
                             <div className='single_product' key={product.id}>
                                 <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit', }}>
                                     <img src={product_img} className='product_image' alt={product['Product Name']} />
 
-                                    <h1>{product['Product Name']}</h1>
-                                    <p>By: {product.Brand}</p>
-                                    <p>Price: ₹XXX</p>
+                                    <h1 style={{ wordWrap: 'break-word', maxWidth: '200px' }} >{product?.product_name}</h1>
+                                    <p>By: {product?.brand?.brand_name}</p>
+                                    <p>Price: ₹ {product?.selling_price}</p>
                                 </Link>
                                 <div className='product_options'>
                                     <button
@@ -452,7 +481,7 @@ export const Shop = () => {
                         )) : (
                             <h3>No Products Found in this filter...</h3>
                         )
-                    }
+                        }
                     </div>
                 </div>
             </div>

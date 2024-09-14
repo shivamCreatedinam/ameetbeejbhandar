@@ -12,13 +12,29 @@ import { Cart } from '../Cart/Cart';
 import { Link } from 'react-router-dom';
 import product_img from '../../images/product.png'
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 export const Product_details = () => {
 
     const { productId } = useParams()
 
-    const findProduct = productsData.find((prod) => prod.id == productId);
-    const product = findProduct;
+    const [product, setProduct] = useState([]);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                setProduct(response.data.data.data.find((prod) => prod.id == productId));
+                // setLoading(false);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                // setLoading(false);
+            }
+        };
+
+        fetchData(); 
+    }, []);
+
 
     const [isActive, setIsActive] = useState(false);
 
@@ -46,7 +62,7 @@ export const Product_details = () => {
     const dispatch = useAppDispatch();
 
     const handleAddToCart = () => {
-        dispatch(addItemToCart(product));
+        // dispatch(addItemToCart(product));
         setIsCartOpen(!isCartOpen)
 
     };
@@ -60,35 +76,54 @@ export const Product_details = () => {
         window.scrollTo({ top: 0 });
     }, [productId]);
 
-    // search
-    const [searchQuery, setSearchQuery] = useState('');
-    const [filteredProducts, setFilteredProducts] = useState([]);
-    const navigate = useNavigate();
+      // initial products
+      const [products, setProducts] = useState([]);
 
-    const handleSearch = (e) => {
-        const query = e.target.value.toLowerCase();
-        setSearchQuery(query);
+      useEffect(() => {
+          const fetchProducts = async () => {
+              try {
+                  const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                  setProducts(response.data.data.data);
+              } catch (error) {
+                  console.error('Error fetching products:', error);
+              }
+          };
+  
+          fetchProducts();
+      }, []);
 
-        const filtered = productsData.filter((product) =>
-            (product.Brand && product.Brand.toLowerCase().includes(query)) ||
-            (product.Category && product.Category.toLowerCase().includes(query)) ||
-            (product["Product Name"] && product["Product Name"].toLowerCase().includes(query)) ||
-            (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
-        );
+      
+// search
+const [searchQuery, setSearchQuery] = useState('');
+const [filteredSearchProducts, setFilteredSearchProducts] = useState([]);
+const navigate = useNavigate();
 
-        setFilteredProducts(filtered);
-    };
+const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
 
-    const handleProductClick = (productId) => {
-        navigate(`/products/${productId}`);
-    };
+    // console.log(products)
+    const filtered = products.filter((product, index) =>
+        // key={index}
+        (product?.brand?.brand_name &&product?.brand?.brand_name.toLowerCase().includes(query)) ||
+        (product?.category?.category_name && product?.category?.category_name.toLowerCase().includes(query)) ||
+        (product?.product_name && product?.product_name.toLowerCase().includes(query)) 
+        // || (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
+    );
+    setFilteredSearchProducts(filtered);
+};
+
+const handleProductClick = (productId) => {
+    navigate(`/products/${productId}`);
+};
+
 
     return (
         <>
             <div className='products_page'>
                 {/* header */}
                 <div className='shop_nav'>
-                    <a href='#' className='shop_brand'>Amit Beej Bhandar</a>
+                    <a href='/' className='shop_brand'>Amit Beej Bhandar</a>
                     <div className={`menu-btn ${isActive ? 'menu_active' : ''}`} onClick={handleClick}>
                         {isActive ? <i className="fa-solid fa-xmark fa-lg"></i> : <i className="fa-solid fa-bars-staggered fa-lg"></i>}
                     </div>
@@ -111,17 +146,16 @@ export const Product_details = () => {
                                 <i className="fa-solid fa-magnifying-glass"></i>
 
                                 {/* Display suggestions if there is a search query */}
-                                {/* Display suggestions if there is a search query */}
                                 {searchQuery && (
                                     <ul className='suggestions'>
-                                        {filteredProducts.length ? (
-                                            filteredProducts.map((product) => (
+                                        {filteredSearchProducts.length ? (
+                                            filteredSearchProducts.map((product) => (
                                                 <li
-                                                    key={product.id}
+                                                    key={product.index}
                                                     onClick={() => handleProductClick(product.id)}
                                                     className='suggestion_item'
                                                 >
-                                                    &emsp; {product['Product Name']}  &emsp; by &emsp;
+                                                    &emsp; {product?.product_name}  &emsp; by &emsp;
                                                     {product.Brand}
                                                 </li>
                                             ))
@@ -154,19 +188,19 @@ export const Product_details = () => {
             <div className='products_details'>
                 <div className='products_details_left'>
                     <img src={product_img}></img>
-                    {/* <div> images collections goes here</div> */}
                 </div>
                 <div className='products_details_right'>
-                    <h1>{findProduct['Product Name']}</h1>
-                    <p>By: {findProduct.Brand} </p>
-                    <p>{findProduct['Technical Content']} </p>
+                    <h1>{product?.product_name}</h1>
+                    <p>By: {product?.brand?.brand_name} </p>
+                    <p>Category -: {product?.category?.category_name} </p>
+                    <p>Sub Category -: {product?.sub_category?.subcategory_name} </p>
                     <div>
                         <p className='product_price'>₹ XXX.XX</p>
                         ⭐⭐⭐⭐⭐ <p className='ratings'>550 Ratings</p>
                     </div>
                     <select className='select_options product_shop_options'>
-                        {/* <option disabled selected value="Default Sorting">Default Sorting</option> */}
-                        <option value={findProduct.Size}>{findProduct.Size}</option>
+
+                        <option value='size'>size</option>
                     </select>
                     <div className='products_choice'>
                         <button className='products_choice_cart' onClick={handleAddToCart}>Add to Cart</button>
@@ -180,7 +214,7 @@ export const Product_details = () => {
 
 
             {/* other components */}
-            <Suggest_Products category={findProduct.Category} />
+            <Suggest_Products category={product?.category?.category_name} />
             <Footer />
 
             {isCartOpen && <div className="overlay" onClick={openCart}>
