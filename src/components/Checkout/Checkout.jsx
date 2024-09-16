@@ -74,9 +74,14 @@ export const Checkout = () => {
                 remarks: remarks,
                 email: email,
                 mobile: mobile,
-                gst_number: gstOrPanNumber,
                 quotes: cartItems,
             };
+
+            if (validateGSTIN(gstOrPanNumber)) {
+                data.gst_number = gstOrPanNumber;
+            } else if (validatePAN(gstOrPanNumber)) {
+                data.pan_number = gstOrPanNumber;
+            }
 
             fetch(API, {
                 method: 'POST',
@@ -95,18 +100,11 @@ export const Checkout = () => {
                     toast.success('Order sent successfully!');
                     console.log('Order sent successfully:', data);
 
-                    setTimeout(() => {
-                        navigate('/');
-                        window.location.reload();
-                    }, 1000);
-
-                    // setName('');
-                    // setMobile('');
-                    // setEmail('');
-                    // setGstNumber('');
-                    // setRemarks('');
-                    // setIsValidGST(false);
-
+                    // setTimeout(() => {
+                    //     navigate('/');
+                    //     window.location.reload();
+                    // }, 1000);
+console.log(cartItems)
                 })
                 .catch((error) => {
                     toast.error('Error sending order. Please try again.');
@@ -115,7 +113,7 @@ export const Checkout = () => {
         }
     }
 
-    console.log(cartItems)
+    // console.log(cartItems)
 
     return (
 
