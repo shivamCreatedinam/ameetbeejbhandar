@@ -92,7 +92,13 @@ export const Product_details = () => {
           fetchProducts();
       }, []);
 
+    //   useEffect(() => {
+    //    setSearchQuery('');
+    //     console.log(searchQuery)
+    //   }, [productId])
       
+
+
 // search
 const [searchQuery, setSearchQuery] = useState('');
 const [filteredSearchProducts, setFilteredSearchProducts] = useState([]);
@@ -113,9 +119,15 @@ const handleSearch = (e) => {
     setFilteredSearchProducts(filtered);
 };
 
-const handleProductClick = (productId) => {
-    navigate(`/products/${productId}`);
-};
+const handleProductClick = (clickedProductId) => {
+    if (clickedProductId === productId) {
+      setSearchQuery(''); 
+    } else {
+        setSearchQuery(''); 
+              navigate(`/products/${clickedProductId}`);
+      
+    }
+  };
 
 
     return (
