@@ -33,7 +33,7 @@ export const Product_details = () => {
         };
 
         fetchData(); 
-    }, []);
+    }, [productId]);
 
 
     const [isActive, setIsActive] = useState(false);
