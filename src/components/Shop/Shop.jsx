@@ -497,6 +497,7 @@ export const Shop = () => {
 
                                     <h1 style={{ wordWrap: 'break-word', maxWidth: '200px' }} >{product?.product_name}</h1>
                                     <p>By: {product?.brand?.brand_name}</p>
+                                    <p>Category: {product?.category?.category_name}</p>
                                     <p>Price: ₹ {product?.selling_price}</p>
                                 </Link>
                                 <div className='product_options'>
