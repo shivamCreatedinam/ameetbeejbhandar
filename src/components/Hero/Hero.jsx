@@ -56,7 +56,7 @@ export const Hero = () => {
                             key={index}
                             className="carousel-item"
                         >
-                            <Link to='/shop' style={{textDecoration: 'none' }}>
+                            <Link to={`/shop/${item.name}`} style={{textDecoration: 'none' }}>
                             <img src={item.image} alt={item.name} className="carousel-image" />
                             </Link>
                             <h2>{item.name}</h2>

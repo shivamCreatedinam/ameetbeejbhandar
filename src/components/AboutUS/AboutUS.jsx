@@ -39,51 +39,52 @@ export const AboutUS = () => {
 
     const cartItems = useAppSelector((state) => state.cart.items);
 
-  // initial products
-  const [products, setProducts] = useState([]);
+    // initial products
+    const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-      const fetchProducts = async () => {
-          try {
-              const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
-              setProducts(response.data.data.data);
-          } catch (error) {
-              console.error('Error fetching products:', error);
-          }
-      };
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
+                setProducts(productArray);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
 
-      fetchProducts();
-  }, []);
+        fetchProducts();
+    }, []);
 
-// search
-const [searchQuery, setSearchQuery] = useState('');
-const [filteredSearchProducts, setFilteredSearchProducts] = useState([]);
-const navigate = useNavigate();
+    // search
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredSearchProducts, setFilteredSearchProducts] = useState([]);
+    const navigate = useNavigate();
 
-const handleSearch = (e) => {
-    const query = e.target.value.toLowerCase();
-    setSearchQuery(query);
+    const handleSearch = (e) => {
+        const query = e.target.value.toLowerCase();
+        setSearchQuery(query);
 
-    // console.log(products)
-    const filtered = products.filter((product, index) =>
-        // key={index}
-        (product?.brand?.brand_name &&product?.brand?.brand_name.toLowerCase().includes(query)) ||
-        (product?.category?.category_name && product?.category?.category_name.toLowerCase().includes(query)) ||
-        (product?.product_name && product?.product_name.toLowerCase().includes(query)) 
-        // || (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
-    );
-    setFilteredSearchProducts(filtered);
-};
+        // console.log(products)
+        const filtered = products.filter((product, index) =>
+            // key={index}
+            (product?.brand?.brand_name && product?.brand?.brand_name.toLowerCase().includes(query)) ||
+            (product?.category?.category_name && product?.category?.category_name.toLowerCase().includes(query)) ||
+            (product?.product_name && product?.product_name.toLowerCase().includes(query))
+            // || (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
+        );
+        setFilteredSearchProducts(filtered);
+    };
 
-const handleProductClick = (productId) => {
-    navigate(`/products/${productId}`);
-};
+    const handleProductClick = (productId) => {
+        navigate(`/products/${productId}`);
+    };
 
- 
+
 
     return (
         <>
-              <div className='shop_page about_us'>
+            <div className='shop_page about_us'>
                 {/* header */}
                 <div className='shop_nav '>
                     <Link to='/' className='shop_brand'>Amit Beej Bhandar</Link>
@@ -93,7 +94,7 @@ const handleProductClick = (productId) => {
 
                     <div className={`navigation  ${isActive ? 'navigation_active' : ''}`}>
                         <div className='shop_navigation-items '>
-                        <Link to='/'>Home</Link>
+                            <Link to='/'>Home</Link>
                             <Link to='/shop'>Explore</Link>
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
@@ -109,7 +110,7 @@ const handleProductClick = (productId) => {
                                 <i className="fa-solid fa-magnifying-glass"></i>
 
                                 {/* Display suggestions if there is a search query */}
-                                 {searchQuery && (
+                                {searchQuery && (
                                     <ul className='suggestions'>
                                         {filteredSearchProducts.length ? (
                                             filteredSearchProducts.map((product) => (
@@ -118,8 +119,8 @@ const handleProductClick = (productId) => {
                                                     onClick={() => handleProductClick(product.id)}
                                                     className='suggestion_item'
                                                 >
-                                                    &emsp; {product?.product_name}  &emsp; by &emsp;
-                                                    {product.Brand}
+                                                      <span style={{fontWeight: 'bolder'}}>{product?.product_name} </span>by <span>
+                                                      {product.brand.brand_name}</span>
                                                 </li>
                                             ))
                                         ) : (
@@ -138,7 +139,7 @@ const handleProductClick = (productId) => {
                                 <i className="fa-regular fa-heart"></i>
                                 {cartItems.length > 0 && (
                                     <div className={`wish_count`}>
-                                       0
+                                        0
                                     </div>
                                 )}
                                 <i className="fa-regular fa-user"></i>
@@ -166,18 +167,18 @@ const handleProductClick = (productId) => {
             </div>
 
             <div className='about_contact'>
-                <div className='about_contact_left'><img src={contact} alt=""  className='contact_img'/></div>
+                <div className='about_contact_left'><img src={contact} alt="" className='contact_img' /></div>
                 <div className='about_contact_right'>
-                <div className='skills_heading'><i className="fa-solid fa-seedling"></i><p>OUR MISSION</p></div>
-                <p className='about_heading'>Fresh Environmental <br />  Plant & Safe Trees</p>
-                <p className='about_mission_para'>At Amit Beej Bhandar, our mission is to empower farmers and agricultural professionals with premium-quality seeds and agricultural products that drive success and prosperity in farming endeavors. We aim to be the go-to destination for all your seed and agricultural needs, offering a diverse selection of products tailored to meet your specific requirements.</p>
-              <div className='about_right'>  <button><p>Contact Us</p>  <i className="fa-solid fa-leaf"></i></button>
-              </div>
+                    <div className='skills_heading'><i className="fa-solid fa-seedling"></i><p>OUR MISSION</p></div>
+                    <p className='about_heading'>Fresh Environmental <br />  Plant & Safe Trees</p>
+                    <p className='about_mission_para'>At Amit Beej Bhandar, our mission is to empower farmers and agricultural professionals with premium-quality seeds and agricultural products that drive success and prosperity in farming endeavors. We aim to be the go-to destination for all your seed and agricultural needs, offering a diverse selection of products tailored to meet your specific requirements.</p>
+                    <div className='about_right'>  <button><p>Contact Us</p>  <i className="fa-solid fa-leaf"></i></button>
+                    </div>
                 </div>
-                
+
             </div>
-           <Testimonials/>
-            <Footer/>
+            <Testimonials />
+            <Footer />
 
             {/* cart */}
             {isCartOpen && <div className="overlay" onClick={openCart}>

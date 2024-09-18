@@ -32,24 +32,25 @@ export const Privacy = () => {
     const cartItems = useAppSelector((state) => state.cart.items);
 
 
-      // initial products
-      const [products, setProducts] = useState([]);
+    // initial products
+    const [products, setProducts] = useState([]);
 
-      useEffect(() => {
-          const fetchProducts = async () => {
-              try {
-                  const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
-                  setProducts(response.data.data.data);
-              } catch (error) {
-                  console.error('Error fetching products:', error);
-              }
-          };
-  
-          fetchProducts();
-      }, []);
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
+                setProducts(productArray);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchProducts();
+    }, []);
 
 
-     // search
+    // search
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredSearchProducts, setFilteredSearchProducts] = useState([]);
     const navigate = useNavigate();
@@ -61,9 +62,9 @@ export const Privacy = () => {
         // console.log(products)
         const filtered = products.filter((product, index) =>
             // key={index}
-            (product?.brand?.brand_name &&product?.brand?.brand_name.toLowerCase().includes(query)) ||
+            (product?.brand?.brand_name && product?.brand?.brand_name.toLowerCase().includes(query)) ||
             (product?.category?.category_name && product?.category?.category_name.toLowerCase().includes(query)) ||
-            (product?.product_name && product?.product_name.toLowerCase().includes(query)) 
+            (product?.product_name && product?.product_name.toLowerCase().includes(query))
             // || (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
         );
         setFilteredSearchProducts(filtered);
@@ -73,11 +74,11 @@ export const Privacy = () => {
         navigate(`/products/${productId}`);
     };
 
-   
+
     return (
         <>
 
-<div className='shop_page about_us'>
+            <div className='shop_page about_us'>
                 {/* header */}
                 <div className='shop_nav '>
                     <Link to='/' className='shop_brand'>Amit Beej Bhandar</Link>
@@ -87,7 +88,7 @@ export const Privacy = () => {
 
                     <div className={`navigation  ${isActive ? 'navigation_active' : ''}`}>
                         <div className='shop_navigation-items '>
-                        <Link to='/'>Home</Link>
+                            <Link to='/'>Home</Link>
                             <Link to='/shop'>Explore</Link>
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
@@ -103,7 +104,7 @@ export const Privacy = () => {
                                 <i className="fa-solid fa-magnifying-glass"></i>
 
                                 {/* Display suggestions if there is a search query */}
-                                 {searchQuery && (
+                                {searchQuery && (
                                     <ul className='suggestions'>
                                         {filteredSearchProducts.length ? (
                                             filteredSearchProducts.map((product) => (
@@ -112,8 +113,8 @@ export const Privacy = () => {
                                                     onClick={() => handleProductClick(product.id)}
                                                     className='suggestion_item'
                                                 >
-                                                    &emsp; {product?.product_name}  &emsp; by &emsp;
-                                                    {product.Brand}
+                                                 <span style={{fontWeight: 'bolder'}}>{product?.product_name} </span>by <span>
+                                                 {product.brand.brand_name}</span>
                                                 </li>
                                             ))
                                         ) : (
@@ -132,7 +133,7 @@ export const Privacy = () => {
                                 <i className="fa-regular fa-heart"></i>
                                 {cartItems.length > 0 && (
                                     <div className={`wish_count`}>
-                                       0
+                                        0
                                     </div>
                                 )}
                                 <i className="fa-regular fa-user"></i>
@@ -148,17 +149,17 @@ export const Privacy = () => {
                 <h1 className='terms_condition_heading'>Privacy Policy</h1>
                 <p>Thank you for visiting Amit Beej Bhandar. This Privacy Policy outlines how we collect, use, disclose, and protect your information when you use our website and purchase agriculture products from us.</p>
 
- 
+
                 <h3>1. Information We Collect:</h3>
                 <p>We collect personal information, including but not limited to your name, contact information, shipping address, and payment details, when you place an order on our website.</p>
 
                 <h3>2. Use of Information:</h3>
                 <p>  The information we collect is used for order processing, shipping, and customer support. <br />
-                We may use your email address to send you updates about your order, promotions, and newsletters. You can opt out of promotional emails at any time.</p>
+                    We may use your email address to send you updates about your order, promotions, and newsletters. You can opt out of promotional emails at any time.</p>
 
                 <h3>3. Data Security:</h3>
                 <p>We implement reasonable security measures to protect your personal information from unauthorized access, disclosure, alteration, and destruction. <br />
-                 Payment information is encrypted using secure socket layer technology (SSL) during transmission.</p>
+                    Payment information is encrypted using secure socket layer technology (SSL) during transmission.</p>
 
                 <h3>4. Cookies and Tracking Technologies:</h3>
                 <p>We use cookies and similar tracking technologies to enhance your experience on our website and gather information about how you use it. You can manage your cookie preferences through your browser settings.</p>
@@ -171,7 +172,7 @@ export const Privacy = () => {
 
                 <h3>7. Your Rights:</h3>
                 <p>You have the right to access, correct, or delete your personal information. Contact us at [customer-support@amitbeejbhandar.com] to exercise these rights. <br />
-                You can opt-out of receiving promotional emails by following the unsubscribe instructions provided in the emails.</p>
+                    You can opt-out of receiving promotional emails by following the unsubscribe instructions provided in the emails.</p>
 
                 <h3>8. Children's Privacy:</h3>
                 <p> Our website is not intended for individuals under the age of 18. We do not knowingly collect personal information from children.</p>

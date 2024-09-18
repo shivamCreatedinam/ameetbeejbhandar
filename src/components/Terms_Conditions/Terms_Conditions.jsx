@@ -31,49 +31,50 @@ export const Terms_Conditions = () => {
 
     const cartItems = useAppSelector((state) => state.cart.items);
 
-  // initial products
-  const [products, setProducts] = useState([]);
+    // initial products
+    const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-      const fetchProducts = async () => {
-          try {
-              const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
-              setProducts(response.data.data.data);
-          } catch (error) {
-              console.error('Error fetching products:', error);
-          }
-      };
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
+                setProducts(productArray);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
 
-      fetchProducts();
-  }, []);
+        fetchProducts();
+    }, []);
 
 
-   // search
-   const [searchQuery, setSearchQuery] = useState('');
-   const [filteredSearchProducts, setFilteredSearchProducts] = useState([]);
-   const navigate = useNavigate();
+    // search
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredSearchProducts, setFilteredSearchProducts] = useState([]);
+    const navigate = useNavigate();
 
-   const handleSearch = (e) => {
-       const query = e.target.value.toLowerCase();
-       setSearchQuery(query);
+    const handleSearch = (e) => {
+        const query = e.target.value.toLowerCase();
+        setSearchQuery(query);
 
-       // console.log(products)
-       const filtered = products.filter((product, index) =>
-           // key={index}
-           (product?.brand?.brand_name &&product?.brand?.brand_name.toLowerCase().includes(query)) ||
-           (product?.category?.category_name && product?.category?.category_name.toLowerCase().includes(query)) ||
-           (product?.product_name && product?.product_name.toLowerCase().includes(query)) 
-           // || (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
-       );
-       setFilteredSearchProducts(filtered);
-   };
+        // console.log(products)
+        const filtered = products.filter((product, index) =>
+            // key={index}
+            (product?.brand?.brand_name && product?.brand?.brand_name.toLowerCase().includes(query)) ||
+            (product?.category?.category_name && product?.category?.category_name.toLowerCase().includes(query)) ||
+            (product?.product_name && product?.product_name.toLowerCase().includes(query))
+            // || (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
+        );
+        setFilteredSearchProducts(filtered);
+    };
 
-   const handleProductClick = (productId) => {
-       navigate(`/products/${productId}`);
-   };
+    const handleProductClick = (productId) => {
+        navigate(`/products/${productId}`);
+    };
 
-   
-     
+
+
     return (
         <>
 
@@ -87,7 +88,7 @@ export const Terms_Conditions = () => {
 
                     <div className={`navigation  ${isActive ? 'navigation_active' : ''}`}>
                         <div className='shop_navigation-items'>
-                        <Link to='/'>Home</Link>
+                            <Link to='/'>Home</Link>
                             <Link to='/shop'>Explore</Link>
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
@@ -112,8 +113,8 @@ export const Terms_Conditions = () => {
                                                     onClick={() => handleProductClick(product.id)}
                                                     className='suggestion_item'
                                                 >
-                                                    &emsp; {product?.product_name}  &emsp; by &emsp;
-                                                    {product.Brand}
+                                                    <span style={{fontWeight: 'bolder'}}>{product?.product_name} </span>by <span>
+                                                    {product.brand.brand_name}</span>
                                                 </li>
                                             ))
                                         ) : (
@@ -132,7 +133,7 @@ export const Terms_Conditions = () => {
                                 <i className="fa-regular fa-heart"></i>
                                 {cartItems.length > 0 && (
                                     <div className={`wish_count`}>
-                                       0
+                                        0
                                     </div>
                                 )}
                                 <i className="fa-regular fa-user"></i>

@@ -10,8 +10,13 @@ import { Cart } from '../Cart/Cart';
 import { useAppSelector } from '../../Redux/hooks';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 export const Shop = () => {
+
+
+
+
     // State for menu button
     const [isActive, setIsActive] = useState(false);
 
@@ -30,6 +35,19 @@ export const Shop = () => {
     const [selectedCategory, setSelectedCategory] = useState('allCategories');
     const [selectedBrand, setSelectedBrand] = useState('allBrands');
 
+     // Get category from URL params
+  const { category } = useParams(); // Destructure category from useParams()
+
+  // Update selectedCategory when the category changes in the URL
+  useEffect(() => {
+    if (category) {
+      setSelectedCategory(category);
+    } else {
+      setSelectedCategory('allCategories');
+    }
+  }, [category]); // This will run when the category changes
+
+
     // Handle category change
     const handleCategoryChange = (event) => {
         const { name } = event.target;
@@ -39,7 +57,7 @@ export const Shop = () => {
     // Handle brand change
     const handleBrandChange = (event) => {
         const { name } = event.target;
-        setSelectedBrand(name); // Update selected brand
+        setSelectedBrand(name);
     };
 
     // initial products
@@ -49,7 +67,9 @@ export const Shop = () => {
         const fetchProducts = async () => {
             try {
                 const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
-                setProducts(response.data.data.data);
+                const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);        
+                setProducts(productArray);
+                // console.log(productArray)
             } catch (error) {
                 console.error('Error fetching products:', error);
             }
@@ -114,9 +134,9 @@ export const Shop = () => {
         // console.log(products)
         const filtered = products.filter((product, index) =>
             // key={index}
-            (product?.brand?.brand_name &&product?.brand?.brand_name.toLowerCase().includes(query)) ||
+            (product?.brand?.brand_name && product?.brand?.brand_name.toLowerCase().includes(query)) ||
             (product?.category?.category_name && product?.category?.category_name.toLowerCase().includes(query)) ||
-            (product?.product_name && product?.product_name.toLowerCase().includes(query)) 
+            (product?.product_name && product?.product_name.toLowerCase().includes(query))
             // || (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
         );
         setFilteredSearchProducts(filtered);
@@ -126,6 +146,7 @@ export const Shop = () => {
         navigate(`/products/${productId}`);
     };
 
+    const BaseURL = 'https://aamitbeejbhandar.createdinam.com/admin/public/storage/'
 
     return (
         <>
@@ -165,8 +186,8 @@ export const Shop = () => {
                                                     onClick={() => handleProductClick(product.id)}
                                                     className='suggestion_item'
                                                 >
-                                                    &emsp; {product?.product_name}  &emsp; by &emsp;
-                                                    {product.Brand}
+                                                     <span style={{fontWeight: 'bolder'}}>{product?.product_name} </span>by <span>
+                                                     {product.brand.brand_name}</span>
                                                 </li>
                                             ))
                                         ) : (
@@ -217,8 +238,19 @@ export const Shop = () => {
                         <label>
                             <input
                                 type="radio"
-                                name="Pesticides"
-                                checked={selectedCategory === 'Pesticides'}
+                                name="FERTILIZERS"
+                                checked={selectedCategory === 'FERTILIZERS'}
+                                onChange={handleCategoryChange}
+                                style={{ marginRight: '10px' }}
+                            />
+                            Fertilizers
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="PESTICIDES"
+                                checked={selectedCategory === 'PESTICIDES'}
                                 onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
@@ -228,8 +260,8 @@ export const Shop = () => {
                         <label>
                             <input
                                 type="radio"
-                                name="Herbicides"
-                                checked={selectedCategory === 'Herbicides'}
+                                name="HERBICIDES"
+                                checked={selectedCategory === 'HERBICIDES'}
                                 onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
@@ -239,8 +271,8 @@ export const Shop = () => {
                         <label>
                             <input
                                 type="radio"
-                                name="Insecticides"
-                                checked={selectedCategory === 'Insecticides'}
+                                name="INSECTICIDES"
+                                checked={selectedCategory === 'INSECTICIDES'}
                                 onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
@@ -250,8 +282,8 @@ export const Shop = () => {
                         <label>
                             <input
                                 type="radio"
-                                name="Fungicides"
-                                checked={selectedCategory === 'Fungicides'}
+                                name="FUNGICIDE"
+                                checked={selectedCategory === 'FUNGICIDE'}
                                 onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
@@ -261,8 +293,8 @@ export const Shop = () => {
                         <label>
                             <input
                                 type="radio"
-                                name="Plant Growth Regulator"
-                                checked={selectedCategory === 'Plant Growth Regulator'}
+                                name="PLANT GROWTH REGULATOR"
+                                checked={selectedCategory === 'PLANT GROWTH REGULATOR'}
                                 onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
                             />
@@ -461,7 +493,7 @@ export const Shop = () => {
 
                             <div className='single_product' key={product.id}>
                                 <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit', }}>
-                                    <img src={product_img} className='product_image' alt={product['Product Name']} />
+                                    <img src={`${BaseURL}${product.image}`} className='product_image' alt={product['Product Name']} />
 
                                     <h1 style={{ wordWrap: 'break-word', maxWidth: '200px' }} >{product?.product_name}</h1>
                                     <p>By: {product?.brand?.brand_name}</p>

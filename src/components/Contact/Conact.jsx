@@ -60,21 +60,22 @@ export const Contact = () => {
         setOpenFAQ(openFAQ === index ? null : index);
     };
 
-      // initial products
-      const [products, setProducts] = useState([]);
+    // initial products
+    const [products, setProducts] = useState([]);
 
-      useEffect(() => {
-          const fetchProducts = async () => {
-              try {
-                  const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
-                  setProducts(response.data.data.data);
-              } catch (error) {
-                  console.error('Error fetching products:', error);
-              }
-          };
-  
-          fetchProducts();
-      }, []);
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
+                setProducts(productArray);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchProducts();
+    }, []);
 
     // search
     const [searchQuery, setSearchQuery] = useState('');
@@ -88,9 +89,9 @@ export const Contact = () => {
         // console.log(products)
         const filtered = products.filter((product, index) =>
             // key={index}
-            (product?.brand?.brand_name &&product?.brand?.brand_name.toLowerCase().includes(query)) ||
+            (product?.brand?.brand_name && product?.brand?.brand_name.toLowerCase().includes(query)) ||
             (product?.category?.category_name && product?.category?.category_name.toLowerCase().includes(query)) ||
-            (product?.product_name && product?.product_name.toLowerCase().includes(query)) 
+            (product?.product_name && product?.product_name.toLowerCase().includes(query))
             // || (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
         );
         setFilteredSearchProducts(filtered);
@@ -100,7 +101,7 @@ export const Contact = () => {
         navigate(`/products/${productId}`);
     };
 
- 
+
 
     return (
         <>
@@ -139,8 +140,8 @@ export const Contact = () => {
                                                     onClick={() => handleProductClick(product.id)}
                                                     className='suggestion_item'
                                                 >
-                                                    &emsp; {product?.product_name}  &emsp; by &emsp;
-                                                    {product.Brand}
+                                                    <span style={{ fontWeight: 'bolder' }}>{product?.product_name} </span>by <span>
+                                                        {product.brand.brand_name}</span>
                                                 </li>
                                             ))
                                         ) : (
@@ -212,7 +213,7 @@ export const Contact = () => {
 
                     <MapComponent />
                 </div>
-                
+
                 <div className='faq_section'>
                     <div className='faq_left'>
                         <p>FAQ</p>

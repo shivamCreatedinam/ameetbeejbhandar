@@ -33,24 +33,25 @@ export const Return = () => {
     const cartItems = useAppSelector((state) => state.cart.items);
 
 
-      // initial products
-      const [products, setProducts] = useState([]);
+    // initial products
+    const [products, setProducts] = useState([]);
 
-      useEffect(() => {
-          const fetchProducts = async () => {
-              try {
-                  const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
-                  setProducts(response.data.data.data);
-              } catch (error) {
-                  console.error('Error fetching products:', error);
-              }
-          };
-  
-          fetchProducts();
-      }, []);
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
+                setProducts(productArray);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchProducts();
+    }, []);
 
 
-     // search
+    // search
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredSearchProducts, setFilteredSearchProducts] = useState([]);
     const navigate = useNavigate();
@@ -62,9 +63,9 @@ export const Return = () => {
         // console.log(products)
         const filtered = products.filter((product, index) =>
             // key={index}
-            (product?.brand?.brand_name &&product?.brand?.brand_name.toLowerCase().includes(query)) ||
+            (product?.brand?.brand_name && product?.brand?.brand_name.toLowerCase().includes(query)) ||
             (product?.category?.category_name && product?.category?.category_name.toLowerCase().includes(query)) ||
-            (product?.product_name && product?.product_name.toLowerCase().includes(query)) 
+            (product?.product_name && product?.product_name.toLowerCase().includes(query))
             // || (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
         );
         setFilteredSearchProducts(filtered);
@@ -74,8 +75,8 @@ export const Return = () => {
         navigate(`/products/${productId}`);
     };
 
-  
-       
+
+
     return (
         <>
 
@@ -89,7 +90,7 @@ export const Return = () => {
 
                     <div className={`navigation  ${isActive ? 'navigation_active' : ''}`}>
                         <div className='shop_navigation-items'>
-                        <Link to='/'>Home</Link>
+                            <Link to='/'>Home</Link>
                             <Link to='/shop'>Explore</Link>
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
@@ -114,8 +115,8 @@ export const Return = () => {
                                                     onClick={() => handleProductClick(product.id)}
                                                     className='suggestion_item'
                                                 >
-                                                    &emsp; {product?.product_name}  &emsp; by &emsp;
-                                                    {product.Brand}
+                                                      <span style={{fontWeight: 'bolder'}}>{product?.product_name} </span>by <span>
+                                                      {product.brand.brand_name}</span>
                                                 </li>
                                             ))
                                         ) : (
@@ -134,7 +135,7 @@ export const Return = () => {
                                 <i className="fa-regular fa-heart"></i>
                                 {cartItems.length > 0 && (
                                     <div className={`wish_count`}>
-                                       0
+                                        0
                                     </div>
                                 )}
                                 <i className="fa-regular fa-user"></i>
@@ -150,22 +151,22 @@ export const Return = () => {
                 <h1 className='terms_condition_heading'>Exchanges and Returns</h1>
                 <p>Thank you for choosing Amit Beej Bhandar for your agriculture product needs. We strive to provide quality products and excellent customer service. Please read our return and refund policy carefully to understand your rights and obligations.</p>
 
- 
+
                 <h3>1. Returns:</h3>
                 <p>We accept returns within 7 days of the delivery date. <br />
-                To be eligible for a return, the product must be unused, in its original packaging, and in the same condition as received.</p>
+                    To be eligible for a return, the product must be unused, in its original packaging, and in the same condition as received.</p>
 
                 <h3>2. How to Initiate a Return:</h3>
                 <p>To initiate a return, please contact our customer support at [support@amitbeejbhandar.com] with your order number, the item(s) you wish to return, and the reason for the return. <br />
-                Our customer support team will provide you with instructions on how to return the item.</p>
+                    Our customer support team will provide you with instructions on how to return the item.</p>
 
                 <h3>3. Refunds:</h3>
                 <p>Once your return is received and inspected, we will notify you of the approval or rejection of your refund.<br />
-                If approved, the refund will be processed to your original method of payment within 3 business days.</p>
+                    If approved, the refund will be processed to your original method of payment within 3 business days.</p>
 
                 <h3>4. Return Shipping:</h3>
                 <p>  Customers are responsible for the cost of return shipping, unless the return is due to a mistake on our part or a defective product.<br />
-                We recommend using a trackable shipping service for your return.</p>
+                    We recommend using a trackable shipping service for your return.</p>
 
                 <h3>5. Exchanges:</h3>
                 <p>If you need to exchange a product for the same item due to a defect or damage, please contact our customer support.</p>
