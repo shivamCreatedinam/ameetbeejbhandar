@@ -303,7 +303,7 @@
   }
 
   .single_product {
-    height: 450px;
+    height: 480px;
   }
 }
 
@@ -391,7 +391,7 @@
 
 @media (max-width: 1236px) {
   .single_product {
-  height: 420px;
+  height: 450px;
   }
 
   .single_product img {
@@ -564,7 +564,7 @@
     padding: 0.3em;
     cursor: pointer;
     width: 180px;
-    height: 340px;
+    height: 370px;
   }
 
   .single_product img {

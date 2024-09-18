@@ -48,9 +48,8 @@ export const Checkout = () => {
         }
     };
 
+
     // API
-
-
     const validateForm = () => {
         let formErrors = {};
 
@@ -63,6 +62,7 @@ export const Checkout = () => {
         setErrors(formErrors);
         return Object.keys(formErrors).length === 0;
     };
+    const BaseURL = 'https://aamitbeejbhandar.createdinam.com/admin/public/storage/'
 
 
     const API = 'https://aamitbeejbhandar.createdinam.com/admin/api/v1/create-lead';
@@ -127,15 +127,14 @@ export const Checkout = () => {
                         {cartItems.map((item, index) => (
                             <div key={index} className='cart_items_inner_section'>
                                 <div className='cart_item_img'>
-                                    <img src={product_img} alt={item['Product Name']} />
+                                    <img src={`${BaseURL}${item.image}`} alt={item['Product Name']} />
                                 </div>
                                 <div>
-                                    <h2>{item['Product Name']}</h2>
-                                    <p>Brand: {item.Brand}</p>
-                                    <p>Price: ₹{item.Price}</p>
-                                    <p>Quantity: {item.quantity}</p>
+                                    <h2>{item?.product_name}</h2>
+                                    <p><span style={{fontWeight: 'bold'}}>By: </span> {item?.brand?.brand_name}</p>
+                                    <p><span style={{fontWeight: 'bold'}}>Quantity: </span> {item.quantity}</p>
                                 </div>
-                                <div className='counting'>
+                                <div className='counting checkout_counting'>
                                     <i className="fa-solid fa-plus" onClick={() => dispatch(incrementQuantity(item.id))}></i>
                                     <input
                                         className='input_quantity'

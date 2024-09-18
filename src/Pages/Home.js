@@ -12,9 +12,9 @@ export const Home = () => {
     <>
     <Header />
       <Hero />
+      <Products />
       <About />
       <Skills />
-      <Products />
       {/* <Testimonials /> */}
       <Footer />
     </>

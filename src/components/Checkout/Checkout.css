@@ -1,4 +1,6 @@
-
+.checkout_counting {
+    width: 10% !important;
+}
 .quote_container {
     padding: 1em 7em;
     /* background: #32dc43; */
@@ -82,6 +84,13 @@
 
 .thanku_footer {
     text-align: center;
+}
+
+@media (max-width: 1150px) {
+
+.checkout_counting {
+    width: 30% !important;
+}
 }
 
 @media (max-width: 700px) {

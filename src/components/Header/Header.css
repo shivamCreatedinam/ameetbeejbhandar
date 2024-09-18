@@ -502,6 +502,11 @@ section {
   .cusotmer_section {
     margin-top: 2em;
   }
+
+  .cart {
+    width: 40%;
+  }
+
 }
 
 

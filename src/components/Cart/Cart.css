@@ -52,6 +52,8 @@
   justify-content: center;
   align-items: center;
   border: 1px solid;
+  width: 30%;
+  
 }
 
 .counting i {
@@ -75,6 +77,18 @@
   outline: none;
 }
 
+@media (max-width: 1400px) {
+  .counting {
+    width: 40%; 
+  }
+}
+
+@media (max-width: 1050px) {
+  .counting {
+    width: 60%; 
+  }
+}
+
 @media (max-width: 700px) {
   .cart_items_inner .cart_items_inner_section {
     flex-direction: column;
@@ -85,4 +99,10 @@
     font-size: 1.5em;
     margin-bottom: 1em;
   }
+
+  .counting {
+    width: 60%;
+    
+  }
+
 }
