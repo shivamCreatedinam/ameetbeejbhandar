@@ -10,6 +10,7 @@ import { Privacy } from "./components/Privacy/Privacy";
 import { Return } from "./components/Return/Return";
 import { Shipping } from "./components/Shipping/Shipping";
 import { Contact } from "./components/Contact/Conact";
+import { Search } from "./components/Search/Search";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
           <Route path="/return" element={<Return />} />
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/contact" element={<Contact />} />
-
+          <Route path="/search" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </div>

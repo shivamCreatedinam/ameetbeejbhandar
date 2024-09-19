@@ -141,21 +141,6 @@ export const Header = () => {
     return (
         <>
             <header>
-                {/* <div className='address'>
-                    <div className='mail_phone'>
-                        <div className='mail_phone_containers'><i className="fa-solid fa-location-dot"></i><p>Punjabi Pura, TP Nagar, Meerut, UP India</p></div>
-                        <div className='mail_phone_containers'><i className="fa-solid fa-envelope"></i><p>vibhorvashistha3@gmail.com</p></div>
-                    </div>
-                    <div className='contact'>
-                        <div className='contact_no'><i className="fa-solid fa-phone"></i><p>+91 88595 91451</p></div>
-                        <div className='social'>
-                            <i className="fa-brands fa-facebook-f"></i>
-                            <i className="fa-brands fa-instagram"></i>
-                            <i className="fa-brands fa-x-twitter"></i>
-                        </div>
-                    </div>
-
-                </div> */}
                 <div className='second_nav'>
                     <Link to='/' className='brand'>Amit Beej Bhandar</Link>
 
@@ -166,40 +151,15 @@ export const Header = () => {
                             <Link to='/shop'>Explore</Link>
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
-                            {/* <Link to='/shop'>Products</Link> */}
-
-
-                            <div className='search_container'>
-                                <input
+                            <div className='search_container header_bar'>
+                            <Link to='/search'><input
                                     type='search'
-                                    className='search_bar'
-                                    value={searchQuery}
-                                    onChange={handleSearch}
+                                    className='search_bar '
                                     placeholder='Search for products...'
-                                />
+                                />  </Link>
                                 <i className="fa-solid fa-magnifying-glass"></i>
-
-                                {/* Display suggestions if there is a search query */}
-                                {searchQuery && (
-                                    <ul className='suggestions'>
-                                        {filteredSearchProducts.length ? (
-                                            filteredSearchProducts.map((product) => (
-                                                <li
-                                                    key={product.index}
-                                                    onClick={() => handleProductClick(product.id)}
-                                                    className='suggestion_item'
-                                                >
-                                                    <span style={{ fontWeight: 'bolder' }}>{product?.product_name} </span>by <span>
-                                                        {product.brand.brand_name}</span>
-                                                </li>
-                                            ))
-                                        ) : (
-                                            <li className='no_results'>No products found</li>
-                                        )}
-                                    </ul>
-                                )}
                             </div>
-
+                            
                             <div className='cusotmer_section'>
                                 <i className="fa-solid fa-cart-shopping" onClick={openCart}></i>
                                 {cartItems.length > 0 && (

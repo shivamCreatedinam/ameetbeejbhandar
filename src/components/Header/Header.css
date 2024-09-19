@@ -646,6 +646,10 @@ section {
     padding: 0.6em;
   }
 
+  .header_bar {
+    padding: 0 !important;
+  }
+
   .cusotmer_section {
     margin-top: 2em;
     display: flex;

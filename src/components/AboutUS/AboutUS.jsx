@@ -37,6 +37,7 @@ export const AboutUS = () => {
         setIsCartOpen(!isCartOpen)
     }
 
+    const navigate = useNavigate();
     const cartItems = useAppSelector((state) => state.cart.items);
 
     // initial products
@@ -56,32 +57,6 @@ export const AboutUS = () => {
         fetchProducts();
     }, []);
 
-    // search
-    const [searchQuery, setSearchQuery] = useState('');
-    const [filteredSearchProducts, setFilteredSearchProducts] = useState([]);
-    const navigate = useNavigate();
-
-    const handleSearch = (e) => {
-        const query = e.target.value.toLowerCase();
-        setSearchQuery(query);
-
-        // console.log(products)
-        const filtered = products.filter((product, index) =>
-            // key={index}
-            (product?.brand?.brand_name && product?.brand?.brand_name.toLowerCase().includes(query)) ||
-            (product?.category?.category_name && product?.category?.category_name.toLowerCase().includes(query)) ||
-            (product?.product_name && product?.product_name.toLowerCase().includes(query))
-            // || (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
-        );
-        setFilteredSearchProducts(filtered);
-    };
-
-    const handleProductClick = (productId) => {
-        navigate(`/products/${productId}`);
-    };
-
-
-
     return (
         <>
             <div className='shop_page about_us'>
@@ -98,36 +73,15 @@ export const AboutUS = () => {
                             <Link to='/shop'>Explore</Link>
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
-                            {/* <Link to='/shop'>Products</Link> */}
                             <div className='search_container'>
-                                <input
+                            <Link to='/search'><input
                                     type='search'
                                     className='search_bar'
-                                    value={searchQuery}
-                                    onChange={handleSearch}
                                     placeholder='Search for products...'
-                                />
+                                />  </Link>
                                 <i className="fa-solid fa-magnifying-glass"></i>
 
-                                {/* Display suggestions if there is a search query */}
-                                {searchQuery && (
-                                    <ul className='suggestions'>
-                                        {filteredSearchProducts.length ? (
-                                            filteredSearchProducts.map((product) => (
-                                                <li
-                                                    key={product.index}
-                                                    onClick={() => handleProductClick(product.id)}
-                                                    className='suggestion_item'
-                                                >
-                                                      <span style={{fontWeight: 'bolder'}}>{product?.product_name} </span>by <span>
-                                                      {product.brand.brand_name}</span>
-                                                </li>
-                                            ))
-                                        ) : (
-                                            <li className='no_results'>No products found</li>
-                                        )}
-                                    </ul>
-                                )}
+                    
                             </div>
                             <div className='customer_section'>
                                 <i className="fa-solid fa-cart-shopping" onClick={openCart}></i>
@@ -146,6 +100,8 @@ export const AboutUS = () => {
                             </div>
                         </div>
                     </div>
+
+                    
                 </div>
             </div>
 
