@@ -4,7 +4,7 @@
   background-position: center;
   background-size: cover;
   position: relative;
-  height: 600px;
+  height: 500px;
 }
 
 .shop_nav {
@@ -267,6 +267,10 @@
 
 .products_container .fa-xmark {
   display: none;
+}
+
+.above_price {
+  margin: 1em 0;
 }
 
 @media (max-width: 1575px) {

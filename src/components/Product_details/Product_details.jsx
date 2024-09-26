@@ -171,7 +171,7 @@ export const Product_details = () => {
                     </div>
                     <select className='select_options product_shop_options'>
 
-                        <option value='size'>size</option>
+                        <option value='size'>{product?.features}</option>
                     </select>
                     <div className='products_choice'>
                         <button className='products_choice_cart' onClick={handleAddToCart}>Add to Cart</button>

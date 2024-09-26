@@ -30,22 +30,23 @@ export const Shop = () => {
         setIsFilterSlider(!isFilterSlider);
     };
 
+    const [price, setPrice] = useState(2000); 
 
     // State for selected category (set to "all" by default)
     const [selectedCategory, setSelectedCategory] = useState('allCategories');
     const [selectedBrand, setSelectedBrand] = useState('allBrands');
 
-     // Get category from URL params
-  const { category } = useParams(); // Destructure category from useParams()
+    // Get category from URL params
+    const { category } = useParams(); // Destructure category from useParams()
 
-  // Update selectedCategory when the category changes in the URL
-  useEffect(() => {
-    if (category) {
-      setSelectedCategory(category);
-    } else {
-      setSelectedCategory('allCategories');
-    }
-  }, [category]); // This will run when the category changes
+    // Update selectedCategory when the category changes in the URL
+    useEffect(() => {
+        if (category) {
+            setSelectedCategory(category);
+        } else {
+            setSelectedCategory('allCategories');
+        }
+    }, [category]); // This will run when the category changes
 
 
     // Handle category change
@@ -67,7 +68,7 @@ export const Shop = () => {
         const fetchProducts = async () => {
             try {
                 const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
-                const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);        
+                const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
                 setProducts(productArray);
                 // console.log(productArray)
             } catch (error) {
@@ -86,14 +87,16 @@ export const Shop = () => {
             const filtered = products.filter(product => {
                 const categoryMatch = selectedCategory === 'allCategories' || product.category?.category_name === selectedCategory;
                 const brandMatch = selectedBrand === 'allBrands' || product.brand?.brand_name === selectedBrand;
-                return categoryMatch && brandMatch;
+                const priceMatch = product?.variants[0]?.selling_price >= 0 && product?.variants[0]?.selling_price <= price;
+                return categoryMatch && brandMatch && priceMatch;
+             
             });
 
             setFilteredProducts(filtered);
         };
 
         filterProducts();
-    }, [selectedCategory, selectedBrand, products]);
+    }, [selectedCategory, selectedBrand, products, price]);
 
 
     // cart and wish list sections
@@ -172,8 +175,8 @@ export const Shop = () => {
                                     // onChange={handleSearch}
                                     placeholder='Search for products...'
                                 />  </Link>
-                                
-                              
+
+
                                 <i className="fa-solid fa-magnifying-glass"></i>
 
                                 {/* Display suggestions if there is a search query */}
@@ -222,7 +225,17 @@ export const Shop = () => {
 
                     <h2 >Filters</h2>
                     <i className="fa-solid fa-xmark fa-lg" onClick={openFilters}></i>
-                    <p className='filter_type'>By Categories</p>
+                    <p className='filter_type'>By Price</p>
+                    <p className='above_price'>Show Below : ₹ {price}.00</p>
+                    <input
+                        type="range"
+                        min="0"
+                        max="2000"
+                        value={price}
+                        o onChange={(e) => setPrice(Number(e.target.value))}
+                        style={{ width: '300px' }}
+                    />           
+                     <p className='filter_type'>By Categories</p>
                     <div className='select_categories'>
                         <label>
                             <input
@@ -490,7 +503,7 @@ export const Shop = () => {
                     <div className='products_right_container'>
 
                         {filteredProducts.length > 0 ? filteredProducts.map((product) => (
-
+                                
                             <div className='single_product' key={product.id}>
                                 <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit', }}>
                                     <img src={`${BaseURL}${product.image}`} className='product_image' alt={product['Product Name']} />
@@ -499,6 +512,7 @@ export const Shop = () => {
                                     <p>By: {product?.brand?.brand_name}</p>
                                     <p>Category: {product?.category?.category_name}</p>
                                     <p>Price: ₹ {product?.selling_price}</p>
+                                    <p>{product?.variants[0]?.selling_price}</p>
                                 </Link>
                                 <div className='product_options'>
                                     <button

@@ -21,7 +21,7 @@ export const Suggest_Products = ( category ) => {
         const fetchData = async () => {
             try {
                 const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
-                const allProducts = response.data.data.data;
+                const allProducts = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
 
                 // Filter products by category
                 const filteredProducts = allProducts.filter((prod) => prod.category?.category_name === category.category);
@@ -42,6 +42,8 @@ export const Suggest_Products = ( category ) => {
         dispatch(addItemToCart(product));
     };
 
+    const BaseURL = 'https://aamitbeejbhandar.createdinam.com/admin/public/storage/'
+
     return (
         <div>
             <h1 className='suggestion_heading'>You May Also Like These Products</h1>
@@ -51,7 +53,7 @@ export const Suggest_Products = ( category ) => {
                         products.map((product) => (
                             <div key={product.id} className='single_product'>
                                 <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    <img src={product_img} className='product_image' alt="Product" />
+                                    <img src={`${BaseURL}${product.image}`} className='product_image' alt="Product" />
                                     <h1 style={{ wordWrap: 'break-word', maxWidth: '200px' }} >{product?.product_name}</h1>
                                     <p>By: {product?.brand?.brand_name}</p>
                                     <p>Price: ₹{product?.selling_price}</p>

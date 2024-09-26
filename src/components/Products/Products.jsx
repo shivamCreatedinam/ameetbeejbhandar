@@ -28,18 +28,6 @@ export const Products = () => {
 
     };
 
-    const slides = [
-        { img: "https://dummyimage.com/600x400/000/7CFC00" },
-        { img: "https://dummyimage.com/600x400/000/ccccc" },
-        { img: "https://dummyimage.com/600x400/000/dddddd" },
-        { img: "https://dummyimage.com/600x400/000/fff" },
-        { img: "https://dummyimage.com/600x400/000/B22222" },
-        { img: "https://dummyimage.com/600x400/000/7CFC00" },
-        { img: "https://dummyimage.com/600x400/000/ccccc" },
-        { img: "https://dummyimage.com/600x400/000/dddddd" },
-        { img: "https://dummyimage.com/600x400/000/B22222" },
-        { img: "https://dummyimage.com/600x400/000/7CFC00" }
-    ];
 
     const settings = {
         dots: false,
@@ -99,13 +87,14 @@ export const Products = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const BaseURL = 'https://aamitbeejbhandar.createdinam.com/admin/public/storage/'
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
-                setProducts(response.data.data.data);
-                console.log(response.data.data.data)
+                const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);        
+                setProducts(productArray);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -129,7 +118,7 @@ export const Products = () => {
                         <div key={index} style={{ margin: "0 10px" }}>
                             <Card className="main_card" style={{ marginRight: '1rem' }}>
                                 <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    <Card.Img variant="top" src={product_img} className="card_img" />
+                                    <Card.Img variant="top" src={`${BaseURL}${product.image}`} className="card_img" />
                                 </Link>
                                 <Card.Body>
                                     <Card.Title className="product_name">{product.product_name}</Card.Title>
@@ -163,7 +152,7 @@ export const Products = () => {
                         <div key={index} style={{ margin: "0 10px" }}>
                             <Card className="main_card" style={{ marginRight: '1rem' }}>
                                 <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    <Card.Img variant="top" src={product_img} className="card_img" />
+                                    <Card.Img variant="top" src={`${BaseURL}${product.image}`} className="card_img" />
                                 </Link>
                                 <Card.Body>
                                     <Card.Title className="product_name">{product.product_name}</Card.Title>
