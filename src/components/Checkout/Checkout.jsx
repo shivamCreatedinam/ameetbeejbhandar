@@ -132,6 +132,7 @@ export const Checkout = () => {
                                 <div>
                                     <h2>{item?.product_name}</h2>
                                     <p><span style={{fontWeight: 'bold'}}>By: </span> {item?.brand?.brand_name}</p>
+                                    <p><span style={{ fontWeight: 'bold' }}>Variant: </span> {item?.variantName}</p>
                                     <p><span style={{fontWeight: 'bold'}}>Quantity: </span> {item.quantity}</p>
                                 </div>
                                 <div className='counting checkout_counting'>

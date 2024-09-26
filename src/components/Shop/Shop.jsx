@@ -117,11 +117,20 @@ export const Shop = () => {
     const dispatch = useAppDispatch();
 
     const handleAddToCart = (product) => {
-        dispatch(addItemToCart(product));
-        setIsCartOpen(!isCartOpen)
-
+        const defaultVariant = product.variants[0]; 
+    
+        const payload = {
+            id: product.id,
+            variantId: defaultVariant.id,
+            variantName: defaultVariant.variant_name + defaultVariant.unit, 
+            product_name: product.product_name,
+            image: product.image,
+            brand: product.brand,
+        };
+    
+        dispatch(addItemToCart(payload));
+        setIsCartOpen(!isCartOpen);
     };
-
     const cartItems = useAppSelector((state) => state.cart.items);
 
     const navigate = useNavigate();
@@ -511,8 +520,7 @@ export const Shop = () => {
                                     <h1 style={{ wordWrap: 'break-word', maxWidth: '200px' }} >{product?.product_name}</h1>
                                     <p>By: {product?.brand?.brand_name}</p>
                                     <p>Category: {product?.category?.category_name}</p>
-                                    <p>Price: ₹ {product?.selling_price}</p>
-                                    <p>{product?.variants[0]?.selling_price}</p>
+                                    <p>Price: ₹ {product?.variants[0]?.selling_price}</p>
                                 </Link>
                                 <div className='product_options'>
                                     <button

@@ -7,40 +7,43 @@ export const cartSlice = createSlice({
   },
   reducers: {
     addItemToCart: (state, action) => {
+      const { id, variantId } = action.payload; // Assuming payload has id and variantId
       const existingItem = state.items.find(
-        (item) => item.id === action.payload.id
+          (item) => item.id === id && item.variantId === variantId // Check both IDs
       );
       if (existingItem) {
-        existingItem.quantity += 1;
+          existingItem.quantity += 1; // Increase quantity if it exists
       } else {
-        state.items.push({ ...action.payload, quantity: 1 });
+          state.items.push({ ...action.payload, quantity: 1 }); // Add new item with quantity 1
       }
-    },
-    incrementQuantity: (state, action) => {
-      const item = state.items.find((item) => item.id === action.payload);
-      if (item) {
-        item.quantity += 1;
+  },
+  incrementQuantity: (state, action) => {
+    const { id, variantId } = action.payload; 
+    const item = state.items.find(item => item.id === id && item.variantId === variantId);
+    if (item) {
+      item.quantity += 1;
+    }
+  },
+  decrementQuantity: (state, action) => {
+    const { id, variantId } = action.payload; 
+    const item = state.items.find(item => item.id === id && item.variantId === variantId);
+    if (item && item.quantity > 1) {
+      item.quantity -= 1;
+    } else if (item && item.quantity === 1) {
+      state.items = state.items.filter(item => !(item.id === id && item.variantId === variantId));
+    }
+  },
+  updateQuantity: (state, action) => {
+    const { id, variantId, quantity } = action.payload; 
+    const item = state.items.find(item => item.id === id && item.variantId === variantId);
+    if (item) {
+      if (quantity === 0) {
+        state.items = state.items.filter(item => !(item.id === id && item.variantId === variantId));
+      } else {
+        item.quantity = quantity;
       }
-    },
-    decrementQuantity: (state, action) => {
-      const item = state.items.find((item) => item.id === action.payload);
-      if (item && item.quantity > 1) {
-        item.quantity -= 1;
-      } else if (item && item.quantity === 1) {
-        state.items = state.items.filter((item) => item.id !== action.payload);
-      }
-    },
-    updateQuantity: (state, action) => {
-      const { id, quantity } = action.payload;
-      const item = state.items.find((item) => item.id === id);
-      if (item) {
-        if (quantity === 0) {
-          state.items = state.items.filter((item) => item.id !== id);
-        } else {
-          item.quantity = quantity;
-        }
-      }
-    },
+    }
+  },  
   },
 });
 
@@ -50,4 +53,5 @@ export const {
   decrementQuantity,
   updateQuantity,
 } = cartSlice.actions;
+
 export default cartSlice.reducer;

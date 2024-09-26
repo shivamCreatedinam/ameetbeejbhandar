@@ -23,9 +23,19 @@ export const Products = () => {
     }
 
     const handleAddToCart = (product) => {
-        dispatch(addItemToCart(product));
-        setIsCartOpen(!isCartOpen)
-
+        const defaultVariant = product.variants[0]; 
+    
+        const payload = {
+            id: product.id,
+            variantId: defaultVariant.id, 
+            variantName: defaultVariant.variant_name + defaultVariant.unit, 
+            product_name: product.product_name,
+            image: product.image,
+            brand: product.brand,
+        };
+    
+        dispatch(addItemToCart(payload));
+        setIsCartOpen(!isCartOpen);
     };
 
 

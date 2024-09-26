@@ -18,7 +18,19 @@ export const Product_details = () => {
     const { productId } = useParams()
 
     const [product, setProduct] = useState([]);
+    const [selectedVariant, setSelectedVariant] = useState(product?.variants?.[0] || null);
 
+    useEffect(() => {
+        if (product?.variants?.length > 0) {
+            setSelectedVariant(product.variants[0]); 
+        }
+    }, [product]);
+
+    const handleVariantChange = (event) => {
+        const selectedVariantId = event.target.value; 
+        const variant = product?.variants?.find(item => item.id === parseInt(selectedVariantId));
+        setSelectedVariant(variant); 
+    };
     const BaseURL = 'https://aamitbeejbhandar.createdinam.com/admin/public/storage/'
 
     useEffect(() => {
@@ -26,7 +38,6 @@ export const Product_details = () => {
             try {
                 const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
 
-                // Convert the product object into an array
                 const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
                 setProduct(productArray.find((prod) => prod.id == productId));
                 // setLoading(false);
@@ -66,11 +77,18 @@ export const Product_details = () => {
     const dispatch = useAppDispatch();
 
     const handleAddToCart = () => {
-        dispatch(addItemToCart(product));
-        setIsCartOpen(!isCartOpen)
-
+        const payload = {
+            id: product.id,
+            variantId: selectedVariant.id, 
+            variantName: selectedVariant.variant_name + selectedVariant.unit,
+            product_name: product.product_name,
+            image: product.image,
+            brand: product.brand,
+            
+        };
+        dispatch(addItemToCart(payload));
+        setIsCartOpen(!isCartOpen);
     };
-
     const cartItems = useAppSelector((state) => state.cart.items);
 
 
@@ -99,18 +117,6 @@ export const Product_details = () => {
         fetchProducts();
     }, []);
 
-
-    // const handleProductClick = (clickedProductId) => {
-    //     if (clickedProductId === productId) {
-    //         setSearchQuery('');
-    //     } else {
-    //         setSearchQuery('');
-    //         navigate(`/products/${clickedProductId}`);
-
-    //     }
-    // };
-
-
     return (
         <>
             <div className='products_page'>
@@ -128,7 +134,7 @@ export const Product_details = () => {
                             <Link to='/about'>About</Link>
                             <Link to='/contact'>Contact</Link>
                             <div className='search_container'>
-                            <Link to='/search'><input
+                                <Link to='/search'><input
                                     type='search'
                                     className='search_bar'
                                     placeholder='Search for products...'
@@ -158,27 +164,42 @@ export const Product_details = () => {
 
             <div className='products_details'>
                 <div className='products_details_left'>
-                    <img src={`${BaseURL}${product.image}`}></img>
+                    <img src={`${BaseURL}${product?.image}`} alt={product?.product_name} />
                 </div>
                 <div className='products_details_right'>
                     <h1>{product?.product_name}</h1>
-                    <p>By: {product?.brand?.brand_name} </p>
-                    <p>Category -: {product?.category?.category_name} </p>
-                    <p>Sub Category -: {product?.sub_category?.subcategory_name} </p>
+                    <p>By: {product?.brand?.brand_name}</p>
+                    <p>Category -: {product?.category?.category_name}</p>
+                    <p>Sub Category -: {product?.sub_category?.subcategory_name}</p>
                     <div>
-                        <p className='product_price'>₹ XXX.XX</p>
+                        {/* Display the price of the selected variant */}
+                        <p className='product_price'>₹ {selectedVariant?.selling_price}</p>
                         ⭐⭐⭐⭐⭐ <p className='ratings'>550 Ratings</p>
                     </div>
-                    <select className='select_options product_shop_options'>
 
-                        <option value='size'>{product?.features}</option>
-                    </select>
+                    {/* Variant dropdown */}
+                    {product?.variants?.length > 0 && (
+                        <select
+                            className='select_options product_shop_options'
+                            onChange={handleVariantChange} 
+                            value={selectedVariant?.id}
+                        >
+                            {product.variants.map((item) => (
+                                <option key={item.id} value={item.id}>
+                                    {item.variant_name} {item.unit}
+                                </option>
+                            ))}
+                        </select>
+                    )}
                     <div className='products_choice'>
-                        <button className='products_choice_cart' onClick={handleAddToCart}>Add to Cart</button>
+                        <button className='products_choice_cart' onClick={handleAddToCart}>
+                            Add to Cart
+                        </button>
                         <Link to="/checkout">
-                            <button className='products_choice_buy' onClick={handleAddToCart}>Buy Now</button>
+                            <button className='products_choice_buy' onClick={handleAddToCart}>
+                                Buy Now
+                            </button>
                         </Link>
-
                     </div>
                 </div>
             </div>
