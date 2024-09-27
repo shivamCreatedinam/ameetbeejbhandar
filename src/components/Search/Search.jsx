@@ -72,7 +72,7 @@ export const Search = () => {
             (product?.brand?.brand_name && product?.brand?.brand_name.toLowerCase().includes(query)) ||
             (product?.category?.category_name && product?.category?.category_name.toLowerCase().includes(query)) ||
             (product?.product_name && product?.product_name.toLowerCase().includes(query))
-            // || (product["Technical Content"] && product["Technical Content"].toLowerCase().includes(query))
+            || (product?.short_desc && product?.short_desc.toLowerCase().includes(query))
         );
         setFilteredSearchProducts(filtered);
     };
@@ -140,7 +140,7 @@ export const Search = () => {
                             </tbody>
                         </table>
                     ) : (
-                        <h3>No Products Found in this filter...</h3>
+                        <h3>🔍Start Searching to find relavent Products📦</h3>
                     )}
                 </div>
 

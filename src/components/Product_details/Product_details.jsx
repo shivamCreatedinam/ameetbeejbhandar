@@ -77,6 +77,7 @@ export const Product_details = () => {
     const dispatch = useAppDispatch();
 
     const handleAddToCart = () => {
+        console.log(selectedVariant)
         const payload = {
             id: product.id,
             variantId: selectedVariant.id, 
@@ -169,6 +170,7 @@ export const Product_details = () => {
                 <div className='products_details_right'>
                     <h1>{product?.product_name}</h1>
                     <p>By: {product?.brand?.brand_name}</p>
+                    <p>Technical Content -: {product?.short_desc} </p>
                     <p>Category -: {product?.category?.category_name}</p>
                     <p>Sub Category -: {product?.sub_category?.subcategory_name}</p>
                     <div>
