@@ -78,15 +78,19 @@ export const Product_details = () => {
 
     const handleAddToCart = () => {
         console.log(selectedVariant)
+       
         const payload = {
             id: product.id,
-            variantId: selectedVariant.id, 
-            variantName: selectedVariant.variant_name + selectedVariant.unit,
+            variantId: selectedVariant.id,
+            variantName: selectedVariant.variant_name + selectedVariant.unit, 
             product_name: product.product_name,
             image: product.image,
             brand: product.brand,
-            
+            category: product.category.category_name,
+            price: selectedVariant.selling_price,
+            stock: selectedVariant.total_stock
         };
+        
         dispatch(addItemToCart(payload));
         setIsCartOpen(!isCartOpen);
     };

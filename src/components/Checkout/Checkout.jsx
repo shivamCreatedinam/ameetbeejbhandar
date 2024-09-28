@@ -99,11 +99,11 @@ export const Checkout = () => {
                 .then((data) => {
                     toast.success('Order sent successfully!');
                     console.log('Order sent successfully:', data);
-
-                    setTimeout(() => {
-                        navigate('/');
-                        window.location.reload();
-                    }, 1000);
+                        console.log(data.data.quotes)
+                    // setTimeout(() => {
+                    //     navigate('/');
+                    //     window.location.reload();
+                    // }, 1000);
                 })
                 .catch((error) => {
                     toast.error('Error sending order. Please try again.');
@@ -136,19 +136,19 @@ export const Checkout = () => {
                                     <p><span style={{fontWeight: 'bold'}}>Quantity: </span> {item.quantity}</p>
                                 </div>
                                 <div className='counting checkout_counting'>
-                                    <i className="fa-solid fa-plus" onClick={() => dispatch(incrementQuantity(item.id))}></i>
+                                    <i className="fa-solid fa-plus" onClick={() => dispatch(incrementQuantity({ id: item.id, variantId: item.variantId }))}></i>
                                     <input
                                         className='input_quantity'
                                         type="number"
                                         value={item.quantity}
                                         onChange={(e) => {
-                                            const newQuantity = Number(e.target.value)
+                                            const newQuantity = Number(e.target.value);
                                             if (newQuantity >= 0) {
-                                                dispatch(updateQuantity({ id: item.id, quantity: newQuantity }));
+                                                dispatch(updateQuantity({ id: item.id, variantId: item.variantId, quantity: newQuantity }));
                                             }
                                         }}
                                     />
-                                    <i className="fa-solid fa-minus" onClick={() => dispatch(decrementQuantity(item.id))}></i>
+                                    <i className="fa-solid fa-minus" onClick={() => dispatch(decrementQuantity({ id: item.id, variantId: item.variantId }))}></i>
                                 </div>
                             </div>
                         ))}

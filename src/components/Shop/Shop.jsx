@@ -126,6 +126,9 @@ export const Shop = () => {
             product_name: product.product_name,
             image: product.image,
             brand: product.brand,
+            category: product.category.category_name,
+            price: defaultVariant.selling_price,
+            stock: defaultVariant.total_stock
         };
     
         dispatch(addItemToCart(payload));

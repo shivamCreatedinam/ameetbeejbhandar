@@ -25,13 +25,17 @@ export const Products = () => {
     const handleAddToCart = (product) => {
         const defaultVariant = product.variants[0];
 
+          
         const payload = {
             id: product.id,
             variantId: defaultVariant.id,
-            variantName: defaultVariant.variant_name + defaultVariant.unit,
+            variantName: defaultVariant.variant_name + defaultVariant.unit, 
             product_name: product.product_name,
             image: product.image,
             brand: product.brand,
+            category: product.category.category_name,
+            price: defaultVariant.selling_price,
+            stock: defaultVariant.total_stock
         };
 
         dispatch(addItemToCart(payload));
