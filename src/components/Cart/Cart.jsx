@@ -22,15 +22,18 @@ export const Cart = () => {
                         {cartItems.map((item, index) => (
                             <>
                                 <div key={index} className='cart_items_inner_section'>
-                                    <div className='cart_item_img'>
+                                <Link to={`/products/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <div className='cart_item_img'>
                                         <img src={`${BaseURL}${item.image}`} alt={item['Product Name']} />
                                     </div>
+                                    </Link>
                                     <div>
                                         <h3>{item?.product_name}</h3>
                                         <p><span style={{ fontWeight: 'bold' }}>By: </span> {item?.brand?.brand_name}</p>
                                         <p><span style={{ fontWeight: 'bold' }}>Variant: </span> {item?.variantName}</p>
                                         <p><span style={{ fontWeight: 'bold' }}>Quantity: </span> {item.quantity}</p>
                                     </div>
+                               
                                 </div>
                                 <div className='counting'>
                                     <i className="fa-solid fa-plus" onClick={() => dispatch(incrementQuantity({ id: item.id, variantId: item.variantId }))}></i>

@@ -82,7 +82,7 @@ export const Product_details = () => {
         const payload = {
             id: product.id,
             variantId: selectedVariant.id,
-            variantName: selectedVariant.variant_name + selectedVariant.unit, 
+            variantName: selectedVariant.variant_name,
             product_name: product.product_name,
             image: product.image,
             brand: product.brand,
@@ -192,7 +192,7 @@ export const Product_details = () => {
                         >
                             {product.variants.map((item) => (
                                 <option key={item.id} value={item.id}>
-                                    {item.variant_name} {item.unit}
+                                    {item.variant_name} 
                                 </option>
                             ))}
                         </select>

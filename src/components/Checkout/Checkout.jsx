@@ -3,7 +3,7 @@ import { useAppSelector, useAppDispatch } from '../../Redux/hooks';
 import { incrementQuantity, decrementQuantity, updateQuantity } from '../../Redux/slices/cartslice';
 import './Checkout.css';
 import product_img from '../../images/product.png';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -126,9 +126,11 @@ export const Checkout = () => {
                     <div className='cart_items_inner'>
                         {cartItems.map((item, index) => (
                             <div key={index} className='cart_items_inner_section'>
+                                <Link to={`/products/${item.id}`} style={{ textDecoration: 'none', color: 'inherit', width: 'auto' }}>
                                 <div className='cart_item_img'>
                                     <img src={`${BaseURL}${item.image}`} alt={item['Product Name']} />
                                 </div>
+                                </Link>
                                 <div>
                                     <h2>{item?.product_name}</h2>
                                     <p><span style={{fontWeight: 'bold'}}>By: </span> {item?.brand?.brand_name}</p>

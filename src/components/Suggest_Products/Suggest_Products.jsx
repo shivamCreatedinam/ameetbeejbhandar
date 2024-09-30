@@ -37,9 +37,23 @@ export const Suggest_Products = ( category ) => {
     const dispatch = useAppDispatch();
 
     const handleAddToCart = (product) => {
-        setIsCartOpen(!isCartOpen)
+        const defaultVariant = product.variants[0];
 
-        dispatch(addItemToCart(product));
+          
+        const payload = {
+            id: product.id,
+            variantId: defaultVariant.id,
+            variantName: defaultVariant.variant_name,
+            product_name: product.product_name,
+            image: product.image,
+            brand: product.brand,
+            category: product.category.category_name,
+            price: defaultVariant.selling_price,
+            stock: defaultVariant.total_stock
+        };
+
+        dispatch(addItemToCart(payload));
+        setIsCartOpen(!isCartOpen);
     };
 
     const BaseURL = 'https://aamitbeejbhandar.createdinam.com/admin/public/storage/'

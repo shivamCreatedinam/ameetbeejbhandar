@@ -29,7 +29,7 @@ export const Products = () => {
         const payload = {
             id: product.id,
             variantId: defaultVariant.id,
-            variantName: defaultVariant.variant_name + defaultVariant.unit, 
+            variantName: defaultVariant.variant_name,
             product_name: product.product_name,
             image: product.image,
             brand: product.brand,
