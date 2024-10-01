@@ -30,7 +30,7 @@ export const Shop = () => {
         setIsFilterSlider(!isFilterSlider);
     };
 
-    const [price, setPrice] = useState(2000); 
+    const [price, setPrice] = useState(2000);
 
     // State for selected category (set to "all" by default)
     const [selectedCategory, setSelectedCategory] = useState('allCategories');
@@ -63,7 +63,8 @@ export const Shop = () => {
 
     // initial products
     const [products, setProducts] = useState([]);
-
+    const [categories, setCategories] = useState([]);
+    const [brands, setBrands] = useState([]);
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -79,6 +80,38 @@ export const Shop = () => {
         fetchProducts();
     }, []);
 
+    //intial categories
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await axios.get('https://aamitbeejbhandar.createdinam.com/admin/api/v1/category-list');
+                setCategories(response.data.data);
+                console.log(response.data.data)
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchCategories();
+    }, []);
+
+
+    //intial brands
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await axios.get('https://aamitbeejbhandar.createdinam.com/admin/api/v1/brand-list');
+                setBrands(response.data.data);
+                console.log(response.data.data)
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchCategories();
+    }, []);
+
+
     // Filter products based on the selected category and brand
     const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -89,7 +122,7 @@ export const Shop = () => {
                 const brandMatch = selectedBrand === 'allBrands' || product.brand?.brand_name === selectedBrand;
                 const priceMatch = product?.variants[0]?.selling_price >= 0 && product?.variants[0]?.selling_price <= price;
                 return categoryMatch && brandMatch && priceMatch;
-             
+
             });
 
             setFilteredProducts(filtered);
@@ -117,12 +150,12 @@ export const Shop = () => {
     const dispatch = useAppDispatch();
 
     const handleAddToCart = (product) => {
-        const defaultVariant = product.variants[0]; 
-    
+        const defaultVariant = product.variants[0];
+
         const payload = {
             id: product.id,
             variantId: defaultVariant.id,
-            variantName: defaultVariant.variant_name + defaultVariant.unit, 
+            variantName: defaultVariant.variant_name + defaultVariant.unit,
             product_name: product.product_name,
             image: product.image,
             brand: product.brand,
@@ -130,7 +163,7 @@ export const Shop = () => {
             price: defaultVariant.selling_price,
             stock: defaultVariant.total_stock
         };
-    
+
         dispatch(addItemToCart(payload));
         setIsCartOpen(!isCartOpen);
     };
@@ -246,8 +279,8 @@ export const Shop = () => {
                         value={price}
                         o onChange={(e) => setPrice(Number(e.target.value))}
                         style={{ width: '300px' }}
-                    />           
-                     <p className='filter_type'>By Categories</p>
+                    />
+                    <p className='filter_type'>By Categories</p>
                     <div className='select_categories'>
                         <label>
                             <input
@@ -260,73 +293,26 @@ export const Shop = () => {
                             All Categories
                         </label>
 
-                        <label>
-                            <input
-                                type="radio"
-                                name="FERTILIZERS"
-                                checked={selectedCategory === 'FERTILIZERS'}
-                                onChange={handleCategoryChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Fertilizers
-                        </label>
 
-                        <label>
-                            <input
-                                type="radio"
-                                name="PESTICIDES"
-                                checked={selectedCategory === 'PESTICIDES'}
-                                onChange={handleCategoryChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Pesticides
-                        </label>
 
-                        <label>
-                            <input
-                                type="radio"
-                                name="HERBICIDES"
-                                checked={selectedCategory === 'HERBICIDES'}
-                                onChange={handleCategoryChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Herbicides
-                        </label>
 
-                        <label>
-                            <input
-                                type="radio"
-                                name="INSECTICIDES"
-                                checked={selectedCategory === 'INSECTICIDES'}
-                                onChange={handleCategoryChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Insecticides
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="FUNGICIDE"
-                                checked={selectedCategory === 'FUNGICIDE'}
-                                onChange={handleCategoryChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Fungicides
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="PLANT GROWTH REGULATOR"
-                                checked={selectedCategory === 'PLANT GROWTH REGULATOR'}
-                                onChange={handleCategoryChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Plant Growth Regulator
-                        </label>
+                        {
+                            categories.map((item, index) => {
+                                return (
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name={item.category_name}
+                                            checked={selectedCategory === item.category_name}
+                                            onChange={handleCategoryChange}
+                                            style={{ marginRight: '10px' }}
+                                        />
+                                        {item.category_name}
+                                    </label>
+                                )
+                            })
+                        }
                     </div>
-
                     <p className='filter_type'>By Brands</p>
                     <div className='select_categories'>
                         <label>
@@ -340,149 +326,22 @@ export const Shop = () => {
                             All Brands
                         </label>
 
-                        <label>
-                            <input
-                                type="radio"
-                                name="Atul"
-                                checked={selectedBrand === 'Atul'}
-                                onChange={handleBrandChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Atul
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="Bharat Agrovet"
-                                checked={selectedBrand === 'Bharat Agrovet'}
-                                onChange={handleBrandChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Bharat Agrovet
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="Bharat Chemicals"
-                                checked={selectedBrand === 'Bharat Chemicals'}
-                                onChange={handleBrandChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Bharat Chemicals
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="Bhoomi Phosphate"
-                                checked={selectedBrand === 'Bhoomi Phosphate'}
-                                onChange={handleBrandChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Bhoomi Phosphate
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="CFCL"
-                                checked={selectedBrand === 'CFCL'}
-                                onChange={handleBrandChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            CFCL
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="Chand Chap"
-                                checked={selectedBrand === 'Chand Chap'}
-                                onChange={handleBrandChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Chand Chap
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="Cheminova"
-                                checked={selectedBrand === 'Cheminova'}
-                                onChange={handleBrandChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Cheminova
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="Coramandal"
-                                checked={selectedBrand === 'Coramandal'}
-                                onChange={handleBrandChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Coramandal
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="GSP"
-                                checked={selectedBrand === 'GSP'}
-                                onChange={handleBrandChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            GSP
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="HURL"
-                                checked={selectedBrand === 'HURL'}
-                                onChange={handleBrandChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            HURL
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="Jaishil"
-                                checked={selectedBrand === 'Jaishil'}
-                                onChange={handleBrandChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Jaishil
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="Mono Magic"
-                                checked={selectedBrand === 'Mono Magic'}
-                                onChange={handleBrandChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Mono Magic
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="Hok Agrichem Pvt. Ltd."
-                                checked={selectedBrand === 'Hok Agrichem Pvt. Ltd.'}
-                                onChange={handleBrandChange}
-                                style={{ marginRight: '10px' }}
-                            />
-                            Hok Agrichem Pvt. Ltd.
-                        </label>
-
+                        {
+                            brands.map((item, index) => {
+                                return (
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name={item.brand_name}
+                                            checked={selectedBrand === item.brand_name}
+                                            onChange={handleBrandChange}
+                                            style={{ marginRight: '10px' }}
+                                        />
+                                        {item.brand_name}
+                                    </label>
+                                )
+                            })
+                        }
                     </div>
                 </div>
 
@@ -515,7 +374,7 @@ export const Shop = () => {
                     <div className='products_right_container'>
 
                         {filteredProducts.length > 0 ? filteredProducts.map((product) => (
-                                
+
                             <div className='single_product' key={product.id}>
                                 <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit', }}>
                                     <img src={`${BaseURL}${product.image}`} className='product_image' alt={product['Product Name']} />
