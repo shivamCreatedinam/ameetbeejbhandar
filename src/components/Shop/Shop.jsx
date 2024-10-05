@@ -340,7 +340,7 @@ export const Shop = () => {
                                             style={{ marginRight: '10px' }}
                                             value={item.id}
                                         />
-                                        {item.category_name}{item.id}
+                                        {item.category_name}
                                     </label>
                                 )
                             })
