@@ -33,60 +33,77 @@ export const Shop = () => {
     const [price, setPrice] = useState(2000);
 
     // State for selected category (set to "all" by default)
-    const [selectedCategory, setSelectedCategory] = useState('allCategories');
-    const [selectedBrand, setSelectedBrand] = useState('allBrands');
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedBrand, setSelectedBrand] = useState('');
 
     // Get category from URL params
-    const { category } = useParams(); // Destructure category from useParams()
+    const { category } = useParams();
 
     // Update selectedCategory when the category changes in the URL
     useEffect(() => {
         if (category) {
             setSelectedCategory(category);
         } else {
-            setSelectedCategory('allCategories');
+            setSelectedCategory('');
         }
     }, [category]); // This will run when the category changes
 
 
     // Handle category change
     const handleCategoryChange = (event) => {
-        const { name } = event.target;
-        setSelectedCategory(name); // Update selected category
+        const { value } = event.target;
+        setSelectedCategory(value);
+        console.log(typeof(value))
     };
 
     // Handle brand change
     const handleBrandChange = (event) => {
-        const { name } = event.target;
-        setSelectedBrand(name);
+        const { value } = event.target;
+        setSelectedBrand(value);
+        console.log(typeof(value))
+
     };
 
     // initial products
     const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);  
     const [categories, setCategories] = useState([]);
     const [brands, setBrands] = useState([]);
+
+    const filters = {
+        category_id: selectedCategory,
+        brand_id: selectedBrand
+    }
+
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
-                const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
-                setProducts(productArray);
-                // console.log(productArray)
+           
+                const response = await axios.post('http://amitbeejbhandar.in/admin/api/v1/products', filters);
+                console.log('Full Response:', response); 
+                if (response.data && response.data.data) {
+                    const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
+                    setProducts(productArray);
+                    setFilteredProducts(productArray);
+                    console.log(productArray);
+                } else {
+                    console.error('Unexpected response structure:', response);
+                }
             } catch (error) {
                 console.error('Error fetching products:', error);
             }
         };
 
         fetchProducts();
-    }, []);
+    }, [selectedCategory, selectedBrand, price]);
 
     //intial categories
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('https://aamitbeejbhandar.createdinam.com/admin/api/v1/category-list');
+                const response = await axios.get('http://amitbeejbhandar.in/admin/api/v1/category-list');
                 setCategories(response.data.data);
-                console.log(response.data.data)
+                // console.log(response.data.data)
             } catch (error) {
                 console.error('Error fetching products:', error);
             }
@@ -100,9 +117,9 @@ export const Shop = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('https://aamitbeejbhandar.createdinam.com/admin/api/v1/brand-list');
+                const response = await axios.get('http://amitbeejbhandar.in/admin/api/v1/brand-list');
                 setBrands(response.data.data);
-                console.log(response.data.data)
+                // console.log(response.data.data)
             } catch (error) {
                 console.error('Error fetching products:', error);
             }
@@ -112,24 +129,40 @@ export const Shop = () => {
     }, []);
 
 
-    // Filter products based on the selected category and brand
-    const [filteredProducts, setFilteredProducts] = useState([]);
-
     useEffect(() => {
         const filterProducts = () => {
             const filtered = products.filter(product => {
-                const categoryMatch = selectedCategory === 'allCategories' || product.category?.category_name === selectedCategory;
-                const brandMatch = selectedBrand === 'allBrands' || product.brand?.brand_name === selectedBrand;
-                const priceMatch = product?.variants[0]?.selling_price >= 0 && product?.variants[0]?.selling_price <= price;
-                return categoryMatch && brandMatch && priceMatch;
-
+                return product?.variants[0]?.selling_price >= 0 && product?.variants[0]?.selling_price <= price;
             });
-
             setFilteredProducts(filtered);
         };
 
         filterProducts();
-    }, [selectedCategory, selectedBrand, products, price]);
+    }, [price, products]);
+
+
+    // Filter products based on the selected category and brand
+    // const [filteredProducts, setFilteredProducts] = useState([]);
+    // const filters = {
+    //     category_id: selectedCategory,
+    //     brand_id: selectedBrand
+    // }
+    // useEffect(() => {
+
+    //     const filterProducts = () => {
+    //         const filtered = products.filter(product => {
+    //             const categoryMatch = selectedCategory === 'allCategories' || product.category?.category_name === selectedCategory;
+    //             const brandMatch = selectedBrand === 'allBrands' || product.brand?.brand_name === selectedBrand;
+    //             const priceMatch = product?.variants[0]?.selling_price >= 0 && product?.variants[0]?.selling_price <= price;
+    //             return categoryMatch && brandMatch && priceMatch;
+
+    //         });
+
+    //         setFilteredProducts(filtered);
+    //     };
+
+    //     filterProducts();
+    // }, [selectedCategory, selectedBrand, products, price]);
 
 
     // cart and wish list sections
@@ -194,7 +227,7 @@ export const Shop = () => {
         navigate(`/products/${productId}`);
     };
 
-    const BaseURL = 'https://aamitbeejbhandar.createdinam.com/admin/public/storage/'
+    const BaseURL = 'http://amitbeejbhandar.in/admin/public/storage/'
 
     return (
         <>
@@ -281,47 +314,49 @@ export const Shop = () => {
                         style={{ width: '300px' }}
                     />
                     <p className='filter_type'>By Categories</p>
+                   
                     <div className='select_categories'>
                         <label>
                             <input
                                 type="radio"
-                                name="allCategories"
-                                checked={selectedCategory === 'allCategories'}
+                                name=""
+                                checked={selectedCategory === ''}
                                 onChange={handleCategoryChange}
                                 style={{ marginRight: '10px' }}
+                                value=''
                             />
                             All Categories
                         </label>
-
-
-
-
                         {
                             categories.map((item, index) => {
                                 return (
                                     <label>
                                         <input
+                                            key={index}
                                             type="radio"
-                                            name={item.category_name}
-                                            checked={selectedCategory === item.category_name}
+                                            name="categories"
+                                            checked={selectedCategory == item.id}
                                             onChange={handleCategoryChange}
                                             style={{ marginRight: '10px' }}
+                                            value={item.id}
                                         />
-                                        {item.category_name}
+                                        {item.category_name}{item.id}
                                     </label>
                                 )
                             })
                         }
                     </div>
+
                     <p className='filter_type'>By Brands</p>
                     <div className='select_categories'>
                         <label>
                             <input
                                 type="radio"
-                                name="allBrands"
-                                checked={selectedBrand === 'allBrands'}
+                                name=""
+                                checked={selectedBrand === ''}
                                 onChange={handleBrandChange}
                                 style={{ marginRight: '10px' }}
+                                value=''
                             />
                             All Brands
                         </label>
@@ -331,13 +366,15 @@ export const Shop = () => {
                                 return (
                                     <label>
                                         <input
+                                            key={index}
                                             type="radio"
-                                            name={item.brand_name}
-                                            checked={selectedBrand === item.brand_name}
+                                            name='brands'
+                                            checked={selectedBrand == item.id}
                                             onChange={handleBrandChange}
                                             style={{ marginRight: '10px' }}
+                                            value={item.id}
                                         />
-                                        {item.brand_name}
+                                        {item.brand_name} 
                                     </label>
                                 )
                             })
@@ -354,17 +391,17 @@ export const Shop = () => {
                         <div className='display_style'>
                             <div className='filters' onClick={openFilters}><i className="fa-solid fa-filter"></i><p>Filters</p></div>
 
-                            <select className='select_options'>
+                            {/* <select className='select_options'>
                                 <option disabled value="Default Sorting">Default Sorting</option>
                                 <option value="most_popular">Most Popular</option>
                                 <option value="top_selling">Top Selling</option>
                                 <option value="latest">Latest</option>
                                 <option value="low_to_high">Price Low to High</option>
                                 <option value="high_to_low">Price High to Low</option>
-                            </select>
+                            </select> */}
                             <div>
-                                <i className="fa-solid fa-table-cells "></i>
-                                <i className="fa-solid fa-list-ul"></i>
+                                {/* <i className="fa-solid fa-table-cells "></i>
+                                <i className="fa-solid fa-list-ul"></i> */}
                             </div>
                         </div>
                     </div>

@@ -32,21 +32,21 @@ export const Terms_Conditions = () => {
     const cartItems = useAppSelector((state) => state.cart.items);
 
     // initial products
-    const [products, setProducts] = useState([]);
+    // const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
-                const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
-                setProducts(productArray);
-            } catch (error) {
-                console.error('Error fetching products:', error);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchProducts = async () => {
+    //         try {
+    //             const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+    //             const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
+    //             setProducts(productArray);
+    //         } catch (error) {
+    //             console.error('Error fetching products:', error);
+    //         }
+    //     };
 
-        fetchProducts();
-    }, []);
+    //     fetchProducts();
+    // }, []);
 
     const navigate = useNavigate();
 

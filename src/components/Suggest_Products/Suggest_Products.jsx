@@ -20,7 +20,7 @@ export const Suggest_Products = ( category ) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                const response = await axios.post('http://amitbeejbhandar.in/admin/api/v1/products');
                 const allProducts = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
 
                 // Filter products by category
@@ -56,7 +56,7 @@ export const Suggest_Products = ( category ) => {
         setIsCartOpen(!isCartOpen);
     };
 
-    const BaseURL = 'https://aamitbeejbhandar.createdinam.com/admin/public/storage/'
+    const BaseURL = 'http://amitbeejbhandar.in/admin/public/storage/'
 
     return (
         <div>

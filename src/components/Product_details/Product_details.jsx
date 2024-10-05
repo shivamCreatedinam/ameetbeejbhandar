@@ -31,12 +31,12 @@ export const Product_details = () => {
         const variant = product?.variants?.find(item => item.id === parseInt(selectedVariantId));
         setSelectedVariant(variant); 
     };
-    const BaseURL = 'https://aamitbeejbhandar.createdinam.com/admin/public/storage/'
+    const BaseURL = 'http://amitbeejbhandar.in/admin/public/storage/'
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                const response = await axios.post('http://amitbeejbhandar.in/admin/api/v1/products');
 
                 const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
                 setProduct(productArray.find((prod) => prod.id == productId));
@@ -110,7 +110,7 @@ export const Product_details = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                const response = await axios.post('http://amitbeejbhandar.in/admin/api/v1/products');
                 const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
 
                 setProducts(productArray);

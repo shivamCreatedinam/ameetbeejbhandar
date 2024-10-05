@@ -24,7 +24,7 @@ export const Search = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                const response = await axios.post('http://amitbeejbhandar.in/admin/api/v1/products');
                 const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
                 setProducts(productArray);
                 // console.log(productArray)
@@ -81,7 +81,7 @@ export const Search = () => {
         navigate(`/products/${productId}`);
     };
 
-    const BaseURL = 'https://aamitbeejbhandar.createdinam.com/admin/public/storage/'
+    const BaseURL = 'http://amitbeejbhandar.in/admin/public/storage/'
 
     return (
         <>

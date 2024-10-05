@@ -25,7 +25,7 @@ export const Products = () => {
     const handleAddToCart = (product) => {
         const defaultVariant = product.variants[0];
 
-          
+
         const payload = {
             id: product.id,
             variantId: defaultVariant.id,
@@ -101,12 +101,12 @@ export const Products = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const BaseURL = 'https://aamitbeejbhandar.createdinam.com/admin/public/storage/'
+    const BaseURL = 'http://amitbeejbhandar.in/admin/public/storage/'
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
+                const response = await axios.post('http://amitbeejbhandar.in/admin/api/v1/products');
                 const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
                 setProducts(productArray);
                 setLoading(false);
@@ -121,12 +121,12 @@ export const Products = () => {
 
     return (
         <>
-            <div className="products">
-                <h2>Our Top Products</h2>
+            {loading ? (
+                <p>Loading products...</p>
+            ) : products.length > 0 && (
+                <div className="products">
+                    <h2>Our Top Products</h2>
 
-                {loading ? (
-                    <p>Loading products...</p>
-                ) : products.length > 0 ? (
                     <Slider {...settings}>
                         {products.map((product, index) => (
                             <div key={index} style={{ margin: "0 10px" }}>
@@ -151,16 +151,15 @@ export const Products = () => {
                             </div>
                         ))}
                     </Slider>
-                ) : (
-                    <p>No products found</p>
-                )}
-            </div>
+                </div>
+            )}
 
-            <div className="products2">
+            {loading ? (
+                <p>Loading products...</p>
+            ) : products.length > 0 && (
+                <div className="products2">
+                    <h2>Our Top Products</h2>
 
-                {loading ? (
-                    <p>Loading products...</p>
-                ) : products.length > 0 ? (
                     <Slider {...settings}>
                         {products.map((product, index) => (
                             <div key={index} style={{ margin: "0 10px" }}>
@@ -172,24 +171,21 @@ export const Products = () => {
                                         <Card.Title className="product_name">{product.product_name}</Card.Title>
                                         <p>{product.category.category_name}</p>
                                         <Card.Text className="product_info">
-                                            {/* ₹  {product?.variants[0]?.selling_price} */}
+                                            {product["Technical Content"]}
                                         </Card.Text>
-
+                                        <div className="product-actions">
+                                            <Link to="/checkout">
+                                                <button className="primary" onClick={() => handleAddToCart(product)}>Buy</button>
+                                            </Link>
+                                            <button className="secondary" onClick={() => handleAddToCart(product)}>Cart</button>
+                                        </div>
                                     </Card.Body>
-                                    <div className="product-actions">
-                                        <Link to="/checkout">
-                                            <button className="primary" onClick={() => handleAddToCart(product)}>Buy</button>
-                                        </Link>
-                                        <button className="secondary" onClick={() => handleAddToCart(product)}>Cart</button>
-                                    </div>
                                 </Card>
                             </div>
                         ))}
                     </Slider>
-                ) : (
-                    <p>No products found</p>
-                )}
-            </div>
+                </div>
+            )}
 
             {/* cart */}
             {isCartOpen && <div className="overlay" onClick={openCart}></div>}

@@ -9,7 +9,7 @@ export const Cart = () => {
     const cartItems = useAppSelector((state) => state.cart.items);
     const dispatch = useAppDispatch();
     // console.log(cartItems)
-    const BaseURL = 'https://aamitbeejbhandar.createdinam.com/admin/public/storage/'
+    const BaseURL = 'http://amitbeejbhandar.in/admin/public/storage/'
 
     return (
         <>
