@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../Redux/hooks';
 import { addItemToCart } from '../../Redux/slices/cartslice';
 import './Suggest_Products.css';
-import product_img from '../../images/product.png';
+import product_img from '../../images/default.png';
 import axios from 'axios';
 import { Cart } from '../Cart/Cart';
 
@@ -67,7 +67,7 @@ export const Suggest_Products = ( category ) => {
                         products.map((product) => (
                             <div key={product.id} className='single_product'>
                                 <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    <img src={`${BaseURL}${product.image}`} className='product_image' alt="Product" />
+                                    <img  src={product?.image ? `${BaseURL}${product.image}` : product_img } className='product_image' alt="Product"/>
                                     <h1 style={{ wordWrap: 'break-word', maxWidth: '200px' }} >{product?.product_name}</h1>
                                     <p>By: {product?.brand?.brand_name}</p>
                                     <p>Price: ₹{product?.selling_price}</p>

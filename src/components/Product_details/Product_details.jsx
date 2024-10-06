@@ -10,7 +10,7 @@ import './Product_details.css'
 import '../Shop/Shop.css';
 import { Cart } from '../Cart/Cart';
 import { Link } from 'react-router-dom';
-import product_img from '../../images/product.png'
+import product_img from '../../images/default.png'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 export const Product_details = () => {
@@ -171,7 +171,7 @@ export const Product_details = () => {
 
             <div className='products_details'>
                 <div className='products_details_left'>
-                    <img src={`${BaseURL}${product?.image}`} alt={product?.product_name} />
+                <img  src={product?.image ? `${BaseURL}${product.image}` : product_img } alt={product?.product_name} />
                 </div>
                 <div className='products_details_right'>
                     <h1>{product?.product_name}</h1>
