@@ -101,14 +101,14 @@ export const Products = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const BaseURL = 'http://amitbeejbhandar.in/admin/public/storage/'
+    const BaseURL = 'https://amitbeejbhandar.in/admin/public/storage/'
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.post('http://amitbeejbhandar.in/admin/api/v1/products');
-                const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
-                setProducts(productArray);
+                const response = await axios.post('https://amitbeejbhandar.in/admin/api/v1/products');
+                // const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
+                setProducts(response.data.data.data.data);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -122,7 +122,7 @@ export const Products = () => {
     return (
         <>
             {loading ? (
-                <p>Loading products...</p>
+                <p className="loading_text">Loading products...</p>
             ) : products.length > 0 && (
                 <div className="products">
                     <h2>Our Top Products</h2>
@@ -155,7 +155,7 @@ export const Products = () => {
             )}
 
             {loading ? (
-                <p>Loading products...</p>
+                <p className="loading_text">Loading products...</p>
             ) : products.length > 0 && (
                 <div className="products2">
                     <h2>Our Top Products</h2>

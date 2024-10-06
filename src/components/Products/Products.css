@@ -138,6 +138,11 @@
   justify-content: space-between;
 }
 
+.loading_text {
+  text-align: center;
+  font-size: 1.1rem;
+}
+
 @media (max-width: 1550px) {
   .products,
   .products2 {

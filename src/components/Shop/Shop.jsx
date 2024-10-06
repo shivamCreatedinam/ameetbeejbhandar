@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Shop.css';
 import { useAppDispatch } from '../../Redux/hooks';
 import { addItemToCart } from '../../Redux/slices/cartslice';
-import product_img from '../../images/product.png';
+import product_img from '../../images/default.png';
 import { Footer } from '../Footer/Footer';
 // import productsData from '../../Products.json';
 import { Cart } from '../Cart/Cart';
@@ -13,8 +13,6 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 export const Shop = () => {
-
-
 
 
     // State for menu button
@@ -35,6 +33,29 @@ export const Shop = () => {
     // State for selected category (set to "all" by default)
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedBrand, setSelectedBrand] = useState('');
+    const [page_no, setPageNo] = useState(1);
+    const [per_page_item] = useState(30);
+    const [totalPages, setTotalPages] = useState(1);
+
+    // Handle category change
+    const handleCategoryChange = (event) => {
+        const { value } = event.target;
+        setSelectedCategory(value);
+        setPageNo(1);
+    };
+
+    // Handle brand change
+    const handleBrandChange = (event) => {
+        const { value } = event.target;
+        setSelectedBrand(value);
+        setPageNo(1);
+    };
+
+    // initial products
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [brands, setBrands] = useState([]);
 
     // Get category from URL params
     const { category } = useParams();
@@ -46,62 +67,79 @@ export const Shop = () => {
         } else {
             setSelectedCategory('');
         }
-    }, [category]); // This will run when the category changes
+    }, [category]);
 
-
-    // Handle category change
-    const handleCategoryChange = (event) => {
-        const { value } = event.target;
-        setSelectedCategory(value);
-        console.log(typeof(value))
-    };
-
-    // Handle brand change
-    const handleBrandChange = (event) => {
-        const { value } = event.target;
-        setSelectedBrand(value);
-        console.log(typeof(value))
-
-    };
-
-    // initial products
-    const [products, setProducts] = useState([]);
-    const [filteredProducts, setFilteredProducts] = useState([]);  
-    const [categories, setCategories] = useState([]);
-    const [brands, setBrands] = useState([]);
-
-    const filters = {
-        category_id: selectedCategory,
-        brand_id: selectedBrand
-    }
-
+    
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-           
-                const response = await axios.post('http://amitbeejbhandar.in/admin/api/v1/products', filters);
-                console.log('Full Response:', response); 
-                if (response.data && response.data.data) {
-                    const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
-                    setProducts(productArray);
-                    setFilteredProducts(productArray);
-                    console.log(productArray);
-                } else {
-                    console.error('Unexpected response structure:', response);
-                }
+                // First request to fetch the products based on filters
+                const filters = {
+                    ...(selectedCategory && { category_id: selectedCategory }),
+                    ...(selectedBrand && { brand_id: selectedBrand }),
+                    page_no: page_no,
+                    per_page_item: per_page_item,
+                };
+
+                const productResponse = await axios.post('https://amitbeejbhandar.in/admin/api/v1/products', filters);
+                setFilteredProducts(productResponse.data.data.data.data);
+                // setProducts(productResponse.data.data.data.data)
+                // console.log(productResponse.data.data.data.data.length)
+
+                // Second request to get the total number of products based on filters
+                const totalCountResponse = await axios.post('https://amitbeejbhandar.in/admin/api/v1/products', {
+                    ...(selectedCategory && { category_id: selectedCategory }),
+                    ...(selectedBrand && { brand_id: selectedBrand }),
+                });
+
+                // Assuming the total count is available in the response
+                console.log(totalCountResponse.data.data.data.data)
+                const totalProducts = totalCountResponse.data.data.data.data.length;
+                setProducts(totalCountResponse.data.data.data.data)
+                setTotalPages(Math.ceil(totalProducts / per_page_item));
+                // console.log(Math.ceil(totalProducts / per_page_item))
+                
             } catch (error) {
-                console.error('Error fetching products:', error);
+                console.error('Error fetching data:', error);
             }
         };
 
         fetchProducts();
-    }, [selectedCategory, selectedBrand, price]);
+    }, [selectedBrand, selectedCategory, page_no]);
+
+
+    const handlePageClick = (page) => {
+        setPageNo(page);
+        window.scrollTo({
+            top: 30 * parseFloat(getComputedStyle(document.documentElement).fontSize), // Convert 3rem to pixels
+        behavior: 'smooth',
+        });
+
+    };
+
+
+    // Render pagination buttons
+    const renderPagination = () => {
+        const pages = [];
+        for (let i = 1; i <= totalPages; i++) {
+            pages.push(
+                <button
+                    key={i}
+                    className={`pagination-btn ${page_no === i ? 'active' : ''}`}
+                    onClick={() => handlePageClick(i)}
+                >
+                    {i}
+                </button>
+            );
+        }
+        return pages;
+    };
 
     //intial categories
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://amitbeejbhandar.in/admin/api/v1/category-list');
+                const response = await axios.get('https://amitbeejbhandar.in/admin/api/v1/category-list');
                 setCategories(response.data.data);
                 // console.log(response.data.data)
             } catch (error) {
@@ -117,7 +155,7 @@ export const Shop = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://amitbeejbhandar.in/admin/api/v1/brand-list');
+                const response = await axios.get('https://amitbeejbhandar.in/admin/api/v1/brand-list');
                 setBrands(response.data.data);
                 // console.log(response.data.data)
             } catch (error) {
@@ -131,14 +169,14 @@ export const Shop = () => {
 
     useEffect(() => {
         const filterProducts = () => {
-            const filtered = products.filter(product => {
+            const filtered = filteredProducts.filter(product => {
                 return product?.variants[0]?.selling_price >= 0 && product?.variants[0]?.selling_price <= price;
             });
             setFilteredProducts(filtered);
         };
 
         filterProducts();
-    }, [price, products]);
+    }, [price]);
 
 
     // Filter products based on the selected category and brand
@@ -227,7 +265,7 @@ export const Shop = () => {
         navigate(`/products/${productId}`);
     };
 
-    const BaseURL = 'http://amitbeejbhandar.in/admin/public/storage/'
+    const BaseURL = 'https://amitbeejbhandar.in/admin/public/storage/'
 
     return (
         <>
@@ -314,7 +352,7 @@ export const Shop = () => {
                         style={{ width: '300px' }}
                     />
                     <p className='filter_type'>By Categories</p>
-                   
+
                     <div className='select_categories'>
                         <label>
                             <input
@@ -374,7 +412,7 @@ export const Shop = () => {
                                             style={{ marginRight: '10px' }}
                                             value={item.id}
                                         />
-                                        {item.brand_name} 
+                                        {item.brand_name}
                                     </label>
                                 )
                             })
@@ -411,11 +449,9 @@ export const Shop = () => {
                     <div className='products_right_container'>
 
                         {filteredProducts.length > 0 ? filteredProducts.map((product) => (
-
                             <div className='single_product' key={product.id}>
                                 <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit', }}>
-                                    <img src={`${BaseURL}${product.image}`} className='product_image' alt={product['Product Name']} />
-
+                                    <img  src={product.image ? `${BaseURL}${product.image}` : product_img } />
                                     <h1 style={{ wordWrap: 'break-word', maxWidth: '200px' }} >{product?.product_name}</h1>
                                     <p>By: {product?.brand?.brand_name}</p>
                                     <p>Category: {product?.category?.category_name}</p>
@@ -436,6 +472,11 @@ export const Shop = () => {
                             <h3>No Products Found in this filter...</h3>
                         )
                         }
+                        {/* Pagination */}
+                        <div className='pagination'>
+                            {totalPages > 1 && renderPagination()}
+                        </div>
+
                     </div>
                 </div>
             </div>

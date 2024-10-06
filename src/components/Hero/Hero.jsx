@@ -13,12 +13,12 @@ import { Link } from 'react-router-dom';
 
 export const Hero = () => {
     const items = [
-        { image: fertilizers, name: 'FERTILIZERS' },
-        { image: fungicides, name: 'FUNGICIDE' },
-        { image: herbicides, name: 'HERBICIDES' },
-        { image: plant, name: 'PLANT GROWTH REGULATOR' },
-        { image: insecticides, name: 'INSECTICIDES' },
-        { image: pesticides, name: 'PESTICIDES' },
+        { image: fertilizers, name: 'FERTILIZERS', id: 8 },
+        { image: fungicides, name: 'FUNGICIDE', id: 6 },
+        { image: herbicides, name: 'HERBICIDES', id: 3 },
+        { image: plant, name: 'PLANT GROWTH REGULATOR', id: 7 },
+        { image: insecticides, name: 'INSECTICIDES', id: 1 },
+        { image: pesticides, name: 'PESTICIDES', id: 2 },
     ];
 
     const extendedItems = [...items, ...items];
@@ -56,7 +56,7 @@ export const Hero = () => {
                             key={index}
                             className="carousel-item"
                         >
-                            <Link to={`/shop/${item.name}`} style={{textDecoration: 'none' }}>
+                            <Link to={`/shop/${item.id}`} style={{textDecoration: 'none' }}>
                             <img src={item.image} alt={item.name} className="carousel-image" />
                             </Link>
                             <h2>{item.name}</h2>

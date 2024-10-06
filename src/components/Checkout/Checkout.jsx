@@ -62,10 +62,10 @@ export const Checkout = () => {
         setErrors(formErrors);
         return Object.keys(formErrors).length === 0;
     };
-    const BaseURL = 'http://amitbeejbhandar.in/admin/public/storage/'
+    const BaseURL = 'https://amitbeejbhandar.in/admin/public/storage/'
 
 
-    const API = 'http://amitbeejbhandar.in/admin/api/v1/create-lead';
+    const API = 'https://amitbeejbhandar.in/admin/api/v1/create-lead';
 
     const sendOrder = () => {
         if (validateForm()) {
