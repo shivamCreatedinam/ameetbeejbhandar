@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Products.css";
 import productData from '../../Products.json'
-import product_img from '../../images/product.png'
+import product_img from '../../images/default.png'
 import { useAppDispatch } from '../../Redux/hooks';
 import { addItemToCart } from '../../Redux/slices/cartslice';
 import { Link } from "react-router-dom";
@@ -132,7 +132,7 @@ export const Products = () => {
                             <div key={index} style={{ margin: "0 10px" }}>
                                 <Card className="main_card" style={{ marginRight: '1rem' }}>
                                     <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                        <Card.Img variant="top" src={`${BaseURL}${product.image}`} className="card_img" />
+                                        <Card.Img variant="top" src={product?.image ? `${BaseURL}${product.image}` : product_img } className="card_img" />
                                     </Link>
                                     <Card.Body>
                                         <Card.Title className="product_name">{product.product_name}</Card.Title>
@@ -165,7 +165,7 @@ export const Products = () => {
                             <div key={index} style={{ margin: "0 10px" }}>
                                 <Card className="main_card" style={{ marginRight: '1rem' }}>
                                     <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                        <Card.Img variant="top" src={`${BaseURL}${product.image}`} className="card_img" />
+                                        <Card.Img variant="top" src={product?.image ? `${BaseURL}${product?.image}` : product_img} className="card_img" />
                                     </Link>
                                     <Card.Body>
                                         <Card.Title className="product_name">{product.product_name}</Card.Title>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../../Redux/hooks';
 import { incrementQuantity, decrementQuantity, updateQuantity } from '../../Redux/slices/cartslice';
 import './Checkout.css';
-import product_img from '../../images/product.png';
+import product_img from '../../images/default.png';
 import { useNavigate, Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -128,7 +128,7 @@ export const Checkout = () => {
                             <div key={index} className='cart_items_inner_section'>
                                 <Link to={`/products/${item.id}`} style={{ textDecoration: 'none', color: 'inherit', width: 'auto' }}>
                                 <div className='cart_item_img'>
-                                    <img src={`${BaseURL}${item.image}`} alt={item['Product Name']} />
+                                    <img src={item?.image ? `${BaseURL}${item?.image}` : product_img} alt={item?.product_name} />
                                 </div>
                                 </Link>
                                 <div>
