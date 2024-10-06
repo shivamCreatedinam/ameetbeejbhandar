@@ -101,7 +101,8 @@ export const Header = () => {
         const fetchProducts = async () => {
             try {
                 const response = await axios.post('https://aamitbeejbhandar.createdinam.com/admin/api/v1/products');
-                const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
+                // const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
+                const productArray = response.data.data.data.data;
                 setProducts(productArray);
             } catch (error) {
                 console.error('Error fetching products:', error);

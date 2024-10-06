@@ -71,8 +71,8 @@ export const Hero = () => {
 
             <div className='services_section'>
                 <div className='services'><i className="fa-solid fa-seedling"></i><p>OUR SERVICES</p></div>
-                <h1>Echofy Provide Environment
-                    Best Leading Services</h1>
+                <h1>Amit Beej Bhandhar Provides 
+                    Best Leading Products</h1>
 
                 <div className='cards_container'>
                     <div className='card_items'>

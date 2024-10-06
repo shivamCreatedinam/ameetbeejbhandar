@@ -25,7 +25,9 @@ export const Search = () => {
         const fetchProducts = async () => {
             try {
                 const response = await axios.post('https://amitbeejbhandar.in/admin/api/v1/products');
-                const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
+                // const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
+                const productArray = response.data.data.data.data;
+
                 setProducts(productArray);
                 // console.log(productArray)
             } catch (error) {

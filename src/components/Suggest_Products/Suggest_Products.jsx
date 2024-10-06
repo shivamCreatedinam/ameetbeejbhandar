@@ -21,8 +21,8 @@ export const Suggest_Products = ( category ) => {
         const fetchData = async () => {
             try {
                 const response = await axios.post('https://amitbeejbhandar.in/admin/api/v1/products');
-                const allProducts = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
-
+                // const allProducts = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
+                const allProducts = response.data.data.data.data;
                 // Filter products by category
                 const filteredProducts = allProducts.filter((prod) => prod.category?.category_name === category.category);
                 setProducts(filteredProducts);
