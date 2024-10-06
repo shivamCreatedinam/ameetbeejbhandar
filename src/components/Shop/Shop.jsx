@@ -452,7 +452,7 @@ export const Shop = () => {
                                 <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit', }}>
                                     <img  src={product.image ? `${BaseURL}${product.image}` : product_img } />
                                     <h1 style={{ wordWrap: 'break-word', maxWidth: '200px' }} >{product?.product_name}</h1>
-                                    <p>By: {product?.brand?.brand_name}</p>
+                                    <p style={{ wordWrap: 'break-word', maxWidth: '200px' }} >By: {product?.brand?.brand_name}</p>
                                     <p>Category: {product?.category?.category_name}</p>
                                     <p>Price: ₹ {product?.variants[0]?.selling_price}</p>
                                 </Link>

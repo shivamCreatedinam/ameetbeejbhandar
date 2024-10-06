@@ -172,6 +172,8 @@
   padding: 1.5em;
   cursor: pointer;
   height: 550px;
+  width: 300px;
+
 }
 
 .single_product:hover {
