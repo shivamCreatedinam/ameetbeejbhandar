@@ -37,10 +37,14 @@ export const Shop = () => {
     const [per_page_item] = useState(30);
     const [totalPages, setTotalPages] = useState(1);
 
+    // Get category from URL params
+    let { category } = useParams();
+
     // Handle category change
     const handleCategoryChange = (event) => {
-        const { value } = event.target;
+        const { value } = event.target;       
         setSelectedCategory(value);
+        category = '';
         setPageNo(1);
     };
 
@@ -57,55 +61,50 @@ export const Shop = () => {
     const [categories, setCategories] = useState([]);
     const [brands, setBrands] = useState([]);
 
-    // Get category from URL params
-    const { category } = useParams();
 
     // Update selectedCategory when the category changes in the URL
+    
     useEffect(() => {
         if (category) {
             setSelectedCategory(category);
-        } else {
-            setSelectedCategory('');
         }
     }, [category]);
-
-    
+ 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                // First request to fetch the products based on filters
+                // Prepare filters, excluding category_id if selectedCategory is an empty string (i.e., "All Categories")
                 const filters = {
-                    ...(selectedCategory && { category_id: selectedCategory }),
+                    ...(selectedCategory && selectedCategory !== '' && { category_id: selectedCategory }),
                     ...(selectedBrand && { brand_id: selectedBrand }),
                     page_no: page_no,
                     per_page_item: per_page_item,
                 };
-
+                console.log(selectedCategory)
+    
+                // First request to fetch products
                 const productResponse = await axios.post('https://amitbeejbhandar.in/admin/api/v1/products', filters);
                 setFilteredProducts(productResponse.data.data.data.data);
-                // setProducts(productResponse.data.data.data.data)
-                // console.log(productResponse.data.data.data.data.length)
-
-                // Second request to get the total number of products based on filters
+                // console.log(productResponse.data.data.data.data);
+    
+                // Second request to get total count of products (if needed)
                 const totalCountResponse = await axios.post('https://amitbeejbhandar.in/admin/api/v1/products', {
-                    ...(selectedCategory && { category_id: selectedCategory }),
+                    ...(selectedCategory && selectedCategory !== '' && { category_id: selectedCategory }),
                     ...(selectedBrand && { brand_id: selectedBrand }),
                 });
-
-                // Assuming the total count is available in the response
-                console.log(totalCountResponse.data.data.data.data)
+    
+                // Assuming total count is in the response
                 const totalProducts = totalCountResponse.data.data.data.data.length;
-                setProducts(totalCountResponse.data.data.data.data)
+                setProducts(totalCountResponse.data.data.data.data);
                 setTotalPages(Math.ceil(totalProducts / per_page_item));
-                // console.log(Math.ceil(totalProducts / per_page_item))
-                
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
-
+    
         fetchProducts();
-    }, [selectedBrand, selectedCategory, page_no]);
+    }, [selectedCategory, selectedBrand, page_no]);
+    
 
 
     const handlePageClick = (page) => {
