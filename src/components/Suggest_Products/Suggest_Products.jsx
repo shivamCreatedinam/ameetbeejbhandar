@@ -64,7 +64,7 @@ export const Suggest_Products = ( category ) => {
             <div className='suggestion_container'>
                 <div className='products_right_container'>
                     {products.length > 0 ? (
-                        products.map((product) => (
+                        products.slice(0, 12).map((product) => (
                             <div key={product.id} className='single_product'>
                                 <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                                     <img  src={product?.image ? `${BaseURL}${product.image}` : product_img } className='product_image' alt="Product"/>

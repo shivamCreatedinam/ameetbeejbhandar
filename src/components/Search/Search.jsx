@@ -136,7 +136,7 @@ export const Search = () => {
                                         </td>
                                         <td>{product?.brand?.brand_name}</td>
                                         <td>{product?.category?.category_name}</td>
-                                        <td>₹ {product?.selling_price}</td>
+                                        <td>₹ {product?.variants[0]?.selling_price}</td>
                                     </tr>
                                 ))}
                             </tbody>
