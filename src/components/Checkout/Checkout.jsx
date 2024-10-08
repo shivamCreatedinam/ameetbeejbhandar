@@ -100,10 +100,10 @@ export const Checkout = () => {
                     toast.success('Order sent successfully!');
                     console.log('Order sent successfully:', data);
                         console.log(data.data.quotes)
-                    // setTimeout(() => {
-                    //     navigate('/');
-                    //     window.location.reload();
-                    // }, 1000);
+                    setTimeout(() => {
+                        navigate('/');
+                        window.location.reload();
+                    }, 1000);
                 })
                 .catch((error) => {
                     toast.error('Error sending order. Please try again.');

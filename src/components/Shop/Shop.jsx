@@ -31,7 +31,7 @@ export const Shop = () => {
     const [price, setPrice] = useState(2000);
 
     // State for selected category (set to "all" by default)
-    const [selectedCategory, setSelectedCategory] = useState('');
+    // const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedBrand, setSelectedBrand] = useState('');
     const [page_no, setPageNo] = useState(1);
     const [per_page_item] = useState(30);
@@ -39,12 +39,11 @@ export const Shop = () => {
 
     // Get category from URL params
     let { category } = useParams();
-
+    const [selectedCategory, setSelectedCategory] = useState(category || '');
     // Handle category change
     const handleCategoryChange = (event) => {
         const { value } = event.target;       
         setSelectedCategory(value);
-        category = '';
         setPageNo(1);
     };
 
@@ -64,30 +63,32 @@ export const Shop = () => {
 
     // Update selectedCategory when the category changes in the URL
     
-    useEffect(() => {
-        if (category) {
-            setSelectedCategory(category);
-        }
-    }, [category]);
+    // checkCategory(() => {
+    //     if (category) {
+    //         setSelectedCategory(category);
+    //     }
+    // }, [category]);
  
     useEffect(() => {
         const fetchProducts = async () => {
+            console.log(category)
+
             try {
                 // Prepare filters, excluding category_id if selectedCategory is an empty string (i.e., "All Categories")
                 const filters = {
-                    ...(selectedCategory && selectedCategory !== '' && { category_id: selectedCategory }),
+                    ...(selectedCategory && { category_id: selectedCategory }),
                     ...(selectedBrand && { brand_id: selectedBrand }),
                     page_no: page_no,
                     per_page_item: per_page_item,
                 };
-                console.log(selectedCategory)
-    
+                // console.log(selectedCategory)
+                
                 // First request to fetch products
                 const productResponse = await axios.post('https://amitbeejbhandar.in/admin/api/v1/products', filters);
                 setFilteredProducts(productResponse.data.data.data.data);
                 // console.log(productResponse.data.data.data.data);
     
-                // Second request to get total count of products (if needed)
+                // Second request to get total count of products (just to count total)
                 const totalCountResponse = await axios.post('https://amitbeejbhandar.in/admin/api/v1/products', {
                     ...(selectedCategory && selectedCategory !== '' && { category_id: selectedCategory }),
                     ...(selectedBrand && { brand_id: selectedBrand }),

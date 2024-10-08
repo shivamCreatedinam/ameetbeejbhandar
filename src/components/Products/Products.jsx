@@ -119,6 +119,26 @@ export const Products = () => {
         fetchData();
     }, []);
 
+    const [products2, setProducts2] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.post('https://amitbeejbhandar.in/admin/api/v1/products', {
+                    page_no: 2,
+                });
+                // const productArray = Object.values(response.data.data.data).filter(item => typeof item === 'object' && item.id);
+                setProducts2(response.data.data.data.data);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
+
     return (
         <>
             {loading ? (
@@ -161,7 +181,7 @@ export const Products = () => {
                     <h2>Our Top Products</h2>
 
                     <Slider {...settings}>
-                        {products.map((product, index) => (
+                        {products2.map((product, index) => (
                             <div key={index} style={{ margin: "0 10px" }}>
                                 <Card className="main_card" style={{ marginRight: '1rem' }}>
                                     <Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
