@@ -90,7 +90,7 @@ export const Shop = () => {
     
                 // Second request to get total count of products (just to count total)
                 const totalCountResponse = await axios.post('https://amitbeejbhandar.in/admin/api/v1/products', {
-                    ...(selectedCategory && selectedCategory !== '' && { category_id: selectedCategory }),
+                    ...(selectedCategory && { category_id: selectedCategory }),
                     ...(selectedBrand && { brand_id: selectedBrand }),
                 });
     
